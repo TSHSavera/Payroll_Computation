@@ -191,9 +191,11 @@ cDependencyStatusBasic:
 
 AdvanceCalculations:
 
+    //  LAST EDITS  //
     //  Advance
-    cout << "<Payroll Calculator> " << generateRandomMessage(2) << " Now, please enter the TOTAL number of his REGULAR working hours: ";
-    cin >> numberOfHours;
+    cout << "<Payroll Calculator> " << generateRandomMessage(2) << " Now, please state the SHIFT TYPE of employee. Enter 1 if REGULAR and 2 if NIGHT: ";
+    cin >> shiftType;
+
 
 
     //Identify user input
@@ -281,6 +283,9 @@ employeeCode1:
                 goto start;
             }
         }
+    }
+    else if (calcuType == 1) {
+        
     }
 employeeCode2:
     //Check if it's a basic or advance calculation
