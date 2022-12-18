@@ -112,7 +112,10 @@ start:
 
     //Get user input
     //  Base
-    cout << "<Payroll Calculator> Welcome! To get started please enter the employee code: ";
+    cout << "\t\t\t\t\t\tPAYROLL CALCULATOR" << endl;
+    cout << "========================================================================================================================" << endl;
+    cout << "\t\t\t\tPlease choose an EMPLOYEE CODE: [1]\t [2]\t [3]\t" << endl;
+    cout << "\n<Payroll Calculator> Welcome! To get started please enter the employee code: ";
     cin >> employeeCode;
     //  Check user input
     if (employeeCode <= 0 || employeeCode > 3) {
@@ -123,8 +126,8 @@ start:
 cCalculationType:
     cout
         << "<Payroll Calculator> That was clear! Now, I wanna ask you if you want to access advance calculations."
-        << endl << "\nBasic Calculation includes: Number of absent, type of shift, and dependency. The system will always consider the REGULAR values on calculating the payroll (8 hours a day, 5 days a week, monthly payroll)"
-        << endl << "Advance Calculation includes: Custom working hours, type of Shift, civil status, rest day and holiday calculations, and overtime."
+        << endl << "\nBasic Calculation Includes: Number of absent, type of shift, and dependency. The system will always consider the REGULAR values on calculating the payroll (8 hours a day, 5 days a week, monthly payroll)"
+        << endl << "Advance Calculation Includes: Custom working hours, type of Shift, civil status, rest day and holiday calculations, and overtime."
         << endl << "\n<Payroll Calculator> Type 1 if Yes, 2 if No (1 or 2): ";
     cin >> calcuType;
     //  Check user input
@@ -155,7 +158,7 @@ cNumberOfAbsentBasic:
     
 
 cShiftTypeBasic:
-    cout << "<Payroll Calculator> " << generateRandomMessage(2) << "Now, please enter the type of shift. Enter 1 if REGULAR and 2 if NIGHT (1 or 2): ";
+    cout << "\n<Payroll Calculator> " << generateRandomMessage(2) << "Now, please enter the type of shift."<<"\n Enter [1] if REGULAR and [2] if NIGHT : ";
     cin >> shiftType;
     //  Check user input
     if (shiftType == 1 || shiftType == 2) {
@@ -167,7 +170,7 @@ cShiftTypeBasic:
     }
 
 cDependencyStatusBasic:
-    cout << "<Payroll Calculator> " << generateRandomMessage(2) << "Now, please state if you have any dependents. Enter 1 if you have child or dependent relative, 2 if single: ";
+    cout << "\n<Payroll Calculator> " << generateRandomMessage(2) << "Now, please state if you have any dependents." << "\n Enter [1] if you have child or dependent relative, [2] if single: ";
     cin >> dependencyStatus;
 
     if (dependencyStatus == 1 || dependencyStatus == 2) {
@@ -228,7 +231,7 @@ employeeCode1:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * code1;
                 tax = grossPay * withDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl 
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl 
                         << "\n\tGross Pay: PHP " << grossPay << endl 
                         << "\tTax: PHP " << tax << endl 
                         << "\tNet Pay: PHP " << netPay << endl;
@@ -240,7 +243,7 @@ employeeCode1:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * (code1*nightShiftMultiplier);
                 tax = grossPay * withDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl 
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl 
                         << "\n\tGross Pay: PHP " << grossPay << endl 
                         << "\tTax: PHP " << tax << endl 
                         << "\tNet Pay: PHP " << netPay << endl;
@@ -259,7 +262,7 @@ employeeCode1:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * code1;
                 tax = grossPay * withoutDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
                     << "\n\tGross Pay: PHP " << grossPay << endl
                     << "\tTax: PHP " << tax << endl
                     << "\tNet Pay: PHP " << netPay << endl;
@@ -271,7 +274,7 @@ employeeCode1:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * (code1 * nightShiftMultiplier);
                 tax = grossPay * withoutDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
                     << "\n\tGross Pay: PHP " << grossPay << endl
                     << "\tTax: PHP " << tax << endl
                     << "\tNet Pay: PHP " << netPay << endl;
@@ -300,7 +303,7 @@ employeeCode2:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * code2;
                 tax = grossPay * withDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
                     << "\n\tGross Pay: PHP " << grossPay << endl
                     << "\tTax: PHP " << tax << endl
                     << "\tNet Pay: PHP " << netPay << endl;
@@ -312,7 +315,7 @@ employeeCode2:
                 grossPay = ((8 * 5 * 4) - numberOfAbsent) * (code2 * nightShiftMultiplier);
                 tax = grossPay * withDep;
                 netPay = grossPay - tax;
-                cout << "<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
+                cout << "\n<Payroll Calculator> I've successfully calculated your gross pay, tax, and net pay!" << endl
                     << "\n\tGross Pay: PHP " << grossPay << endl
                     << "\tTax: PHP " << tax << endl
                     << "\tNet Pay: PHP " << netPay << endl;
@@ -452,7 +455,7 @@ clearConsole:
         }
     }
     else if (tA == "n" || tA == "N") {
-        cout << endl << "Arigatooo!" << endl;
+        cout << endl << "Thank You and God Bless!" << endl;
         system("pause");
         exit(0);
     }
