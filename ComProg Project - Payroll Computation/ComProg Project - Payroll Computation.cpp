@@ -61,6 +61,21 @@ string wrongMessages(int number) {
     }
 }
 
+bool checkUserInput(char type) {
+    if (type == 'a' || type = 'A') {
+        return true;
+    }
+    else if (type == 'b' || type = 'B') {
+        return true;
+    }
+    else if (type == 'c' || type = 'C') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 //Randomize Messages
 string generateRandomMessage(int type) {
     //Initialize Variables
@@ -89,7 +104,7 @@ string generateRandomMessage(int type) {
 int main() {
 start:
     //Initialize Variables
-    int employeeCode = 0;
+    char employeeCode;
     int calcuType = 0, numberOfHours = 0, presentDays = 0, shiftType, dependencyStatus = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfAbsent = 0;
     double grossPay = 0.00, netPay = 0.00, tax = 0.00;
     string tA, cC;
@@ -114,11 +129,11 @@ start:
     //  Base
     cout << "\t\t\t\t\t\tPAYROLL CALCULATOR" << endl;
     cout << "========================================================================================================================" << endl;
-    cout << "\t\t\t\tPlease choose an EMPLOYEE CODE: [1]\t [2]\t [3]\t" << endl;
+    cout << "\t\t\t\tPlease choose an EMPLOYEE CODE: [A]\t [B]\t [C]\t" << endl;
     cout << "\n<Payroll Calculator> Welcome! To get started please enter the employee code: ";
     cin >> employeeCode;
     //  Check user input
-    if (employeeCode <= 0 || employeeCode > 3) {
+    if (checkUserInput(employeeCode) == false) {
         cout << generateRandomMessage(1);
         goto start;
     }
@@ -174,13 +189,13 @@ cDependencyStatusBasic:
     cin >> dependencyStatus;
 
     if (dependencyStatus == 1 || dependencyStatus == 2) {
-        if (employeeCode == 1) {
+        if (employeeCode == 'a') {
             goto employeeCode1;
         }
-        else if (employeeCode == 2) {
+        else if (employeeCode == 'b') {
             goto employeeCode2;
         }
-        else if (employeeCode == 3) {
+        else if (employeeCode == 'c') {
             goto employeeCode3;
         }
     }
@@ -288,6 +303,7 @@ employeeCode1:
         }
     }
     else if (calcuType == 1) {
+        //Advance Calculations
         
     }
 employeeCode2:
