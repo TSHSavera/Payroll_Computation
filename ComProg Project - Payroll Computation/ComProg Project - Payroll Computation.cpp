@@ -62,13 +62,13 @@ string wrongMessages(int number) {
 }
 
 bool checkUserInput(char type) {
-    if (type == 'a' || type = 'A') {
+    if (type == 'a' || type == 'A') {
         return true;
     }
-    else if (type == 'b' || type = 'B') {
+    else if (type == 'b' || type == 'B') {
         return true;
     }
-    else if (type == 'c' || type = 'C') {
+    else if (type == 'c' || type == 'C') {
         return true;
     }
     else {
