@@ -637,7 +637,7 @@ double computeNetPay(double grossPay, double taxDependency) {
 void clearInvalid() {
     cin.clear();
     cin.ignore(INT_MAX, '\n');
-    cout << "\n\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "\t\t\tCleaning up..." << endl << "\t\t\t";
+    cout << "\n\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up..." << endl << "\t\t\t";
     system("pause");
 }
 
@@ -966,7 +966,7 @@ int main() {
                 cout
                     << fixed << setprecision(2)
                     << "\t\t\t+-----------------------------------------+" << endl
-                    << "\t\t\t|                                    \t  |" << endl
+                    << "\t\t\t|             FINAL RESULTS           \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"    \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
@@ -1358,11 +1358,11 @@ int main() {
 
                     << fixed << setprecision(2)
                     << "\t\t\t+-----------------------------------------+" << endl
-                    << "\t\t\t|              Final Result               |" << endl
+                    << "\t\t\t|             FINAL RESULTS           \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+\n\n" << endl;
@@ -1376,11 +1376,11 @@ int main() {
 
                 << fixed << setprecision(2)
                 << "\t\t\t+-----------------------------------------+" << endl
-                << "\t\t\t|                                    \t  |" << endl
+                << "\t\t\t|             FINAL RESULTS           \t  |" << endl
                 << "\t\t\t\+-----------------------------------------+" << endl
                 << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
                 << "\t\t\t\+-----------------------------------------+" << endl
-                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << endl
+                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t |" << endl
                 << "\t\t\t\+-----------------------------------------+" << endl
                 << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
                 << "\t\t\t\+-----------------------------------------+\n\n" << endl;
