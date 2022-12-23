@@ -63,23 +63,23 @@ string successMessages(int number) {
 string wrongMessages(int number) {
     switch (number) {
     case 1:
-        return "\n\n\tThat doesn't seem right. Please try again...\n\n";
+        return "\n\n\t\tThat doesn't seem right. Please try again...\n\n";
         break;
 
     case 2:
-        return "\n\nIt seems you've failed to follow the conditions. Retrying...\n\n";
+        return "\n\n\t\tIt seems you've failed to follow the conditions. Retrying...\n\n";
         break;
 
     case 3:
-        return "\n\nThere was a mistake in your input. Going back up...\n\n";
+        return "\n\n\t\tThere was a mistake in your input. Going back up...\n\n";
         break;
 
     case 4:
-        return "\n\nLet's try to avoid that mistake next time. Re-enter that data needed...\n\n";
+        return "\n\n\t\tLet's try to avoid that mistake next time. Re-enter that data needed...\n\n";
         break;
 
     case 5:
-        return "\n\nLet me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
+        return "\n\n\t\tLet me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
         break;
 
     default:
@@ -642,21 +642,21 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
     if (calcuType != -1) {
         if (calcuType == 1) {
 
-    cout << "\t\t\t| 1. Calculation Type: Basic Calculation  |" << endl;
+    cout << "\t\t\t| 1. Calculation Type: Basic \t\t\t  |" << endl;
     cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else if (calcuType == 2) {
-    cout << "\t\t\t| 1. Calculation Type: Advance Calculation|" << endl;
+    cout << "\t\t\t| 1. Calculation Type: Advance \t\t  |" << endl;
     cout << "\t\t\t+-----------------------------------------+" << endl;
         }
     }
 
     if (employeeCode != " ") {
         if (customEmployeeRate != -1) {
+
+            cout << "\t\t\t| 2. Employee Code: " << employeeCode <<"\t\t\t  |" << endl;
             cout << "\t\t\t+-----------------------------------------+" << endl;
-            cout << "\t\t\t| 2. Employee Code: " << employeeCode <<" |" << endl;
-            cout << "\t\t\t+-----------------------------------------+" << endl;
-            cout << "\t\t\t| 2. Custom Employee Rate: " << customEmployeeRate  <<" |" << endl;
+            cout << "\t\t\t| 2. Custom Employee Rate: " << customEmployeeRate <<"\t\t  |" << endl;
             cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else {
@@ -688,14 +688,36 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
         }
         else if (dependencyStatus == 1) { 
             cout << "\t\t\t\| 5. Dependency Type: With Dependents" << "\t  |" << endl;
-            cout <<"\t\t\t+-----------------------------------------+\n" << endl; 
+            cout <<"\t\t\t+-----------------------------------------+" << endl; 
         }
     }
 
     if (numberOfPresentOnHoliday != -1) {
-        cout << "\t\t\t| 6. Number of Present Days: " << numberOfPresentOnHoliday << "\t\t  |" << endl;
+        cout << "\t\t\t| 6. Number of Present on Holidays: " << numberOfPresentOnHoliday << "\t  |" << endl;
         cout << "\t\t\t+-----------------------------------------+" << endl;
     }
+
+
+    if (numberOfPresentOnRestDay != -1) {
+        cout << "\t\t\t| 7. Number of Present on Restday: " << numberOfPresentOnRestDay << "\t  |" << endl;
+        cout << "\t\t\t+-----------------------------------------+" << endl;
+    }
+
+    if (numberOfPresentOnRestHoliDay != -1) {
+        cout << "\t\t\t| 8. Number of Present on Rest/Holiday: " << numberOfPresentOnRestHoliDay << " |" << endl;
+        cout << "\t\t\t+-----------------------------------------+" << endl;
+    }
+
+    if (numberOfOvertimeHours != -1) {
+        cout << "\t\t\t| 9. Number of Overtime Hours: " << numberOfOvertimeHours << "\t  |" << endl;
+        cout << "\t\t\t+-----------------------------------------+" << endl;
+    }
+
+    if (numberOfSpecialOvertimeHours != -1) {
+        cout << "\t\t\t| 10. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << " |" << endl;
+        cout << "\t\t\t+-----------------------------------------+" << endl;
+    }
+
 
     cout << endl;
 }
@@ -939,7 +961,7 @@ int main() {
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"    \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t  |" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+\n\n" << endl;
@@ -981,7 +1003,7 @@ int main() {
     system("cls");
     printOutValues(2, " ");
     //Ask for employee code
-    cout << "State employee code (A - B - C - D): ";
+    cout << "\t\t\tState employee code [A]  [B]  [C]  [D]: ";
     cin >> employeeCode;
     //  Check cin value
     while (cin.fail()) {
@@ -1112,7 +1134,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in holidays
-        cout << "State the number of days present in holidays: ";
+        cout << "\t\t\tState the number of days present in holidays: ";
         cin >> numberOfPresentOnHoliday;
         //  Check cin value
         while (cin.fail()) {
@@ -1189,7 +1211,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
         //Ask for present in holi-rest days
-        cout << "State the number of days present in holiday at the same time rest day: ";
+        cout << "\t\t\tState the number of days present in holiday at the same time rest day: ";
         cin >> numberOfPresentOnRestHoliDay;
         //  Check cin value
         while (cin.fail()) {
@@ -1218,7 +1240,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
         //Ask for Regular OT hours
-        cout << "State the number of regular day overtime hours: ";
+        cout << "\t\t\tState the number of regular day overtime hours: ";
         cin >> numberOfOverHours;
         //  Check cin value
         while (cin.fail()) {
@@ -1239,7 +1261,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
         //Ask for present in holi-rest days
-        cout << "State the number of special day overtime hours (this includes: Rest Day and Holidays): ";
+        cout << "\t\t\tState the number of special day overtime hours (this includes: Rest Day and Holidays): ";
         cin >> numberOfSpecialOverHours;
         //  Check cin value
         while (cin.fail()) {
