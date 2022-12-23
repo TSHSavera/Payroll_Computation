@@ -239,7 +239,7 @@ string generateRandomMessage(int type) {
 }
 
 //  Gross Pay
-double computeGrossPay(int calculationType, string employeeCode, int numberOfPresentDays, int shiftType, double customDailyRate = 0.0, int presentOnHoliday = 0, int presentOnRestDay = 0, int presentOnRestHoliDay = 0, int presentOnRestDayNight = 0, int presentOnHolidayNight = 0, int overtimeHours = 0, int overtimeHoursOnRestDay = 0) {
+double computeGrossPay(int calculationType, string employeeCode, int numberOfPresentDays, int shiftType, double customDailyRate = 0.0, int presentOnHoliday = 0, int presentOnRestDay = 0, int presentOnRestHoliDay = 0, int overtimeHours = 0, int overtimeHoursOnRestDay = 0) {
     //Placeholders
     double grossPay = 0.00;
     
@@ -632,7 +632,7 @@ void clearInvalid() {
     system("pause");
 }
 
-void printOutValues(int calcuType = -1, string employeeCode = NULL, double customEmployeeRate = -1, int presentDays = -1, int shiftType = -1, int dependencyStatus = -1, int numberOfHours = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOverHours = -1, int numberOfAbsent = -1, double grossPay = -1, double netPay = -1, double tax = -1) {
+void printOutValues(int calcuType = -1, string employeeCode = NULL, double customEmployeeRate = -1, int presentDays = -1, int shiftType = -1, int dependencyStatus = -1, int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1) {
     
     //  Print Head
     cout << "Payroll Computation" << endl;
@@ -678,6 +678,7 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
         }
     }
 
+
     cout << endl;
 }
 
@@ -710,7 +711,7 @@ int main() {
     start:
     //Initialize Variables
     string employeeCode;
-    int calcuType = 0, numberOfHours = 0, presentDays = 0, shiftType = 0, dependencyStatus = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfAbsent = 0;
+    int calcuType = 0, presentDays = 0, shiftType = 0, dependencyStatus = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
     double grossPay = 0.00, netPay = 0.00, tax = 0.00, customEmployeeRate = -1;
 
     //Function Variables
@@ -994,6 +995,9 @@ int main() {
         caPresentDays:
         //Clear
         totalPresentDays = 0;
+        numberOfPresentOnHoliday = 0;
+        numberOfPresentOnRestDay = 0;
+        numberOfPresentOnRestHoliDay = 0;
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
@@ -1067,12 +1071,13 @@ int main() {
         
         //Clear
         caPresentInHolidays:
-
+        //Reset value from rollbacks
+        totalPresentDays -= numberOfPresentOnHoliday;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
             cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
-            goto cAdvanceSummary;
+            goto caOvertimeHours;
         }
         system("cls");
         cout << "Please enter the passcode " << attempts << "/ 3 Attempts" << endl;
@@ -1104,7 +1109,8 @@ int main() {
         //  Chapter - Number of days present in Rest Day
         //Clear
         caPresentInRestDays:
-
+        //Reset value from rollbacks
+        totalPresentDays -= numberOfPresentOnRestDay;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
             cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
@@ -1113,7 +1119,7 @@ int main() {
             
         }
         system("cls");
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
         //Ask for present in rest days
         cout << "State the number of days present in rest day: ";
         cin >> numberOfPresentOnRestDay;
@@ -1141,51 +1147,94 @@ int main() {
 
         //  Chapter - Number of days present in Holi-Rest Day
         //Clear
-        caPresentInHoliRestDays:
-
+    caPresentInHoliRestDays:
+        //Reset value from rollbacks
+        totalPresentDays -= numberOfPresentOnRestHoliDay;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
             cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
-            goto cAdvanceSummary;
+            goto caOvertimeHours;
             
         }
         system("cls");
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
-        //Ask for present in rest days
-        cout << "State the number of days present in rest day: ";
-        cin >> numberOfPresentOnRestDay;
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
+        //Ask for present in holi-rest days
+        cout << "State the number of days present in holiday at the same time rest day: ";
+        cin >> numberOfPresentOnRestHoliDay;
         //  Check cin value
         while (cin.fail()) {
             clearInvalid();
-            goto caPresentInRestDays;
+            goto caPresentInHoliRestDays;
         }
 
         //  Check if negative
-        if (checkUserInput(2, " ", numberOfPresentOnRestDay) == true) {
+        if (checkUserInput(2, " ", numberOfPresentOnRestHoliDay) == true) {
             cout << generateRandomMessage(1);
             system("pause");
-            goto caPresentInRestDays;
+            goto caPresentInHoliRestDays;
         }
         //  Check if the total present days will not go over 30
-        if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestDay, 30, 'f')) {
+        if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestHoliDay, 30, 'f')) {
             cout << generateRandomMessage(1);
             system("pause");
-            goto caPresentInRestDays;
+            goto caPresentInHoliRestDays;
         }
         //  Add to Total Days if total days is not 30
-        totalPresentDays += numberOfPresentOnHoliday;
+        totalPresentDays += numberOfPresentOnRestHoliDay;
+
+        //  Chapter - Overtime
+        //Clear
+        caOvertimeHours:
+        system("cls");
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
+        //Ask for Regular OT hours
+        cout << "State the number of regular day overtime hours: ";
+        cin >> numberOfOverHours;
+        //  Check cin value
+        while (cin.fail()) {
+            clearInvalid();
+            goto caOvertimeHours;
+        }
+
+        //  Check if negative
+        if (checkUserInput(2, " ", numberOfOverHours) == true) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caOvertimeHours;
+        }
+
+        //  Chapter - Special Overtime
+        //Clear
+        caSpecialOvertimeHours:
+        system("cls");
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
+        //Ask for present in holi-rest days
+        cout << "State the number of special day overtime hours (this includes: Rest Day and Holidays): ";
+        cin >> numberOfSpecialOverHours;
+        //  Check cin value
+        while (cin.fail()) {
+            clearInvalid();
+            goto caSpecialOvertimeHours;
+        }
+
+        //  Check if negative
+        if (checkUserInput(2, " ", numberOfSpecialOverHours) == true) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caSpecialOvertimeHours;
+        }
 
         //  Chapter - Summary before processing
         cAdvanceSummary:
         //Clear
         system("cls");
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         cout
             << "Here are your inputs. If you want to change values, please state the number you wish to go back to." << endl
             << "Take note that you need to re-enter the other values that you've passed through." << endl
-            << "Enter 0 if it's final. Pick a value from 1-5: ";
+            << "Enter 0 if it's final. Pick a value from 1-10: ";
         cin >> basicCalGoBackSteps;
         //  Check cin value
         while (cin.fail()) {
@@ -1212,11 +1261,74 @@ int main() {
         case 5:
             goto caDependency;
             break;
+        case 6:
+            goto caPresentInHolidays;
+            break;
+        case 7:
+            goto caPresentInRestDays;
+            break;
+        case 8:
+            goto caPresentInHoliRestDays;
+            break;
+        case 9:
+            goto caOvertimeHours;
+            break;
+        case 10:
+            goto caSpecialOvertimeHours;
+            break;
         default:
             cout << generateRandomMessage(1);
             system("pause");
             goto cAdvanceSummary;
             break;
+        }
+
+        //Compute Gross Pay
+        calculateAdvanced:
+        double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
+        //Compute
+        if (employeeCode != "D") {
+            if (employeeCode != "d") {
+                computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+                computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
+                computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
+                cout
+                    << fixed << setprecision(2)
+                    << "+-------------------------+" << endl
+                    << "|Computing Gross Pay...   |" << endl
+                    << "|Computing Tax...         |" << endl
+                    << "|Computing Net Pay...     |" << endl
+                    << "+-------------------------+" << endl
+
+                    << "+-------------------------+" << endl
+                    << "|Gross Pay : PHP " << computedGrossPay << " |" << endl
+                    << "|Tax: PHP " << computedTaxDependency << "\t  |" << endl
+                    << "|Net Pay: PHP " << computedNetPay << "\t  |" << endl
+                    << "+-------------------------+" << endl;
+            }
+        }
+        else {
+            computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+            computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
+            computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
+            cout
+                << fixed << setprecision(2)
+                << "Computing Gross Pay..." << endl
+                << "Computing Tax..." << endl
+                << "Computing Net Pay..." << endl << endl
+                << "Gross Pay: PHP " << computedGrossPay << endl
+                << "Tax: PHP " << computedTaxDependency << endl
+                << "Net Pay: PHP " << computedNetPay << endl << endl;
+        }
+
+        //Try Again Segment
+        cout << generateRandomMessage(3) << "Would you like to try again? (Y/n)";
+        cin >> tA;
+        if (tA == "Y" || tA == "y") {
+            goto start;
+        }
+        else if (tA == "N" || tA == "n") {
+            goto exit;
         }
     }
     else {
