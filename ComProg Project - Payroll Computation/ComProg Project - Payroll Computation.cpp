@@ -678,7 +678,6 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
         }
     }
 
-
     cout << endl;
 }
 
@@ -1066,6 +1065,10 @@ int main() {
                 goto caDependency;
             }
         }
+        //  Print before proceeding to adv
+        system("cls");
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+
 
         //  Chapter - Number of days present in holidays
         
@@ -1074,13 +1077,12 @@ int main() {
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnHoliday;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
-            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
+            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
             system("pause");
             goto caOvertimeHours;
         }
         system("cls");
-        cout << "Please enter the passcode " << attempts << "/ 3 Attempts" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in holidays
         cout << "State the number of days present in holidays: ";
@@ -1112,10 +1114,10 @@ int main() {
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnRestDay;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
-            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
+            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
             system("pause");
-            goto cAdvanceSummary;
+            goto caOvertimeHours;
             
         }
         system("cls");
@@ -1147,12 +1149,12 @@ int main() {
 
         //  Chapter - Number of days present in Holi-Rest Day
         //Clear
-    caPresentInHoliRestDays:
+        caPresentInHoliRestDays:
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnRestHoliDay;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
-            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
+            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
             system("pause");
             goto caOvertimeHours;
             
