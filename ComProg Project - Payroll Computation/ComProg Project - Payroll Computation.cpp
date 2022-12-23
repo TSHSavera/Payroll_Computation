@@ -238,83 +238,10 @@ string generateRandomMessage(int type) {
     return messageString;
 }
 
-<<<<<<< Updated upstream
 //  Gross Pay
 double computeGrossPay(int calculationType, string employeeCode, int numberOfPresentDays, int shiftType, double customDailyRate = 0.0, int presentOnHoliday = 0, int presentOnRestDay = 0, int presentOnRestHoliDay = 0, int presentOnRestDayNight = 0, int presentOnHolidayNight = 0, int overtimeHours = 0, int overtimeHoursOnRestDay = 0) {
     //Placeholders
     double grossPay = 0.00;
-=======
-//Main Function
-int main() {
-start:
-    //Initialize Variables
-    char employeeCode;
-    int calcuType = 0, numberOfHours = 0, presentDays = 0, shiftType, dependencyStatus = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfAbsent = 0;
-    double grossPay = 0.00, netPay = 0.00, tax = 0.00;
-    string tA, cC;
-
-    //Static Values
-    double
-        code1 = 250.0,
-        code2 = 320.0,
-        code3 = 450.0,
-        withDep = 0.10,
-        withoutDep = 0.20,
-        holidayMultiplier = 2.00,
-        restDayMultiplier = 1.30,
-        restHoliDayMultiplier = 2.60,
-        restDayNightMultiplier = 1.43,
-        nightShiftMultiplier = 1.10,
-        holidayNightMultiplier = 2.20,
-        overtimeMultiplier = 1.25,
-        overtimeRestDayMultiplier = 1.69;
-
-    //Get user input
-    //  Base
-    cout << "\t\t\t\t\t\tPAYROLL CALCULATOR" << endl;
-    cout << "========================================================================================================================" << endl;
-    cout << "\t\t\t\tPlease choose an EMPLOYEE CODE: [A]\t [B]\t [C]\t [D]" << endl;
-    cout << "\n<Payroll Calculator> Welcome! To get started please enter the employee code: ";
-    cin >> employeeCode;
-    //  Check user input
-    if (checkUserInput(employeeCode) == false) {
-        cout << generateRandomMessage(1);
-        goto start;
-    }
-    
-cCalculationType:
-    cout
-        << "<Payroll Calculator> That was clear! Now, I wanna ask you if you want to access advance calculations."
-        << endl << "\nBasic Calculation Includes: Number of absent, type of shift, and dependency. The system will always consider the REGULAR values on calculating the payroll (8 hours a day, 5 days a week, monthly payroll)"
-        << endl << "Advance Calculation Includes: Custom working hours, type of Shift, civil status, rest day and holiday calculations, and overtime."
-        << endl << "\n<Payroll Calculator> Type 1 if Yes, 2 if No (1 or 2): ";
-    cin >> calcuType;
-    //  Check user input
-    if (calcuType == 1) {
-        goto AdvanceCalculations;
-    }
-    else if (calcuType == 2) {
-        goto BasicCalculations;
-    }
-    else {
-        cout << generateRandomMessage(1);
-        goto cCalculationType;
-    }
-    
-
-    //  Basic
-BasicCalculations:
-cNumberOfAbsentBasic:
-    cout << "<Payroll Calculator> Since you've opted to basic calculator, please enter the number of absent days: ";
-    cin >> numberOfAbsent;
-    //  Check user input
-    if (numberOfAbsent <= -1) {
-        cout << generateRandomMessage(1);
-        goto cNumberOfAbsentBasic;
-    } else {
-        goto cShiftTypeBasic;
-    }
->>>>>>> Stashed changes
     
     if (calculationType == 1) {
         //Do Basic Calculations
@@ -761,11 +688,14 @@ int main() {
     cEnterPassword:
     system("cls");
     if (attempts >= 4) {
-        cout << "Program Locked." << endl;
+        cout << "\t\t\t\t\tYou have been blocked from using the system!" << endl;
         system("pause");
         exit(0);
     }
-    cout << attempts << "/3 Attempts" << endl;
+    cout << "\t\t\t\t\t\tWELCOME TO PAYROLL CALCULATOR" << endl;
+    cout << "========================================================================================================================" << endl;
+    cout << "Please enter the passcode " <<attempts<<"/ 3 Attempts" << endl;
+    cout << "========================================================================================================================"<<endl;
     cout << "Enter Password: ";
     cin >> pass;
     if (pass != "1234") {
@@ -926,13 +856,15 @@ int main() {
         cBasicSummary:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
+        cout << "\t\t\t\t\t\tPAYROLL COMPUTATION" << endl;
+        cout << "========================================================================================================================" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         cout
             << "Here are your inputs. If you want to change values, please state the number you wish to go back to." << endl
-            << "Take note that you need to re-enter the other values that you've passed through." << endl
+            << "Take note that you need to re-enter the other values that you've passed through." << endl << endl
             << "Enter 0 if it's final. Pick a value from 1-5: ";
+
         cin >> basicCalGoBackSteps;
         //  Check cin value
         while (cin.fail()) {
@@ -977,12 +909,17 @@ int main() {
                 computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
                 cout
                     << fixed << setprecision(2)
-                    << "Computing Gross Pay..." << endl
-                    << "Computing Tax..." << endl
-                    << "Computing Net Pay..." << endl << endl
-                    << "Gross Pay: PHP " << computedGrossPay << endl
-                    << "Tax: PHP " << computedTaxDependency << endl
-                    << "Net Pay: PHP " << computedNetPay << endl << endl;
+                    << "+-------------------------+" << endl
+                    << "|Computing Gross Pay...   |" << endl
+                    << "|Computing Tax...         |" << endl
+                    << "|Computing Net Pay...     |" << endl
+                    << "+-------------------------+" << endl
+
+                    << "+-------------------------+" << endl
+                    << "|Gross Pay : PHP " << computedGrossPay <<" |" << endl
+                    << "|Tax: PHP " << computedTaxDependency <<"\t  |" << endl
+                    << "|Net Pay: PHP " << computedNetPay <<"\t  |" << endl
+                    << "+-------------------------+" << endl;
             }
         }
         else {  
@@ -1138,6 +1075,7 @@ int main() {
         caPresentInHolidays:
         system("cls");
         cout << "Payroll Computation" << endl;
+        cout << "Please enter the passcode " << attempts << "/ 3 Attempts" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in holidays
         cout << "State the number of days present in holidays: ";
