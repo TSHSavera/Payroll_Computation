@@ -116,6 +116,16 @@ string taskDoneMessages(int number) {
 
 }
 
+//  Declare and Define Functions
+bool checkUserInput();
+string generateRandomMessage();
+double computeGrossPay();
+double computeTaxDependency();
+double computeNetPay();
+void clearInvalid();
+void printOutValues();
+
+
 //  Check user input
 bool checkUserInput(int code, string ec, double valueToBeChecked = -1, double valueToCompare = -1, char rangeRule = NULL) {
     //Code 1 - Check for employeeCode
@@ -209,7 +219,6 @@ bool checkUserInput(int code, string ec, double valueToBeChecked = -1, double va
         return false;
     }
 }
-
 
 //  Randomize Messages
 string generateRandomMessage(int type) {
