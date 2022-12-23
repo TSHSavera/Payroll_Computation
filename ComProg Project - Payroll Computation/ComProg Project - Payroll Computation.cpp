@@ -35,27 +35,27 @@ double
 string successMessages(int number) {
     switch (number) {
     case 1:
-        return "Sweet! That went well. ";
+        return "\t\t\tSweet! That went well. ";
         break;
 
     case 2:
-        return "I've got that very clear! ";
+        return "\t\t\tI've got that very clear! ";
         break;
 
     case 3:
-        return "This should be good to go. ";
+        return "\t\t\tThis should be good to go. ";
         break;
 
     case 4:
-        return "I see, I see. ";
+        return "\t\t\tI see, I see. ";
         break;
 
     case 5:
-        return "That was fast and neat! Moving forward. ";
+        return "\t\t\tThat was fast and neat! Moving forward. ";
         break;
 
     default:
-        return "Unknown parameter passed";
+        return "\t\t\tUnknown parameter passed";
         break;
     }
     
@@ -63,54 +63,54 @@ string successMessages(int number) {
 string wrongMessages(int number) {
     switch (number) {
     case 1:
-        return "<Payroll Calculator> That doesn't seem right. Please try again...\n";
+        return "\n\n\t<Payroll Calculator> That doesn't seem right. Please try again...\n\n";
         break;
 
     case 2:
-        return "<Payroll Calculator> It seems you've failed to follow the conditions. Retrying...\n";
+        return "\n\n<Payroll Calculator> It seems you've failed to follow the conditions. Retrying...\n\n";
         break;
 
     case 3:
-        return "<Payroll Calculator> There was a mistake in your input. Going back up...\n";
+        return "\n\n<Payroll Calculator> There was a mistake in your input. Going back up...\n\n";
         break;
 
     case 4:
-        return "<Payroll Calculator> Let's try to avoid that mistake next time. Re-enter that data needed...\n";
+        return "\n\n<Payroll Calculator> Let's try to avoid that mistake next time. Re-enter that data needed...\n\n";
         break;
 
     case 5:
-        return "<Payroll Calculator> Let me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n";
+        return "\n\n<Payroll Calculator> Let me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
         break;
 
     default:
-        return "<Payroll Calculator> Unknown parameter passed\n";
+        return "\n\n<Payroll Calculator> Unknown parameter passed\n\n";
         break;
     }
 }
 string taskDoneMessages(int number) {
     switch (number) {
     case 1:
-        return "Sweet! That went well. ";
+        return "\t\tSweet! That went well. ";
         break;
 
     case 2:
-        return "Task done smoothly! ";
+        return "\t\tTask done smoothly! ";
         break;
 
     case 3:
-        return "Flawlessly done. ";
+        return "\t\tFlawlessly done. ";
         break;
 
     case 4:
-        return "Flawless. Clean. Neat. ";
+        return "\t\tFlawless. Clean. Neat. ";
         break;
 
     case 5:
-        return "That was fast and neat! Moving forward. ";
+        return "\t\tThat was fast and neat! Moving forward. ";
         break;
 
     default:
-        return "Unknown parameter passed";
+        return "\t\tUnknown parameter passed";
         break;
     }
 
@@ -628,53 +628,67 @@ double computeNetPay(double grossPay, double taxDependency) {
 void clearInvalid() {
     cin.clear();
     cin.ignore(INT_MAX, '\n');
-    cout << "[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up...";
+    cout << "\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up...";
     system("pause");
 }
 
 void printOutValues(int calcuType = -1, string employeeCode = NULL, double customEmployeeRate = -1, int presentDays = -1, int shiftType = -1, int dependencyStatus = -1, int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1) {
     
     //  Print Head
-    cout << "Payroll Computation" << endl;
-    
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
+    cout << "\t\t\t|          PAYROLL COMPUTATION            |" << endl;
+    cout << "\t\t\t\|                                         |" << endl;
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
     if (calcuType != -1) {
         if (calcuType == 1) {
-            cout << "1. Calculation Type: Basic Calculation" << endl;
+
+    cout << "\t\t\t| 1. Calculation Type: Basic Calculation  |" << endl;
+    cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else if (calcuType == 2) {
-            cout << "1. Calculation Type: Advance Calculation" << endl;
+    cout << "\t\t\t| 1. Calculation Type: Advance Calculation|" << endl;
+    cout << "\t\t\t+-----------------------------------------+" << endl;
         }
     }
 
     if (employeeCode != " ") {
         if (customEmployeeRate != -1) {
-            cout << "2. Employee Code: " << employeeCode << endl;
-            cout << "2. Custom Employee Rate: " << customEmployeeRate << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
+            cout << "\t\t\t| 2. Employee Code: " << employeeCode <<" |" << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
+            cout << "\t\t\t| 2. Custom Employee Rate: " << customEmployeeRate  <<" |" << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else {
-            cout << "2. Employee Code: " << employeeCode << endl;
+            cout << "\t\t\t| 2. Employee Code: " << employeeCode << "\t\t\t  |" << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
         }
     }
 
     if (presentDays != -1) {
-        cout << "3. Number of Present Days: " << presentDays << endl;
+        cout << "\t\t\t| 3. Number of Present Days: " << presentDays << "\t\t  |" << endl; 
+        cout << "\t\t\t+-----------------------------------------+" << endl;
     }
 
     if (shiftType != -1) {
         if (shiftType == 1) {
-            cout << "4. Shift Type: Regular Shift" << endl;
+            cout << "\t\t\t| 4. Shift Type: Regular Shift" << "\t\t  |" << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else if (shiftType == 2) {
-            cout << "4. Shift Type: Night Shift" << endl;
+            cout << "\t\t\t| 4. Shift Type: Night Shift" << "\t\t  |" << endl;
+            cout << "\t\t\t+-----------------------------------------+" << endl;
         }
     }
 
     if (dependencyStatus != -1) {
         if (dependencyStatus == 2) {
-            cout << "5. Dependency Type: Without Dependents" << endl;
+            cout << "\t\t\t\| 5. Dependency Type: Without Dependents" <<"  |" << endl;
+             cout << "\t\t\t+-----------------------------------------+" << endl;
         }
-        else if (dependencyStatus == 1) {
-            cout << "5. Dependency Type: With Dependents" << endl;
+        else if (dependencyStatus == 1) { 
+            cout << "\t\t\t\| 5. Dependency Type: With Dependents" << "\t  |" << endl;
+            cout <<"\t\t\t+-----------------------------------------+\n" << endl; 
         }
     }
 
@@ -696,12 +710,14 @@ int main() {
         system("pause");
         exit(0);
     }
-    cout << "\t\t\t\t\t\tWELCOME TO PAYROLL CALCULATOR" << endl;
-    cout << "========================================================================================================================" << endl;
-    cout << "Please enter the passcode " <<attempts<<"/ 3 Attempts" << endl;
-    cout << "========================================================================================================================"<<endl;
-    cout << "Enter Password: ";
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
+    cout << "\t\t\t|          PAYROLL COMPUTATION            |" << endl;
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
+    cout << "\t\t\tYou have "<<attempts<<"/ 3 Attempts\n" << endl;
+    cout << "\t\t\tENTER PASSCODE: ";
     cin >> pass;
+ 
+
     if (pass != "1234") {
         attempts++;
         goto cEnterPassword;
@@ -724,9 +740,13 @@ int main() {
     //Clear
     system("cls");
     //Start Asking for user inputs
-    cout << "Payroll Computation" << endl;
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
+    cout << "\t\t\t|          PAYROLL COMPUTATION            |" << endl;
+    cout << "\t\t\t\+-----------------------------------------+" << endl;
     //Ask for calculation type
-    cout << "Calculation type: 1 for Basic, 2 for Advance: ";
+    cout << "\t\t\tPlease choose a calculation type." << endl;
+    cout << "\t\t\tCalculation type: [1] Basic \n\t\t\t\t\t  [2] Advance"<<endl;
+    cout << "\t\t\tEnter type: ";
     cin >> calcuType;
     //  Check cin value
     while (cin.fail()) {
@@ -744,7 +764,7 @@ int main() {
         system("cls");
         printOutValues(1," ");
         //Ask for employee code
-        cout << "State employee code (A - B - C - D): ";
+        cout << "\t\t\tState employee code [A] [B] [C] [D]: ";
         cin >> employeeCode;
         //  Check cin value
         while (cin.fail()) {
@@ -765,7 +785,7 @@ int main() {
             cCustomEmployeeRate:
             system("cls");
             printOutValues(calcuType, employeeCode);
-            cout << "Enter custom rate: ";
+            cout << "\t\t\tEnter custom rate: ";
             cin >> customEmployeeRate;
             //  Check cin value
             while (cin.fail()) {
@@ -786,7 +806,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
-        cout << "State the number of present days: ";
+        cout << "\t\t\tState the number of present days: ";
         cin >> presentDays;
         //  Check cin value
         while (cin.fail()) {
@@ -810,7 +830,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
-        cout << "State the shift type (1 - Regular, 2 - Night): ";
+        cout << "\t\t\tState the shift type (1 - Regular, 2 - Night): ";
         cin >> shiftType;
         //  Check cin value
         while (cin.fail()) {
@@ -834,7 +854,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
-        cout << "State the dependency type (1 - With, 2 - Without): ";
+        cout << "\t\t\tState the dependency type (1 - With, 2 - Without): ";
         cin >> dependencyStatus;
         //  Check cin value
         while (cin.fail()) {
@@ -855,13 +875,12 @@ int main() {
         cBasicSummary:
         //Clear
         system("cls");
-        cout << "========================================================================================================================" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         cout
-            << "Here are your inputs. If you want to change values, please state the number you wish to go back to." << endl
-            << "Take note that you need to re-enter the other values that you've passed through." << endl << endl
-            << "Enter 0 if it's final. Pick a value from 1-5: ";
+            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << endl
+            << "\t\tTake note that you need to re-enter the other values that you've passed through." << endl << endl
+            << "\t\tEnter 0 if it's final. Pick a value from 1-5: ";
 
         cin >> basicCalGoBackSteps;
         //  Check cin value
@@ -907,17 +926,15 @@ int main() {
                 computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
                 cout
                     << fixed << setprecision(2)
-                    << "+-------------------------+" << endl
-                    << "|Computing Gross Pay...   |" << endl
-                    << "|Computing Tax...         |" << endl
-                    << "|Computing Net Pay...     |" << endl
-                    << "+-------------------------+" << endl
-
-                    << "+-------------------------+" << endl
-                    << "|Gross Pay : PHP " << computedGrossPay <<" |" << endl
-                    << "|Tax: PHP " << computedTaxDependency <<"\t  |" << endl
-                    << "|Net Pay: PHP " << computedNetPay <<"\t  |" << endl
-                    << "+-------------------------+" << endl;
+                    << "\t\t\t+----------------------------------------+" << endl
+                    << "\t\t\t|                                    \t |" << endl
+                    << "\t\t\t\+----------------------------------------+" << endl
+                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"   \t |" << endl
+                    << "\t\t\t\+----------------------------------------+" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t |" << endl
+                    << "\t\t\t\+----------------------------------------+" << endl
+                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t |" << endl
+                    << "\t\t\t\+----------------------------------------+\n\n" << endl;
             }
         }
         else {  
@@ -925,9 +942,6 @@ int main() {
             computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
             cout
                 << fixed << setprecision(2)
-                << "Computing Gross Pay..." << endl
-                << "Computing Tax..." << endl
-                << "Computing Net Pay..." << endl << endl
                 << "Gross Pay: PHP " << computeGrossPay(1, employeeCode, presentDays, shiftType, customEmployeeRate) << endl
                 << "Tax: PHP " << computeTaxDependency(dependencyStatus, computeGrossPay(1, employeeCode, presentDays, shiftType, customEmployeeRate)) << endl
                 << "Net Pay: PHP " << computeNetPay(computeGrossPay(1, employeeCode, presentDays, shiftType, customEmployeeRate), computeTaxDependency(dependencyStatus, computeGrossPay(1, employeeCode, presentDays, shiftType, customEmployeeRate))) << endl << endl;
@@ -975,7 +989,7 @@ int main() {
         caCustomEmployeeRate:
         system("cls");
         printOutValues(calcuType, employeeCode);
-        cout << "Enter custom rate: ";
+        cout << "\t\t\tEnter custom rate: ";
         cin >> customEmployeeRate;
         //  Check cin value
         while (cin.fail()) {
@@ -1000,7 +1014,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
-        cout << "State the number of REGULAR present days: ";
+        cout << "\t\t\tState the number of REGULAR present days: ";
         cin >> presentDays;
         //  Check cin value
         while (cin.fail()) {
@@ -1025,7 +1039,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
-        cout << "State the shift type (1 - Regular, 2 - Night): ";
+        cout << "\t\t\tState the shift type (1 - Regular, 2 - Night): ";
         cin >> shiftType;
         //  Check cin value
         while (cin.fail()) {
@@ -1049,7 +1063,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
-        cout << "State the dependency type (1 - With, 2 - Without): ";
+        cout << "\t\t\tState the dependency type (1 - With, 2 - Without): ";
         cin >> dependencyStatus;
         //  Check cin value
         while (cin.fail()) {
@@ -1077,8 +1091,8 @@ int main() {
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnHoliday;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
+            cout << "\t\t\tTotal of Present Days is 30. \nProceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
             goto caOvertimeHours;
         }
@@ -1114,8 +1128,8 @@ int main() {
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnRestDay;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
+            cout << "\t\t\tTotal of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
             goto caOvertimeHours;
             
@@ -1123,7 +1137,7 @@ int main() {
         system("cls");
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
         //Ask for present in rest days
-        cout << "State the number of days present in rest day: ";
+        cout << "\t\t\tState the number of days present in rest day: ";
         cin >> numberOfPresentOnRestDay;
         //  Check cin value
         while (cin.fail()) {
@@ -1153,8 +1167,8 @@ int main() {
         //Reset value from rollbacks
         totalPresentDays -= numberOfPresentOnRestHoliDay;
         //  Check if the total present days is 30
-        if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "Total of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs..." << endl;
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
+            cout << "\t\t\tTotal of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
             goto caOvertimeHours;
             
@@ -1234,9 +1248,9 @@ int main() {
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         cout
-            << "Here are your inputs. If you want to change values, please state the number you wish to go back to." << endl
-            << "Take note that you need to re-enter the other values that you've passed through." << endl
-            << "Enter 0 if it's final. Pick a value from 1-10: ";
+            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << endl
+            << "\t\tTake note that you need to re-enter the other values that you've passed through." << endl
+            << "\t\tEnter 0 if it's final. Pick a value from 1-5: ";
         cin >> basicCalGoBackSteps;
         //  Check cin value
         while (cin.fail()) {
