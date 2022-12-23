@@ -637,7 +637,7 @@ double computeNetPay(double grossPay, double taxDependency) {
 void clearInvalid() {
     cin.clear();
     cin.ignore(INT_MAX, '\n');
-    cout << "\n\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up...";
+    cout << "\n\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up..." << endl << "\t\t\t";
     system("pause");
 }
 
@@ -742,7 +742,7 @@ int main() {
     cEnterPassword:
     system("cls");
     if (attempts >= 4) {
-        cout << "\t\t\t\t\tYou have been blocked from using the system!" << endl;
+        cout << "\t\t\t\t\tYou have been blocked from using the system!" << endl << endl << "\t\t\t";
         system("pause");
         exit(0);
     }
@@ -809,7 +809,7 @@ int main() {
         }
         //  Perform Checks
         if (checkUserInput(1, employeeCode) == false) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto cEmployeeCode;
         }
@@ -830,7 +830,7 @@ int main() {
             }
             //  Check if not negative
             if (customEmployeeRate <= 0) {
-                cout << generateRandomMessage(1);
+                cout << generateRandomMessage(1) << endl << "\t\t\t";
                 system("pause");
                 goto cCustomEmployeeRate;
             }
@@ -850,12 +850,12 @@ int main() {
             goto cPresentDays;
         }
         if (checkUserInput(2, " ", presentDays) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto cPresentDays;
         }
         if (checkUserInput(3, " ", presentDays, 30, 'f')) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto cPresentDays;
         }
@@ -877,7 +877,7 @@ int main() {
         //Check input
         if (checkUserInput(3, " ", shiftType, 1, 'a') == false) {
             if (checkUserInput(3, " ", shiftType, 2, 'a') == false) {
-                cout << generateRandomMessage(1);
+                cout << generateRandomMessage(1) << endl << "\t\t\t";
                 system("pause");
                 goto cShiftType;
             }
@@ -901,7 +901,7 @@ int main() {
         //Check input
         if (checkUserInput(3, " ", dependencyStatus, 1, 'a') == false) {
             if (checkUserInput(3, " ", dependencyStatus, 2, 'a') == false) {
-                cout << generateRandomMessage(1);
+                cout << generateRandomMessage(1) << endl << "\t\t\t";
                 system("pause");
                 goto cDependency;
             }
@@ -945,7 +945,7 @@ int main() {
             goto cDependency;
             break;
         default:
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto cBasicSummary;
             break;
@@ -996,7 +996,7 @@ int main() {
             goto exit;
         }
         else {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto calculateBasic;
         }
@@ -1021,8 +1021,8 @@ int main() {
     }
     //  Perform Checks
     if (checkUserInput(1, employeeCode) == false) {
-        cout << generateRandomMessage(1);
-        cout << "\t" << system("pause");
+        cout << generateRandomMessage(1) << endl << "\t\t\t";
+        cout << system("pause");
         goto caEmployeeCode;
     }
 
@@ -1042,7 +1042,7 @@ int main() {
         }
         //  Check if not negative
         if (customEmployeeRate <= 0) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caCustomEmployeeRate;
         }
@@ -1066,12 +1066,12 @@ int main() {
             goto caPresentDays;
         }
         if (checkUserInput(2, " ", presentDays) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentDays;
         }
         if (checkUserInput(3, " ", presentDays, 30, 'f')) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentDays;
         }
@@ -1094,7 +1094,7 @@ int main() {
         //Check input
         if (checkUserInput(3, " ", shiftType, 1, 'a') == false) {
             if (checkUserInput(3, " ", shiftType, 2, 'a') == false) {
-                cout << generateRandomMessage(1);
+                cout << generateRandomMessage(1) << endl << "\t\t\t";
                 system("pause");
                 goto caShiftType;
             }
@@ -1118,7 +1118,7 @@ int main() {
         //Check input
         if (checkUserInput(3, " ", dependencyStatus, 1, 'a') == false) {
             if (checkUserInput(3, " ", dependencyStatus, 2, 'a') == false) {
-                cout << generateRandomMessage(1);
+                cout << generateRandomMessage(1) << endl << "\t\t\t";
                 system("pause");
                 goto caDependency;
             }
@@ -1136,7 +1136,7 @@ int main() {
         totalPresentDays -= numberOfPresentOnHoliday;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "\t\t\tTotal of Present Days is 30. \n\t\tProceeding without adding more days...\n\t\tSkipping other day-related inputs...";
+            cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << endl << "\t\t\t";
             system("pause");
             goto caOvertimeHours;
         }
@@ -1152,13 +1152,13 @@ int main() {
         }
         //  Check if negative
         if (checkUserInput(2, " ", numberOfPresentOnHoliday) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInHolidays;
         }
         //  Check if the total present days will not go over 30
-        if (checkUserInput(3, " ", totalPresentDays+numberOfPresentOnHoliday, 3, 'c')) {
-            cout << generateRandomMessage(1);
+        if (checkUserInput(3, " ", totalPresentDays+numberOfPresentOnHoliday, 31, 'c')) {
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInHolidays;
         }
@@ -1173,7 +1173,7 @@ int main() {
         totalPresentDays -= numberOfPresentOnRestDay;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "\t\t\tTotal of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs...";
+            cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << endl << "\t\t\t";
             system("pause");
             goto caOvertimeHours;
             
@@ -1191,13 +1191,13 @@ int main() {
 
         //  Check if negative
         if (checkUserInput(2, " ", numberOfPresentOnRestDay) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInRestDays;
         }
         //  Check if the total present days will not go over 30
         if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInRestDays;
         }
@@ -1212,7 +1212,7 @@ int main() {
         totalPresentDays -= numberOfPresentOnRestHoliDay;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'c')) {
-            cout << "\t\t\tTotal of Present Days is 30.\nProceeding without adding more days...\nSkipping other day-related inputs...";
+            cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << endl << "\t\t\t";
             system("pause");
             goto caOvertimeHours;
             
@@ -1230,13 +1230,13 @@ int main() {
 
         //  Check if negative
         if (checkUserInput(2, " ", numberOfPresentOnRestHoliDay) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInHoliRestDays;
         }
         //  Check if the total present days will not go over 30
         if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestHoliDay, 31, 'c')) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caPresentInHoliRestDays;
         }
@@ -1259,7 +1259,7 @@ int main() {
 
         //  Check if negative
         if (checkUserInput(2, " ", numberOfOverHours) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caOvertimeHours;
         }
@@ -1280,7 +1280,7 @@ int main() {
 
         //  Check if negative
         if (checkUserInput(2, " ", numberOfSpecialOverHours) == true) {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto caSpecialOvertimeHours;
         }
@@ -1337,7 +1337,7 @@ int main() {
             goto caSpecialOvertimeHours;
             break;
         default:
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto cAdvanceSummary;
             break;
@@ -1373,13 +1373,17 @@ int main() {
             computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
             computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
             cout
+
                 << fixed << setprecision(2)
-                << "Computing Gross Pay..." << endl
-                << "Computing Tax..." << endl
-                << "Computing Net Pay..." << endl << endl
-                << "Gross Pay: PHP " << computedGrossPay << endl
-                << "Tax: PHP " << computedTaxDependency << endl
-                << "Net Pay: PHP " << computedNetPay << endl << endl;
+                << "\t\t\t+-----------------------------------------+" << endl
+                << "\t\t\t|                                    \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
+                << "\t\t\t\+-----------------------------------------+\n\n" << endl;
         }
 
         //Try Again Segment
@@ -1392,19 +1396,19 @@ int main() {
             goto exit;
         }
         else {
-            cout << generateRandomMessage(1);
+            cout << generateRandomMessage(1) << endl << "\t\t\t";
             system("pause");
             goto calculateAdvanced;
         }
     }
     else {
-        cout << generateRandomMessage(1);
+        cout << generateRandomMessage(1) << endl << "\t\t\t";
         system("pause");
         goto firstUserInput;
     }
     
     exit:
-    cout << "\t\t\tThank you for using our program!";
+    cout << "\t\t\tThank you for using our program!" << endl << "\t\t\t";
     system("pause");
     exit(0);
 }
