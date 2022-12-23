@@ -67,19 +67,19 @@ string wrongMessages(int number) {
         break;
 
     case 2:
-        return "\n\n\t\tIt seems you've failed to follow the conditions. Retrying...\n\n";
+        return "\n\n\t\t It seems you've failed to follow the conditions. Retrying...\n\n";
         break;
 
     case 3:
-        return "\n\n\t\tThere was a mistake in your input. Going back up...\n\n";
+        return "\n\n\t\t There was a mistake in your input. Going back up...\n\n";
         break;
 
     case 4:
-        return "\n\n\t\tLet's try to avoid that mistake next time. Re-enter that data needed...\n\n";
+        return "\n\n\t\t Let's try to avoid that mistake next time. Re-enter that data needed...\n\n";
         break;
 
     case 5:
-        return "\n\n\t\tLet me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
+        return "\n\n\t\t Let me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
         break;
 
     default:
@@ -628,7 +628,7 @@ double computeNetPay(double grossPay, double taxDependency) {
 void clearInvalid() {
     cin.clear();
     cin.ignore(INT_MAX, '\n');
-    cout << "\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up...";
+    cout << "\n\t\t\t[ERROR] INVALID DATA TYPE INPUT" << endl << "Cleaning up...";
     system("pause");
 }
 
@@ -714,7 +714,7 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
     }
 
     if (numberOfSpecialOvertimeHours != -1) {
-        cout << "\t\t\t| 10. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << " |" << endl;
+        cout << "\t\t\t| 10. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << "\t  |" << endl;
         cout << "\t\t\t+-----------------------------------------+" << endl;
     }
 
@@ -1127,7 +1127,7 @@ int main() {
         totalPresentDays -= numberOfPresentOnHoliday;
         //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
-            cout << "\t\t\tTotal of Present Days is 30. \nProceeding without adding more days...\nSkipping other day-related inputs...";
+            cout << "\t\t\tTotal of Present Days is 30. \n\t\tProceeding without adding more days...\n\t\tSkipping other day-related inputs...";
             system("pause");
             goto caOvertimeHours;
         }
@@ -1344,18 +1344,17 @@ int main() {
                 computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
                 computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
                 cout
-                    << fixed << setprecision(2)
-                    << "+-------------------------+" << endl
-                    << "|Computing Gross Pay...   |" << endl
-                    << "|Computing Tax...         |" << endl
-                    << "|Computing Net Pay...     |" << endl
-                    << "+-------------------------+" << endl
 
-                    << "+-------------------------+" << endl
-                    << "|Gross Pay : PHP " << computedGrossPay << " |" << endl
-                    << "|Tax: PHP " << computedTaxDependency << "\t  |" << endl
-                    << "|Net Pay: PHP " << computedNetPay << "\t  |" << endl
-                    << "+-------------------------+" << endl;
+                    << fixed << setprecision(2)
+                    << "\t\t\t+-----------------------------------------+" << endl
+                    << "\t\t\t|                                    \t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+\n\n" << endl;
             }
         }
         else {
