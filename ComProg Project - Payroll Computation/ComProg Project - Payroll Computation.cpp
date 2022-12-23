@@ -90,27 +90,27 @@ string wrongMessages(int number) {
 string taskDoneMessages(int number) {
     switch (number) {
     case 1:
-        return "\t\tSweet! That went well. ";
+        return "\t\t\tSweet! That went well. ";
         break;
 
     case 2:
-        return "\t\tTask done smoothly! ";
+        return "\t\t\tTask done smoothly! ";
         break;
 
     case 3:
-        return "\t\tFlawlessly done. ";
+        return "\t\t\tFlawlessly done. ";
         break;
 
     case 4:
-        return "\t\tFlawless. Clean. Neat. ";
+        return "\t\t\tFlawless. Clean. Neat. ";
         break;
 
     case 5:
-        return "\t\tThat was fast and neat! Moving forward. ";
+        return "\t\t\tThat was fast and neat! Moving forward. ";
         break;
 
     default:
-        return "\t\tUnknown parameter passed";
+        return "\t\t\tUnknown parameter passed";
         break;
     }
 
@@ -642,7 +642,7 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
     if (calcuType != -1) {
         if (calcuType == 1) {
 
-    cout << "\t\t\t| 1. Calculation Type: Basic \t\t\t  |" << endl;
+    cout << "\t\t\t| 1. Calculation Type: Basic \t\t  |" << endl;
     cout << "\t\t\t+-----------------------------------------+" << endl;
         }
         else if (calcuType == 2) {
@@ -714,7 +714,7 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
     }
 
     if (numberOfSpecialOvertimeHours != -1) {
-        cout << "\t\t\t| 10. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << " |" << endl;
+        cout << "\t\t\t| 10. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << "   \t  |" << endl;
         cout << "\t\t\t+-----------------------------------------+" << endl;
     }
 
@@ -961,7 +961,7 @@ int main() {
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"    \t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t\t  |" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+" << endl
                     << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t  |" << endl
                     << "\t\t\t\+-----------------------------------------+\n\n" << endl;
@@ -1394,7 +1394,7 @@ int main() {
     }
     
     exit:
-    cout << "Thank you for using our program!";
+    cout << "\t\t\tThank you for using our program!";
     system("pause");
     exit(0);
 }
