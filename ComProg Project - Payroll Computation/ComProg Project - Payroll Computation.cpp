@@ -63,27 +63,27 @@ string successMessages(int number) {
 string wrongMessages(int number) {
     switch (number) {
     case 1:
-        return "\n\n\t<Payroll Calculator> That doesn't seem right. Please try again...\n\n";
+        return "\n\n\tThat doesn't seem right. Please try again...\n\n";
         break;
 
     case 2:
-        return "\n\n<Payroll Calculator> It seems you've failed to follow the conditions. Retrying...\n\n";
+        return "\n\nIt seems you've failed to follow the conditions. Retrying...\n\n";
         break;
 
     case 3:
-        return "\n\n<Payroll Calculator> There was a mistake in your input. Going back up...\n\n";
+        return "\n\nThere was a mistake in your input. Going back up...\n\n";
         break;
 
     case 4:
-        return "\n\n<Payroll Calculator> Let's try to avoid that mistake next time. Re-enter that data needed...\n\n";
+        return "\n\nLet's try to avoid that mistake next time. Re-enter that data needed...\n\n";
         break;
 
     case 5:
-        return "\n\n<Payroll Calculator> Let me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
+        return "\n\nLet me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
         break;
 
     default:
-        return "\n\n<Payroll Calculator> Unknown parameter passed\n\n";
+        return "\n\nUnknown parameter passed\n\n";
         break;
     }
 }
@@ -692,6 +692,11 @@ void printOutValues(int calcuType = -1, string employeeCode = NULL, double custo
         }
     }
 
+    if (numberOfPresentOnHoliday != -1) {
+        cout << "\t\t\t| 6. Number of Present Days: " << numberOfPresentOnHoliday << "\t\t  |" << endl;
+        cout << "\t\t\t+-----------------------------------------+" << endl;
+    }
+
     cout << endl;
 }
 
@@ -917,6 +922,9 @@ int main() {
 
         //Compute Gross Pay
         calculateBasic:
+        //  Clear before processing then display the data values
+        system("cls");
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
         //Compute
         if (employeeCode != "D") {
@@ -926,15 +934,15 @@ int main() {
                 computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
                 cout
                     << fixed << setprecision(2)
-                    << "\t\t\t+----------------------------------------+" << endl
-                    << "\t\t\t|                                    \t |" << endl
-                    << "\t\t\t\+----------------------------------------+" << endl
-                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"   \t |" << endl
-                    << "\t\t\t\+----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t |" << endl
-                    << "\t\t\t\+----------------------------------------+" << endl
-                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t |" << endl
-                    << "\t\t\t\+----------------------------------------+\n\n" << endl;
+                    << "\t\t\t+-----------------------------------------+" << endl
+                    << "\t\t\t|                                    \t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"    \t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+" << endl
+                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t  |" << endl
+                    << "\t\t\t\+-----------------------------------------+\n\n" << endl;
             }
         }
         else {  
@@ -955,6 +963,11 @@ int main() {
         }
         else if (tA == "N" || tA == "n") {
             goto exit;
+        }
+        else {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto calculateBasic;
         }
     }
     else if (calcuType == 2) {
@@ -1250,7 +1263,7 @@ int main() {
         cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-5: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-10: ";
         cin >> basicCalGoBackSteps;
         //  Check cin value
         while (cin.fail()) {
@@ -1345,6 +1358,11 @@ int main() {
         }
         else if (tA == "N" || tA == "n") {
             goto exit;
+        }
+        else {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto calculateAdvanced;
         }
     }
     else {
