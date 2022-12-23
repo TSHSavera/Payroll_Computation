@@ -992,7 +992,7 @@ int main() {
         cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
-        cout << "State the number of present days: ";
+        cout << "State the number of REGULAR present days: ";
         cin >> presentDays;
         //  Check cin value
         while (cin.fail()) {
@@ -1061,8 +1061,16 @@ int main() {
         }
 
         //  Chapter - Number of days present in holidays
+        
         //Clear
         caPresentInHolidays:
+
+        //  Check if the total present days is 30
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
+            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
+            system("pause");
+            goto cAdvanceSummary;
+        }
         system("cls");
         cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
@@ -1074,14 +1082,98 @@ int main() {
             clearInvalid();
             goto caPresentInHolidays;
         }
+        //  Check if negative
+        if (checkUserInput(2, " ", numberOfPresentOnHoliday) == true) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInHolidays;
+        }
+        //  Check if the total present days will not go over 30
+        if (checkUserInput(3, " ", totalPresentDays+numberOfPresentOnHoliday, 30, 'f')) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInHolidays;
+        }
+        //  Add to Total Days if total days is not 30
+        totalPresentDays += numberOfPresentOnHoliday;
 
+
+        //  Chapter - Number of days present in Rest Day
+        //Clear
+        caPresentInRestDays:
+
+        //  Check if the total present days is 30
         if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
-            cout << generateRandomMessage(1) << "Proceeding without adding days...\nSkipping other day-related inputs...";
+            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
             system("pause");
             goto cAdvanceSummary;
-            //Last Edit
+            
+        }
+        system("cls");
+        cout << "Payroll Computation" << endl;
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        //Ask for present in rest days
+        cout << "State the number of days present in rest day: ";
+        cin >> numberOfPresentOnRestDay;
+        //  Check cin value
+        while (cin.fail()) {
+            clearInvalid();
+            goto caPresentInRestDays;
         }
 
+        //  Check if negative
+        if (checkUserInput(2, " ", numberOfPresentOnRestDay) == true) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInRestDays;
+        }
+        //  Check if the total present days will not go over 30
+        if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestDay, 30, 'f')) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInRestDays;
+        }
+        //  Add to Total Days if total days is not 30
+        totalPresentDays += numberOfPresentOnHoliday;
+
+
+        //  Chapter - Number of days present in Holi-Rest Day
+        //Clear
+        caPresentInHoliRestDays:
+
+        //  Check if the total present days is 30
+        if (checkUserInput(3, " ", totalPresentDays, 30, 'f')) {
+            cout << "Total of Present Days is 30. Proceeding without adding more days...\nSkipping other day-related inputs...";
+            system("pause");
+            goto cAdvanceSummary;
+            
+        }
+        system("cls");
+        cout << "Payroll Computation" << endl;
+        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        //Ask for present in rest days
+        cout << "State the number of days present in rest day: ";
+        cin >> numberOfPresentOnRestDay;
+        //  Check cin value
+        while (cin.fail()) {
+            clearInvalid();
+            goto caPresentInRestDays;
+        }
+
+        //  Check if negative
+        if (checkUserInput(2, " ", numberOfPresentOnRestDay) == true) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInRestDays;
+        }
+        //  Check if the total present days will not go over 30
+        if (checkUserInput(3, " ", totalPresentDays + numberOfPresentOnRestDay, 30, 'f')) {
+            cout << generateRandomMessage(1);
+            system("pause");
+            goto caPresentInRestDays;
+        }
+        //  Add to Total Days if total days is not 30
+        totalPresentDays += numberOfPresentOnHoliday;
 
         //  Chapter - Summary before processing
         cAdvanceSummary:
