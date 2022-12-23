@@ -958,23 +958,21 @@ int main() {
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
         //Compute
-        if (employeeCode != "D") {
-            if (employeeCode != "d") {
-                computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType);
-                computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
-                computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
-                cout
-                    << fixed << setprecision(2)
-                    << "\t\t\t+-----------------------------------------+" << endl
-                    << "\t\t\t|             FINAL RESULTS           \t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay <<"    \t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency <<"\t\t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay <<"\t\t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+\n\n" << endl;
-            }
+        if (employeeCode != "D" && employeeCode != "d") {
+            computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType);
+            computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
+            computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
+            cout
+                << fixed << setprecision(2)
+                << "\t\t\t+-----------------------------------------+" << endl
+                << "\t\t\t|             FINAL RESULTS           \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
+                << "\t\t\t\+-----------------------------------------+\n\n" << endl;
         }
         else {  
             computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
@@ -1349,25 +1347,23 @@ int main() {
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
         //Compute
-        if (employeeCode != "D") {
-            if (employeeCode != "d") {
-                computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
-                computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
-                computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
-                cout
+        if (employeeCode != "D" && employeeCode != "d") {
+            computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+            computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
+            computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
+            cout
 
-                    << fixed << setprecision(2)
-                    << "\t\t\t+-----------------------------------------+" << endl
-                    << "\t\t\t|             FINAL RESULTS           \t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+" << endl
-                    << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
-                    << "\t\t\t\+-----------------------------------------+\n\n" << endl;
-            }
-        }
+                << fixed << setprecision(2)
+                << "\t\t\t+-----------------------------------------+" << endl
+                << "\t\t\t|             FINAL RESULTS           \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t   |" << endl
+                << "\t\t\t\+-----------------------------------------+" << endl
+                << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
+                << "\t\t\t\+-----------------------------------------+\n\n" << endl;
+        } 
         else {
             computedGrossPay = computeGrossPay(1, employeeCode, presentDays, shiftType, customEmployeeRate, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
             computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
@@ -1380,7 +1376,7 @@ int main() {
                 << "\t\t\t\+-----------------------------------------+" << endl
                 << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << endl
                 << "\t\t\t\+-----------------------------------------+" << endl
-                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t |" << endl
+                << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << endl
                 << "\t\t\t\+-----------------------------------------+" << endl
                 << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << endl
                 << "\t\t\t\+-----------------------------------------+\n\n" << endl;
