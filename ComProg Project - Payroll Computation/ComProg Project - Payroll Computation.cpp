@@ -633,6 +633,10 @@ void clearInvalid() {
 }
 
 void printOutValues(int calcuType = -1, string employeeCode = NULL, double customEmployeeRate = -1, int presentDays = -1, int shiftType = -1, int dependencyStatus = -1, int numberOfHours = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOverHours = -1, int numberOfAbsent = -1, double grossPay = -1, double netPay = -1, double tax = -1) {
+    
+    //  Print Head
+    cout << "Payroll Computation" << endl;
+    
     if (calcuType != -1) {
         if (calcuType == 1) {
             cout << "1. Calculation Type: Basic Calculation" << endl;
@@ -738,7 +742,6 @@ int main() {
         cEmployeeCode:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(1," ");
         //Ask for employee code
         cout << "State employee code (A - B - C - D): ";
@@ -761,7 +764,6 @@ int main() {
             //Clear
             cCustomEmployeeRate:
             system("cls");
-            cout << "Payroll Computation" << endl;
             printOutValues(calcuType, employeeCode);
             cout << "Enter custom rate: ";
             cin >> customEmployeeRate;
@@ -782,7 +784,6 @@ int main() {
         cPresentDays:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
         cout << "State the number of present days: ";
@@ -807,7 +808,6 @@ int main() {
         cShiftType:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
         cout << "State the shift type (1 - Regular, 2 - Night): ";
@@ -832,7 +832,6 @@ int main() {
         cDependency:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
         cout << "State the dependency type (1 - With, 2 - Without): ";
@@ -856,7 +855,6 @@ int main() {
         cBasicSummary:
         //Clear
         system("cls");
-        cout << "\t\t\t\t\t\tPAYROLL COMPUTATION" << endl;
         cout << "========================================================================================================================" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
@@ -954,7 +952,6 @@ int main() {
     caEmployeeCode:
     //Clear
     system("cls");
-    cout << "Payroll Computation" << endl;
     printOutValues(2, " ");
     //Ask for employee code
     cout << "State employee code (A - B - C - D): ";
@@ -977,7 +974,6 @@ int main() {
         //Clear
         caCustomEmployeeRate:
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode);
         cout << "Enter custom rate: ";
         cin >> customEmployeeRate;
@@ -999,7 +995,6 @@ int main() {
         //Clear
         totalPresentDays = 0;
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate);
         //Ask for number of present days
         cout << "State the number of REGULAR present days: ";
@@ -1025,7 +1020,6 @@ int main() {
         caShiftType:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
         cout << "State the shift type (1 - Regular, 2 - Night): ";
@@ -1050,7 +1044,6 @@ int main() {
         caDependency:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
         cout << "State the dependency type (1 - With, 2 - Without): ";
@@ -1082,7 +1075,6 @@ int main() {
             goto cAdvanceSummary;
         }
         system("cls");
-        cout << "Payroll Computation" << endl;
         cout << "Please enter the passcode " << attempts << "/ 3 Attempts" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in holidays
@@ -1121,7 +1113,6 @@ int main() {
             
         }
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in rest days
         cout << "State the number of days present in rest day: ";
@@ -1160,7 +1151,6 @@ int main() {
             
         }
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in rest days
         cout << "State the number of days present in rest day: ";
@@ -1190,7 +1180,6 @@ int main() {
         cAdvanceSummary:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         cout
