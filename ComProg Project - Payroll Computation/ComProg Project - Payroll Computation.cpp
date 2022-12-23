@@ -688,11 +688,14 @@ int main() {
     cEnterPassword:
     system("cls");
     if (attempts >= 4) {
-        cout << "Program Locked." << endl;
+        cout << "\t\t\t\t\tYou have been blocked from using the system!" << endl;
         system("pause");
         exit(0);
     }
-    cout << attempts << "/3 Attempts" << endl;
+    cout << "\t\t\t\t\t\tWELCOME TO PAYROLL CALCULATOR" << endl;
+    cout << "========================================================================================================================" << endl;
+    cout << "Please enter the passcode " <<attempts<<"/ 3 Attempts" << endl;
+    cout << "========================================================================================================================"<<endl;
     cout << "Enter Password: ";
     cin >> pass;
     if (pass != "1234") {
@@ -853,13 +856,15 @@ int main() {
         cBasicSummary:
         //Clear
         system("cls");
-        cout << "Payroll Computation" << endl;
+        cout << "\t\t\t\t\t\tPAYROLL COMPUTATION" << endl;
+        cout << "========================================================================================================================" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         cout
             << "Here are your inputs. If you want to change values, please state the number you wish to go back to." << endl
-            << "Take note that you need to re-enter the other values that you've passed through." << endl
+            << "Take note that you need to re-enter the other values that you've passed through." << endl << endl
             << "Enter 0 if it's final. Pick a value from 1-5: ";
+
         cin >> basicCalGoBackSteps;
         //  Check cin value
         while (cin.fail()) {
@@ -904,12 +909,17 @@ int main() {
                 computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
                 cout
                     << fixed << setprecision(2)
-                    << "Computing Gross Pay..." << endl
-                    << "Computing Tax..." << endl
-                    << "Computing Net Pay..." << endl << endl
-                    << "Gross Pay: PHP " << computedGrossPay << endl
-                    << "Tax: PHP " << computedTaxDependency << endl
-                    << "Net Pay: PHP " << computedNetPay << endl << endl;
+                    << "+-------------------------+" << endl
+                    << "|Computing Gross Pay...   |" << endl
+                    << "|Computing Tax...         |" << endl
+                    << "|Computing Net Pay...     |" << endl
+                    << "+-------------------------+" << endl
+
+                    << "+-------------------------+" << endl
+                    << "|Gross Pay : PHP " << computedGrossPay <<" |" << endl
+                    << "|Tax: PHP " << computedTaxDependency <<"\t  |" << endl
+                    << "|Net Pay: PHP " << computedNetPay <<"\t  |" << endl
+                    << "+-------------------------+" << endl;
             }
         }
         else {  
@@ -1073,6 +1083,7 @@ int main() {
         }
         system("cls");
         cout << "Payroll Computation" << endl;
+        cout << "Please enter the passcode " << attempts << "/ 3 Attempts" << endl;
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for present in holidays
         cout << "State the number of days present in holidays: ";
