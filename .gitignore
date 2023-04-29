@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.vcxproj
+ComProg Project - Payroll Computation/ComProg Project - Payroll Computation.vcxproj
+*.filters
+ComProg Project - Payroll Computation/ComProg Project - Payroll Computation.vcxproj.filters
