@@ -109,7 +109,11 @@ std::string systemBlocked(int number) {
     case 5:
         return "System blocked 1";
         break;
+    default:
+        return "Def";
+        break;
     }
+    
 }
 
 //  Randomize Messages

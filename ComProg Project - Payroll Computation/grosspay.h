@@ -52,7 +52,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         if (employeeCode == 'a' || employeeCode == 'A') {
             //  Calculate for EC-A
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * (staticA.code1);
                 return grossPay;
@@ -69,12 +69,12 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'b' || employeeCode == 'B') {
             //Calculate for EC-B
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * (staticA.code2);
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code2 * staticA.nightShiftMultiplier);
                 return grossPay;
@@ -86,12 +86,12 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'c' || employeeCode == 'C') {
             //Calculate for EC-C
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * (staticA.code3);
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code3 * staticA.nightShiftMultiplier);
                 return grossPay;
@@ -103,12 +103,12 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'd' || employeeCode == 'D') {
             //Calculate for EC-D
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * (customDailyRate);
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (customDailyRate * staticA.nightShiftMultiplier);
                 return grossPay;
@@ -127,7 +127,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         if (employeeCode == 'a' || employeeCode == 'A') {
             //  Calculate for EC-A
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * staticA.code1;
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -157,7 +157,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
                 }
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code1 * staticA.nightShiftMultiplier);
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -194,7 +194,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'b' || employeeCode == 'B') {
             //Calculate for EC-B
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * staticA.code2;
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -224,7 +224,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
                 }
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code2 * staticA.nightShiftMultiplier);
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -261,7 +261,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'c' || employeeCode == 'C') {
             //Calculate for EC-C
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * staticA.code3;
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -291,7 +291,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
                 }
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code3 * staticA.nightShiftMultiplier);
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -328,7 +328,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
         else if (employeeCode == 'd' || employeeCode == 'D') {
             //Calculate for EC-C
             //  Check Shift Type (regular or night)
-            if (shiftType == 1) {
+            if (shiftType == '1') {
                 //  Regular
                 grossPay = (8 * numberOfPresentDays) * customDailyRate;
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip
@@ -358,7 +358,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
                 }
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (customDailyRate * staticA.nightShiftMultiplier);
                 //  Check if presentOnHoliday is present, if yes - calculate, if no - skip

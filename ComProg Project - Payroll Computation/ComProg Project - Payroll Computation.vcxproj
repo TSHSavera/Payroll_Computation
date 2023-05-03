@@ -129,6 +129,17 @@
   <ItemGroup>
     <ClCompile Include="ComProg Project - Payroll Computation.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="checkuserinput.h" />
+    <ClInclude Include="errorHandling.h" />
+    <ClInclude Include="grosspay.h" />
+    <ClInclude Include="netpay.h" />
+    <ClInclude Include="password.h" />
+    <ClInclude Include="print.h" />
+    <ClInclude Include="messages.h" />
+    <ClInclude Include="questions.h" />
+    <ClInclude Include="taxdep.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
