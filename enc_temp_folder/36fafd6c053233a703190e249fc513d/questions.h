@@ -511,7 +511,7 @@ int showBasicSummary() {
             break;
         }
     }
-    return 0;
+    return true;
 }
 
 
@@ -926,6 +926,7 @@ int showSummaryAdvance() {
             showSummaryAdvance();
             break;
         }
+        return 0;
     }
     else if (employeeCode == 'd' || employeeCode == 'D') {
         //Clear
@@ -1002,8 +1003,8 @@ int showSummaryAdvance() {
             showSummaryAdvance();
             break;
         }
+        return 0;
     }
-    return 0;
 }
 
 void fcalculateAdvance() {
