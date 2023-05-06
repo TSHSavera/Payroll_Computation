@@ -139,6 +139,7 @@
     <ClInclude Include="messages.h" />
     <ClInclude Include="questions.h" />
     <ClInclude Include="taxdep.h" />
+    <ClInclude Include="menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

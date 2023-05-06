@@ -6,12 +6,6 @@
 //User Defined
 #include "password.h"
 #include "errorHandling.h"
-#include "messages.h"
-#include "checkuserinput.h"
-#include "print.h"
-#include "grosspay.h"
-#include "netpay.h"
-#include "taxdep.h"
 #include "questions.h"
 
 // NOTE: REMOVE USING NAMESPACE STD. ADD STD:: TO COUT, CIN, STRING, ENDL, std::fixed, std::setprecision!
@@ -35,80 +29,125 @@ int main() {
         exit(0);
     }
 
-    start:
-    //Initialize Variables
-    char employeeCode;
-    int presentDays = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
-    double grossPay = 0.00, netPay = 0.00, tax = 0.00, customEmployeeRate = -1;
-    char shiftType = '0', dependencyStatus = '0';
+
 
     //Function Variables
-    int basicCalGoBackSteps = 0;
+    start:
     char calcuType = calculationType();
-
-    char tA;
     
 
 
     //Check calcuType
     if (calcuType == '1') {
+        fec:
         //Only Asks for Basics
-        
+        int a = femployeeCode();
+
         //  Chapter - Employee Code Main
-        femployeeCode();
-
-        //  Chapter - Present Days
-        fpresentDays();
-        
-        //  Chapter - Shift Type
-        fshiftType();
-
-        //  Chapter - Dependency
-        fdependencyType();
-        
-        //  Chapter - Summary before processing
-        showBasicSummary();
-        
+        if (a == 0) {
+            //  Chapter - Present Days
+            //Go code without fcCustomEmployee
+            if (fpresentDays() == 0) {
+                //  Chapter - Shift Type
+                if (fshiftType() == 0) {
+                    //  Chapter - Dependency
+                    if (fdependencyType() == 0) {
+                        //  Chapter - Summary before processing
+                        if (showBasicSummary() == 0) {
+                            // TODO: IF TA RETURNS 1 GOTO START AGAIN, ELSE EXIT.
+                            tryAgain();
+                        }
+                    }
+                }
+            }
+        }
+        if (a == 1) {
+            //  Chapter - Custom Employee Rate
+            if (fcCustomEmployeeRate() == 0) {
+                //  Chapter - Present Days
+                if (fpresentDays() == 0) {
+                    //  Chapter - Shift Type
+                    if (fshiftType() == 0) {
+                        //  Chapter - Dependency
+                        if (fdependencyType() == 0) {
+                            //  Chapter - Summary before processing
+                            if (showBasicSummary() == 0) { 
+                                tryAgain();
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     else if (calcuType == '2') {
         //Only ask for advanced
+        int a = femployeeCode();
 
         //  Chapter - Employee Code Main
-        femployeeCode();
-
-        //  Chapter - Present Days
-        fpresentDays(false, true);
-        
-        //  Chapter - Shift Type
-        fshiftType(false, true);
-
-        //  Chapter - Dependency
-        fdependencyType(false, true);
-
-        //  Chapter - Number of days present in holidays
-        fpresentInHoliday();
-
-
-        //  Chapter - Summary before processing
-        showSummaryAdvance();
-
-        
-
-        
-
-        //Try Again Segment
-        std::cout << generateRandomMessage(3) << "Would you like to try again? (Y/n)";
-        std::cin >> tA;
-        if (tA == 'Y' || tA == 'y') {
-            goto start;
+        if (a == 0) {
+            //  Chapter - Present Days
+            //Go code without fcCustomEmployee
+            if (fpresentDays(false, true) == 0) {
+                //  Chapter - Shift Type
+                if (fshiftType() == 0) {
+                    //  Chapter - Dependency
+                    if (fdependencyType() == 0) {
+                        //  Chapter - Number of days present in holidays
+                        if (fpresentInHoliday() == 0) {
+                            //  Chapter - Number of days present in rest
+                            if (fpresentInRest() == 0) {
+                                //  Chapter - Number of days present in holirest
+                                if (fpresentInHoliRest() == 0) {
+                                    //  Chapter - Number of overtime hours
+                                    if (overtimeHours() == 0) {
+                                        //  Chapter - Number of special overtime hours
+                                        if (overtimeHoursSpecial() == 0) {
+                                            //  Chapter - Summary before processing
+                                            if (showSummaryAdvance() == 0) {
+                                                tryAgain();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-        else if (tA == 'N' || tA == 'n') {
-            goto exit;
-        }
-        else {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            //goto calculateAdvanced;
+        else if (a == 1) {
+            //  Chapter - Custom Employee Rate
+            if (fcCustomEmployeeRate() == 0) {
+                //  Chapter - Present Days
+                if (fpresentDays(false, true) == 0) {
+                    //  Chapter - Shift Type
+                    if (fshiftType() == 0) {
+                        //  Chapter - Dependency
+                        if (fdependencyType() == 0) {
+                            //  Chapter - Number of days present in holidays
+                            if (fpresentInHoliday() == 0) {
+                                //  Chapter - Number of days present in rest
+                                if (fpresentInRest() == 0) {
+                                    //  Chapter - Number of days present in holirest
+                                    if (fpresentInHoliRest() == 0) {
+                                        //  Chapter - Number of overtime hours
+                                        if (overtimeHours() == 0) {
+                                            //  Chapter - Number of special overtime hours
+                                            if (overtimeHoursSpecial() == 0) {
+                                                //  Chapter - Summary before processing
+                                                if (showSummaryAdvance() == 0) {
+                                                    tryAgain();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     else {

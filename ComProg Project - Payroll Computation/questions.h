@@ -5,6 +5,7 @@
 #include "grosspay.h"
 #include "taxdep.h"
 #include "netpay.h"
+#include "menu.h"
 #include <conio.h>
 
 
@@ -17,14 +18,14 @@ char calcuType = '0', shiftType = '0', dependencyStatus = '0';
 //  Advance Counters
 int totalPresentDays = 0;
 
-bool showBasicSummary();
-bool fcalculateAdvance();
-bool showSummaryAdvance();
+int showBasicSummary();
+void fcalculateAdvance();
+int showSummaryAdvance();
 
 
 int calculationType() {
     //Clear
-    //system("cls");
+    system("cls");
     //Start Asking for user inputs
     printHead();
     //Ask for calculation type
@@ -46,86 +47,35 @@ int calculationType() {
     
 }
 
-void fcCustomEmployeeRate(bool edit = false, bool adv = false) {
-    if (!edit) {
-        //Ask input if yes
-        //system("cls");
-        printHead();
-        printOutValues(calcuType, employeeCode);
-        std::cout << "\t\t\tEnter custom rate: ";
-        std::cin >> customEmployeeRate;
+int femployeeCode(bool edit = false) {
 
-        //  Check value
-        //  Reset in invalid input
-        while (std::cin.fail()) {
-            clearInvalid();
-            fcCustomEmployeeRate();
-        }
-        //  Check if not negative
-        if (customEmployeeRate <= 0) {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            fcCustomEmployeeRate();
-        }
-    }
-    else if (edit) {
-        //Ask input if yes
-        //  Clear
-        //system("cls");
-        printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate);
-        std::cout << "\t\t\tEdit custom rate: ";
-        std::cin >> customEmployeeRate;
-        //  Check value
-        //  Reset in invalid input
-        while (std::cin.fail()) {
-            clearInvalid();
-            fcCustomEmployeeRate(true);
-        }
-        //  Check if not negative
-        if (customEmployeeRate <= 0) {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            fcCustomEmployeeRate(true);
-        }
-        //Return to preview after editing
-        if (!adv) {
-            showBasicSummary();
-        }
-        else if (adv) {
-            showSummaryAdvance();
-        }
-    }
-}
-
-void femployeeCode(bool edit = false, bool adv = false) {
-    
     if (!edit) {
         //Input data for the first time/reset
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, ' ');
         //Ask for employee code
         std::cout << "\t\t\tState employee code [A] [B] [C] [D]: ";
         employeeCode = _getch();
         //  Perform Checks
+        //  Check if it's not equal with a, b, c, or d
         if (checkUserInput('1', employeeCode) == false) {
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             femployeeCode();
         }
-        else {
-            //Check if D
-            if (employeeCode == 'D' || employeeCode == 'd') {
-                //Call custom employee
-                fcCustomEmployeeRate();
-            }
+        //Check if D
+        if (employeeCode == 'D' || employeeCode == 'd') {
+            //Call custom employee
+            return 1;
         }
+        // Go
+        return 0;
     }
-    else if (edit){
+    else if (edit) {
         //Input data in edit mode
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues('1', employeeCode);
         //Ask for employee code
@@ -143,41 +93,77 @@ void femployeeCode(bool edit = false, bool adv = false) {
             system("pause");
             femployeeCode(true);
         }
-        else {
-            //  Check if the input is D. If yes, proceed to customEmployeeRate again.
-            if (employeeCode == 'd' || employeeCode == 'D') {
-                //Call customEmployeeRate again if changed to D
-                if (!adv) {
-                    fcCustomEmployeeRate(true);
-                }
-                else if (adv) {
-                    fcCustomEmployeeRate(true, true);
-                }
-            }
-            //If not D, return to preview
-            if (employeeCode != 'd' && employeeCode != 'D') {
-                if (!adv) {
-                    showBasicSummary();
-                }
-                else if (adv) {
-                    showSummaryAdvance();
-                }
-            }
+        //  Check if the input is D. If yes, proceed to customEmployeeRate again.
+        if (employeeCode == 'd' || employeeCode == 'D') {
+            //Call customEmployeeRate again if changed to D
+            return 1;
         }
-        
+        //If not D, return to preview
+        if (employeeCode != 'd' && employeeCode != 'D') {
+            return 0;
+        }
     }
 }
 
 
+int fcCustomEmployeeRate(bool edit = false) {
+    if (!edit) {
+        //Ask input if yes
+        system("cls");
+        printHead();
+        printOutValues(calcuType, employeeCode);
+        std::cout << "\t\t\tEnter custom rate: ";
+        std::cin >> customEmployeeRate;
+
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            clearInvalid();
+            fcCustomEmployeeRate();
+        }
+        //  Check if not negative
+        if (customEmployeeRate <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            fcCustomEmployeeRate();
+        }
+
+        return 0;
+
+    }
+    else if (edit) {
+        //Ask input if yes
+        //  Clear
+        system("cls");
+        printHead();
+        printOutValues(calcuType, employeeCode, customEmployeeRate);
+        std::cout << "\t\t\tEdit custom rate: ";
+        std::cin >> customEmployeeRate;
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            clearInvalid();
+            fcCustomEmployeeRate(true);
+        }
+        //  Check if not negative
+        if (customEmployeeRate <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            fcCustomEmployeeRate(true);
+        }
+        //Return to preview
+        return 0;
+    }
+}
 
 
-void fpresentDays(bool edit = false, bool adv = false) {
+int fpresentDays(bool edit = false, bool adv = false) {
     // Check if advanced mode
     if (!adv) {
         // If not advanced, check if in edit mode
         if (!edit) {
             //If not edit
-            //system("cls");
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate);
             //Ask for number of present days
@@ -198,11 +184,12 @@ void fpresentDays(bool edit = false, bool adv = false) {
                 system("pause");
                 fpresentDays();
             }
+            return 0;
         }
         
         else if (edit) {
             //If not advanced, but in edit mode
-            //system("cls");
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
             //Ask for number of present days
@@ -224,9 +211,7 @@ void fpresentDays(bool edit = false, bool adv = false) {
                 fpresentDays();
             }
 
-            totalPresentDays += presentDays;
-            //Return to preview after editing
-            showBasicSummary();
+            return 0;
         }
     }
     else if (adv) {
@@ -239,9 +224,10 @@ void fpresentDays(bool edit = false, bool adv = false) {
             numberOfPresentOnRestDay = 0;
             numberOfPresentOnRestHoliDay = 0;
             //  Ask for number of present days
-            //system("cls");
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate);
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of REGULAR present days: ";
             std::cin >> presentDays;
             //  Error checking
@@ -266,13 +252,15 @@ void fpresentDays(bool edit = false, bool adv = false) {
                 fpresentDays(false, true);
             }
             totalPresentDays += presentDays;
+            return 0;
         }
         else if (edit) {
             totalPresentDays -= presentDays;
             //Ask for number of present days
-            //system("cls");
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate);
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of REGULAR present days: ";
             std::cin >> presentDays;
             //  Error checking
@@ -299,15 +287,15 @@ void fpresentDays(bool edit = false, bool adv = false) {
 
             totalPresentDays += presentDays;
             //  Go back to preview
-            showSummaryAdvance();
+            return 0;
         }
     }
 }
 
-void fshiftType(bool edit = false, bool adv = false) {
+int fshiftType(bool edit = false) {
     if (!edit) {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
@@ -322,10 +310,12 @@ void fshiftType(bool edit = false, bool adv = false) {
                 fshiftType();
             }
         }
+
+        return 0;
     }
     else if (edit) {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for shift type
@@ -341,20 +331,15 @@ void fshiftType(bool edit = false, bool adv = false) {
             }
         }
         //Return to preview after editing
-        if (!adv) {
-            showBasicSummary();
-        }
-        else if (adv) {
-            showSummaryAdvance();
-        }
+        return 0;
     }
 
 }
 
-void fdependencyType(bool edit = false, bool adv = false) {
+int fdependencyType(bool edit = false) {
     if (!edit) {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
@@ -369,10 +354,12 @@ void fdependencyType(bool edit = false, bool adv = false) {
                 fdependencyType();
             }
         }
+
+        return 0;
     }
     else if (edit) {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for dependency
@@ -388,19 +375,14 @@ void fdependencyType(bool edit = false, bool adv = false) {
             }
         }
         //Return to preview after editing
-        if (!adv) {
-            showBasicSummary();
-        }
-        else if (adv) {
-            showSummaryAdvance();
-        }
+        return 0;
     }
 }
 
 // Question - Result
 void fcalculateBasic() {
     //  Clear before processing then display the data values
-    //system("cls");
+    system("cls");
     printHead();
     printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
     double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
@@ -422,11 +404,11 @@ void fcalculateBasic() {
 }
 
 // Preview Results
-bool showBasicSummary() {
+int showBasicSummary() {
     int a = 0;
     if (employeeCode != 'd' && employeeCode != 'D') {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
@@ -445,18 +427,27 @@ bool showBasicSummary() {
         switch (a) {
         case 0:
             fcalculateBasic();
+            return 0;
             break;
         case 2:
-            femployeeCode(true);
+            if (femployeeCode(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 3:
-            fpresentDays(true);
+            if (fpresentDays(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 4:
-            fshiftType(true);
+            if (fshiftType(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 5:
-            fdependencyType(true);
+            if (fdependencyType(true) == 0) {
+                showBasicSummary();
+            }
             break;
         default:
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
@@ -467,7 +458,7 @@ bool showBasicSummary() {
     }
     else if (employeeCode == 'd' || employeeCode == 'D') {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
@@ -486,21 +477,32 @@ bool showBasicSummary() {
         switch (a) {
         case 0:
             fcalculateBasic();
+            return 0;
             break;
         case 2:
-            femployeeCode(true);
+            if (femployeeCode(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 3:
-            fcCustomEmployeeRate(true);
+            if (fcCustomEmployeeRate(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 4:
-            fpresentDays(true);
+            if (fpresentDays(true) == 0) {
+                showBasicSummary();
+            } 
             break;
         case 5:
-            fshiftType(true);
+            if (fshiftType(true) == 0) {
+                showBasicSummary();
+            }
             break;
         case 6:
-            fdependencyType(true);
+            if (fdependencyType(true) == 0) {
+                showBasicSummary();
+            }
             break;
         default:
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
@@ -512,104 +514,175 @@ bool showBasicSummary() {
     return true;
 }
 
-void overtimeHoursSpecial(bool edit = false) {
-    if (numberOfPresentOnHoliday == 0 && numberOfPresentOnRestDay == 0 && numberOfPresentOnRestHoliDay == 0) {
-        std::cout << "\t\t\tEmployee isn't present in any special day. Skipping special overtime...";
-    }
-    //system("cls");
-    printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
-    //Ask for present in holi-rest days
-    if (!edit) {
-        std::cout << "\t\t\tState the number of special day overtime hours (this includes: Rest Day and Holidays): ";
-    }
-    else if (edit) {
-        std::cout << "\t\t\tEdit the number of special day overtime hours (this includes: Rest Day and Holidays): ";
-    }
-    std::cin >> numberOfSpecialOverHours;
-    //  Check std::cin value
-    while (std::cin.fail()) {
-        clearInvalid();
-        if (!edit) {
-            overtimeHoursSpecial();
-        }
-        else if (edit) {
-            overtimeHoursSpecial(true);
-        }
-    }
 
-    //  Check if negative
-    if (checkUserInput('2', ' ', numberOfSpecialOverHours) == true) {
-        std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-        std::cout << "Im the problem";
-        system("pause");
-        if (!edit) {
-            overtimeHoursSpecial();
-        }
-        else if (edit) {
-            overtimeHoursSpecial(true);
-        }
-    }
-
-    // Return to corresponding functions if edit
-    if (edit) {
-        showSummaryAdvance();
-    }
-}
-
-void overtimeHours(bool edit = false) {
-    //system("cls");
-    printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
-    if (!edit) {
-        //Ask for Regular OT hours
-        std::cout << "\t\t\tState the number of regular day overtime hours: ";
-        std::cin >> numberOfOverHours;
-        while (std::cin.fail()) {
-            clearInvalid();
-            overtimeHours();
-        }
-        //  Check if negative
-        if (checkUserInput('2', ' ', numberOfOverHours) == true) {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            overtimeHours();
-        }
-        //Call preceeding function
-        overtimeHoursSpecial();
-    } 
-    else if (edit) {
-        //Ask for Regular OT hours
-        std::cout << "\t\t\tEdit the number of regular day overtime hours: ";
-        std::cin >> numberOfOverHours;
-        while (std::cin.fail()) {
-            clearInvalid();
-            overtimeHours(true);
-        }
-        //  Check if negative
-        if (checkUserInput('2', ' ', numberOfOverHours) == true) {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            overtimeHours(true);
-        }
-        // Go back to summary
-        showSummaryAdvance();
-    }
-}
-
-void fpresentInHoliRest(bool edit = false) {
+int fpresentInHoliday(bool edit = false) {
     if (!edit) {
         //  Check if the total present days is 30
         if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
             std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << std::endl << "\t\t\t";
             system("pause");
-            overtimeHours();
+            return 0;
         }
         else {
-            //system("cls");
+            //Ask for present in holidays
+            system("cls");
+            printHead();
+            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
+            std::cout << "\t\t\tState the number of days present in holidays: ";
+            std::cin >> numberOfPresentOnHoliday;
+            //  Check std::cin value
+            while (std::cin.fail()) {
+                clearInvalid();
+                fpresentInHoliday();
+            }
+            //  Check if negative
+            if (checkUserInput('2', ' ', numberOfPresentOnHoliday) == true) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInHoliday();
+            }
+            //  Check if the total present days will not go over 30
+            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnHoliday, 31, 'c')) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInHoliday();
+            }
+            //  Add to Total Days if total days is not 30
+            totalPresentDays += numberOfPresentOnHoliday;
+        }
+    }
+    else if (edit) {
+        //Reset value from rollbacks
+        totalPresentDays -= numberOfPresentOnHoliday;
+        numberOfPresentOnHoliday = 0;
+        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
+            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tChange other value before\n\t\t\tyou can edit this one..." << std::endl << "\t\t\t";            system("pause");
+            return 0;
+        }
+        else {
+            //Ask for present in holidays
+            system("cls");
+            printHead();
+            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
+            std::cout << "\t\t\tEdit the number of days present in holidays: ";
+            std::cin >> numberOfPresentOnHoliday;
+            //  Check std::cin value
+            while (std::cin.fail()) {
+                clearInvalid();
+                fpresentInHoliday(true);
+            }
+            //  Check if negative
+            if (checkUserInput('2', ' ', numberOfPresentOnHoliday) == true) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInHoliday(true);
+            }
+            //  Check if the total present days will not go over 30
+            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnHoliday, 31, 'c')) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInHoliday(true);
+            }
+            //  Add to Total Days if total days is not 30
+            totalPresentDays += numberOfPresentOnHoliday;
+        }
+    }
+    return 0;
+}
+
+int fpresentInRest(bool edit = false) {
+    //  Check if the total present days is 30
+    if (!edit) {
+        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
+            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << std::endl << "\t\t\t";
+            system("pause");
+            return 0;
+        }
+        else {
+            system("cls");
+            printHead();
+            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
+            //Ask for present in rest days
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
+            std::cout << "\t\t\tState the number of days present in rest day: ";
+            std::cin >> numberOfPresentOnRestDay;
+            //  Check std::cin value
+            while (std::cin.fail()) {
+                clearInvalid();
+                fpresentInRest();
+            }
+            //  Check if negative
+            if (checkUserInput('2', ' ', numberOfPresentOnRestDay) == true) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInRest();
+            }
+            //  Check if the total present days will not go over 30
+            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInRest();
+            }
+            //  Add to Total Days if total days is not 30
+            totalPresentDays += numberOfPresentOnRestDay;
+        }
+    }
+    else if (edit) {
+        //Reset value from rollbacks
+        totalPresentDays -= numberOfPresentOnRestDay;
+        numberOfPresentOnRestDay = 0;
+        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
+            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tChange other value before\n\t\t\tyou can edit this one..." << std::endl << "\t\t\t";            system("pause");
+            return 0;
+        }
+        else {
+            system("cls");
+            printHead();
+            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
+            //Ask for present in rest days
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
+            std::cout << "\t\t\tEdit the number of days present in rest day: ";
+            std::cin >> numberOfPresentOnRestDay;
+            //  Check std::cin value
+            while (std::cin.fail()) {
+                clearInvalid();
+                fpresentInRest(true);
+            }
+            //  Check if negative
+            if (checkUserInput('2', ' ', numberOfPresentOnRestDay) == true) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInRest(true);
+            }
+            //  Check if the total present days will not go over 30
+            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
+                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+                system("pause");
+                fpresentInRest(true);
+            }
+        }
+        //  Add to Total Days if total days is not 30
+        totalPresentDays += numberOfPresentOnRestDay;
+    }
+    return 0;
+}
+
+int fpresentInHoliRest(bool edit = false) {
+    if (!edit) {
+        //  Check if the total present days is 30
+        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
+            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << std::endl << "\t\t\t";
+            system("pause");
+            return 0;
+        }
+        else {
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
             //Ask for present in holi-rest days
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of days present in holiday at the same time rest day: ";
             std::cin >> numberOfPresentOnRestHoliDay;
             //  Check cin value
@@ -641,8 +714,6 @@ void fpresentInHoliRest(bool edit = false) {
             }
             //  Add to Total Days if all tests are passed
             totalPresentDays += numberOfPresentOnRestHoliDay;
-            //  Call preceeding function
-            overtimeHours();
         }
     }
     else if (edit) {
@@ -653,13 +724,14 @@ void fpresentInHoliRest(bool edit = false) {
         if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
             std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tChange other value before\n\t\t\tyou can edit this one..." << std::endl << "\t\t\t";
             system("pause");
-            showSummaryAdvance();
+            return 0;
         }
         else {
-            //system("cls");
+            system("cls");
             printHead();
             printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
             //Ask for present in holi-rest days
+            std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of days present in holiday at the same time rest day: ";
             std::cin >> numberOfPresentOnRestHoliDay;
             //  Check cin value
@@ -691,174 +763,101 @@ void fpresentInHoliRest(bool edit = false) {
             }
             //  Add to Total Days if all tests are passed
             totalPresentDays += numberOfPresentOnRestHoliDay;
-            //  Call preceeding function
-            showSummaryAdvance();
         }
     }
+    return 0;
 }
 
-void fpresentInRest(bool edit = false) {
-    //  Check if the total present days is 30
+
+
+
+int overtimeHours(bool edit = false) {
+    system("cls");
+    printHead();
+    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
     if (!edit) {
-        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
-            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << std::endl << "\t\t\t";
+        //Ask for Regular OT hours
+        std::cout << "\t\t\tState the number of regular day overtime hours: ";
+        std::cin >> numberOfOverHours;
+        while (std::cin.fail()) {
+            clearInvalid();
+            overtimeHours();
+        }
+        //  Check if negative
+        if (checkUserInput('2', ' ', numberOfOverHours) == true) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             overtimeHours();
         }
-        else {
-            //system("cls");
-            printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
-            //Ask for present in rest days
-            std::cout << "\t\t\tState the number of days present in rest day: ";
-            std::cin >> numberOfPresentOnRestDay;
-            //  Check std::cin value
-            while (std::cin.fail()) {
-                clearInvalid();
-                fpresentInRest();
-            }
-            //  Check if negative
-            if (checkUserInput('2', ' ', numberOfPresentOnRestDay) == true) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInRest();
-            }
-            //  Check if the total present days will not go over 30
-            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInRest();
-            }
-            //  Add to Total Days if total days is not 30
-            totalPresentDays += numberOfPresentOnRestDay;
-            //  Call preceeding function
-            fpresentInHoliRest();
-        }
     }
     else if (edit) {
-        //Reset value from rollbacks
-        totalPresentDays -= numberOfPresentOnRestDay;
-        numberOfPresentOnRestDay = 0;
-        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
-            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tChange other value before\n\t\t\tyou can edit this one..." << std::endl << "\t\t\t";            system("pause");
-            showSummaryAdvance();
+        //Ask for Regular OT hours
+        std::cout << "\t\t\tEdit the number of regular day overtime hours: ";
+        std::cin >> numberOfOverHours;
+        while (std::cin.fail()) {
+            clearInvalid();
+            overtimeHours(true);
         }
-        else {
-            //system("cls");
-            printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
-            //Ask for present in rest days
-            std::cout << "\t\t\tEdit the number of days present in rest day: ";
-            std::cin >> numberOfPresentOnRestDay;
-            //  Check std::cin value
-            while (std::cin.fail()) {
-                clearInvalid();
-                fpresentInRest(true);
-            }
-            //  Check if negative
-            if (checkUserInput('2', ' ', numberOfPresentOnRestDay) == true) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInRest(true);
-            }
-            //  Check if the total present days will not go over 30
-            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInRest(true);
-            }
-        }
-        //  Add to Total Days if total days is not 30
-        totalPresentDays += numberOfPresentOnRestDay;
-        //  Call preceeding function
-        showSummaryAdvance();
-
-    }
-
-}
-
-void fpresentInHoliday(bool edit = false) {
-    if (!edit) {
-        //  Check if the total present days is 30
-        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
-            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tProceeding without adding more days...\n\t\t\tSkipping other day-related inputs..." << std::endl << "\t\t\t";
+        //  Check if negative
+        if (checkUserInput('2', ' ', numberOfOverHours) == true) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
-            overtimeHours();
+            overtimeHours(true);
         }
-        else {
-            //Ask for present in holidays
-            //system("cls");
-            printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
-            std::cout << "\t\t\tState the number of days present in holidays: ";
-            std::cin >> numberOfPresentOnHoliday;
-            //  Check std::cin value
-            while (std::cin.fail()) {
-                clearInvalid();
-                fpresentInHoliday();
-            }
-            //  Check if negative
-            if (checkUserInput('2', ' ', numberOfPresentOnHoliday) == true) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInHoliday();
-            }
-            //  Check if the total present days will not go over 30
-            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnHoliday, 31, 'c')) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInHoliday();
-            }
-            //  Add to Total Days if total days is not 30
-            totalPresentDays += numberOfPresentOnHoliday;
-            //  Call preceeding function
-            fpresentInRest();
+    }
+    return 0;
+}
+
+int overtimeHoursSpecial(bool edit = false) {
+    if (numberOfPresentOnHoliday == 0 && numberOfPresentOnRestDay == 0 && numberOfPresentOnRestHoliDay == 0) {
+        std::cout << "\t\t\tEmployee isn't present in any special day. Skipping special overtime...";
+        return 0;
+    }
+    system("cls");
+    printHead();
+    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
+    if (!edit) {
+        //Ask for present in holi-rest days
+        std::cout << "\t\t\tState the number of special day overtime hours (this includes: Rest Day and Holidays): ";
+        std::cin >> numberOfSpecialOverHours;
+        //  Check std::cin value
+        while (std::cin.fail()) {
+            clearInvalid();
+            overtimeHoursSpecial();
+        }
+        //  Check if negative
+        if (checkUserInput('2', ' ', numberOfSpecialOverHours) == true) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            std::cout << "Im the problem";
+            system("pause");
+            overtimeHoursSpecial(true);
         }
     }
     else if (edit) {
-        //Reset value from rollbacks
-        totalPresentDays -= numberOfPresentOnHoliday;
-        numberOfPresentOnHoliday = 0;
-        if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
-            std::cout << "\t\t\tTotal of Present Days is 30.\n\t\t\tChange other value before\n\t\t\tyou can edit this one..." << std::endl << "\t\t\t";            system("pause");
-            showSummaryAdvance();
-            //Ask for present in holidays
-            //system("cls");
-            printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
-            std::cout << "\t\t\tEdit the number of days present in holidays: ";
-            std::cin >> numberOfPresentOnHoliday;
-            //  Check std::cin value
-            while (std::cin.fail()) {
-                clearInvalid();
-                fpresentInHoliday(true);
-            }
-            //  Check if negative
-            if (checkUserInput('2', ' ', numberOfPresentOnHoliday) == true) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInHoliday(true);
-            }
-            //  Check if the total present days will not go over 30
-            if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnHoliday, 31, 'c')) {
-                std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-                system("pause");
-                fpresentInHoliday(true);
-            }
-            //  Add to Total Days if total days is not 30
-            totalPresentDays += numberOfPresentOnHoliday;
-            //  Call preceeding function
-            showSummaryAdvance();
+        std::cout << "\t\t\tEdit the number of special day overtime hours (this includes: Rest Day and Holidays): ";
+        std::cin >> numberOfSpecialOverHours;
+        //  Check std::cin value
+        while (std::cin.fail()) {
+            clearInvalid();
+            overtimeHoursSpecial(true);
+        }
+        //  Check if negative
+        if (checkUserInput('2', ' ', numberOfSpecialOverHours) == true) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            std::cout << "Im the problem";
+            system("pause");
+            overtimeHoursSpecial(true);
         }
     }
-
+    // Return to corresponding functions if edit
+    return 0;
 }
 
-bool showSummaryAdvance() {
+int showSummaryAdvance() {
     int a = 0;
     if (employeeCode != 'd' && employeeCode != 'D') {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
@@ -874,45 +873,64 @@ bool showSummaryAdvance() {
         }
         //  Check input
         switch (a) {
-        case ' ':
+        case 0:
             fcalculateAdvance();
+            return 0;
             break;
         case 2:
-            femployeeCode(true, true);
+            if (femployeeCode(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 3:
-            fpresentDays(true, true);
+            if (fpresentDays(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 4:
-            fshiftType(true, true);
+            if (fshiftType(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 5:
-            fdependencyType(true, true);
+            if (fdependencyType(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 6:
-            fpresentInHoliday(true);
+            if (fpresentInHoliday(true)) {
+                showSummaryAdvance();
+            }
             break;
         case 7:
-            fpresentInRest(true);
+            if (fpresentInRest(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 8:
-            fpresentInHoliRest(true);
+            if (fpresentInHoliRest(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 9:
-            overtimeHours(true);
+            if (overtimeHours(true) == 0) {
+                showSummaryAdvance();
+            }
         case 10:
-            overtimeHoursSpecial(true);
+            if (overtimeHoursSpecial(true) == 0) {
+                showSummaryAdvance();
+            }
         default:
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             showSummaryAdvance();
             break;
         }
-        return true;
+        return 0;
     }
     else if (employeeCode == 'd' || employeeCode == 'D') {
         //Clear
-        //system("cls");
+        system("cls");
         printHead();
         printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
@@ -930,48 +948,69 @@ bool showSummaryAdvance() {
         switch (a) {
         case 0:
             fcalculateAdvance();
+            return 0;
             break;
         case 2:
-            femployeeCode(true, true);
+            if (femployeeCode(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 3:
-            fcCustomEmployeeRate(true, true);
-            break;
+            if (fcCustomEmployeeRate(true) == 0) {
+                showSummaryAdvance();
+            }
         case 4:
-            fpresentDays(true, true);
+            if (fpresentDays(true, true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 5:
-            fshiftType(true, true);
+            if (fshiftType(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 6:
-            fdependencyType(true, true);
+            if (fdependencyType(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 7:
-            fpresentInHoliday(true);
+            if (fpresentInHoliday(true)) {
+                showSummaryAdvance();
+            }
             break;
         case 8:
-            fpresentInRest(true);
+            if (fpresentInRest(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 9:
-            fpresentInHoliRest(true);
+            if (fpresentInHoliRest(true) == 0) {
+                showSummaryAdvance();
+            }
             break;
         case 10:
-            overtimeHours(true);
+            if (overtimeHours(true) == 0) {
+                showSummaryAdvance();
+            }
         case 11:
-            overtimeHoursSpecial(true);
+            if (overtimeHoursSpecial(true) == 0) {
+                showSummaryAdvance();
+            }
         default:
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             showSummaryAdvance();
             break;
         }
-        return true;
+        return 0;
     }
 }
 
-bool fcalculateAdvance() {
+void fcalculateAdvance() {
     //Compute Gross Pay
-    //system("cls");
+    system("cls");
+    printHead();
     printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
     double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
     //Compute
@@ -1009,5 +1048,4 @@ bool fcalculateAdvance() {
             << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+\n\n" << std::endl;
     }
-    return true;
 }
