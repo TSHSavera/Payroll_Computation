@@ -1080,7 +1080,7 @@ void fcalculateAdvance() {
             << "\t\t\t\+-----------------------------------------+" << std::endl
             << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+" << std::endl
-            << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t   |" << std::endl
+            << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+" << std::endl
             << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+\n\n" << std::endl;
@@ -1097,7 +1097,7 @@ void fcalculateAdvance() {
             << "\t\t\t\+-----------------------------------------+" << std::endl
             << "\t\t\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+" << std::endl
-            << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t\t  |" << std::endl
+            << "\t\t\t|\tTax: PHP " << computedTaxDependency << "\t\t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+" << std::endl
             << "\t\t\t|\tNet Pay: PHP " << computedNetPay << "\t\t  |" << std::endl
             << "\t\t\t\+-----------------------------------------+\n\n" << std::endl;

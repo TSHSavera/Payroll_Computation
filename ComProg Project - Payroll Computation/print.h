@@ -16,7 +16,7 @@ void printOutValues(char calcuType = ' ', std::string name = " ", char employeeC
     }
 
     if (name != " ") {
-        std::cout << "\t\t\t| 1. Name: " << name << "\t\t\t  |" << std::endl;
+        std::cout << "\t\t\t| 1. Name: " << name << "\t\t\t          |" << std::endl;
         std::cout << "\t\t\t+-----------------------------------------+" << std::endl;
     }
 
@@ -163,7 +163,7 @@ void printFinal(double gp = 0.00, double td = 0.00, double np = 0.00) {
         << "\t\t\t\+-----------------------------------------+" << std::endl
         << "\t\t\t|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
         << "\t\t\t\+-----------------------------------------+" << std::endl
-        << "\t\t\t|\tTax: PHP " << td << "\t\t  |" << std::endl
+        << "\t\t\t|\tTax: PHP " << td << "\t\t\t  |" << std::endl
         << "\t\t\t\+-----------------------------------------+" << std::endl
         << "\t\t\t|\tNet Pay: PHP " << np << "\t\t  |" << std::endl
         << "\t\t\t\+-----------------------------------------+\n\n" << std::endl;

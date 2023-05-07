@@ -11,7 +11,7 @@ std::string successMessages(int number) {
         break;
 
     case 2:
-        return "\t\t\tI've got that very clear! ";
+        return "\t\t\tI've got that very clearly! ";
         break;
 
     case 3:
@@ -48,7 +48,7 @@ std::string wrongMessages(int number) {
         break;
 
     case 4:
-        return "\n\n\t\t Let's try to avoid that mistake next time. Re-enter that data needed...\n\n";
+        return "\n\n\t\t Let's try to avoid that mistake next time. Re-enter the data needed...\n\n";
         break;
 
     case 5:
