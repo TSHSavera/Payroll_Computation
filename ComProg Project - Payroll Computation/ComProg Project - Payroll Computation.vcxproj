@@ -136,6 +136,7 @@
     <ClInclude Include="grosspay.h" />
     <ClInclude Include="netpay.h" />
     <ClInclude Include="password.h" />
+    <ClInclude Include="pc.h" />
     <ClInclude Include="print.h" />
     <ClInclude Include="messages.h" />
     <ClInclude Include="questions.h" />
