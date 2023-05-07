@@ -1,19 +1,23 @@
 #pragma once
-#include <string>
 #include <iostream>
 
-void printOutValues(char calcuType = ' ', char employeeCode = NULL, double customEmployeeRate = -1, int presentDays = -1, char shiftType = ' ', char dependencyStatus = ' ', int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1) {
+void printOutValues(char calcuType = ' ', std::string name = " ", char employeeCode = ' ', double customEmployeeRate = -1, int presentDays = -1, char shiftType = ' ', char dependencyStatus = ' ', int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1) {
 
     if (calcuType != ' ') {
         if (calcuType == '1') {
 
-            std::cout << "\t\t\t| 1. Calculation Type: Basic \t\t  |" << std::endl;
+            std::cout << "\t\t\t| 0. Calculation Type: Basic \t\t  |" << std::endl;
             std::cout << "\t\t\t+-----------------------------------------+" << std::endl;
         }
         else if (calcuType == '2') {
-            std::cout << "\t\t\t| 1. Calculation Type: Advance \t\t  |" << std::endl;
+            std::cout << "\t\t\t| 0. Calculation Type: Advance \t\t  |" << std::endl;
             std::cout << "\t\t\t+-----------------------------------------+" << std::endl;
         }
+    }
+
+    if (name != " ") {
+        std::cout << "\t\t\t| 1. Name: " << name << "\t\t\t  |" << std::endl;
+        std::cout << "\t\t\t+-----------------------------------------+" << std::endl;
     }
 
     if (employeeCode != ' ') {

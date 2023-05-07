@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 
 //Static Values
 struct staticVal {
@@ -45,7 +44,6 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
     staticA.overtimeMultiplier = 1.25;
     staticA.overtimeRestDayMultiplier = 1.69;
 
-
     if (calculationType == '1') {
         //Do Basic Calculations
         //  Check Employee Code
@@ -57,7 +55,7 @@ double computeGrossPay(char calculationType, char employeeCode, int numberOfPres
                 grossPay = (8 * numberOfPresentDays) * (staticA.code1);
                 return grossPay;
             }
-            else if (shiftType == 2) {
+            else if (shiftType == '2') {
                 //  Night
                 grossPay = (8 * numberOfPresentDays) * (staticA.code1 * staticA.nightShiftMultiplier);
                 return grossPay;

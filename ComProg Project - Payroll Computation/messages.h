@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include <math.h>
 
 //  Random Message Generator
@@ -125,7 +124,7 @@ std::string generateRandomMessage(int type) {
     srand((unsigned)time(NULL));
     int rng = 1 + rand() % 5;
     //Process data received
-    //  Types are: 1 - Wrong Input, 2 - Success
+    //  Types are: 1 - Wrong Input, 2 - Success, 3 - Task Done, 4 - System Blocked
     switch (type) {
     case 1:
         messageString = wrongMessages(rng);

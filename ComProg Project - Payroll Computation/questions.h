@@ -7,9 +7,11 @@
 #include "netpay.h"
 #include "menu.h"
 #include <conio.h>
+#include <string>
 
 
 //Initialize Variables
+std::string name = " ";
 char employeeCode;
 int presentDays = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
 double grossPay = 0.00, netPay = 0.00, tax = 0.00, customEmployeeRate = -1;
@@ -25,7 +27,7 @@ int showSummaryAdvance();
 
 int calculationType() {
     //Clear
-    system("cls");
+    //system("cls");
     //Start Asking for user inputs
     printHead();
     //Ask for calculation type
@@ -47,14 +49,50 @@ int calculationType() {
     
 }
 
+int femployeeName(bool edit = false) {
+    if (!edit) {
+        //Clear
+        //system("cls");
+        printHead();
+        printOutValues(calcuType);
+        //Ask
+        std::cout << "\t\t\tEnter employee name: ";
+        std::cin.ignore();
+        std::getline(std::cin, name);
+        //Perform Checks
+        if (name == " ") {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            femployeeName();
+        }
+    }
+    else if (edit) {
+        //Clear
+        //system("cls");
+        printHead();
+        printOutValues(calcuType);
+        //Ask
+        std::cout << "\t\t\tEdit employee name: ";
+        std::cin.ignore();
+        std::getline(std::cin, name);
+        //Perform Checks
+        if (name == " ") {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            femployeeName();
+        }
+    }
+    return 0;
+}
+
 int femployeeCode(bool edit = false) {
 
     if (!edit) {
         //Input data for the first time/reset
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, ' ');
+        printOutValues(calcuType, name);
         //Ask for employee code
         std::cout << "\t\t\tState employee code [A] [B] [C] [D]: ";
         employeeCode = _getch();
@@ -71,13 +109,14 @@ int femployeeCode(bool edit = false) {
             return 1;
         }
         // Go
+        std::cout << "test" << employeeCode;
         return 0;
     }
     else if (edit) {
         //Input data in edit mode
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues('1', employeeCode);
+        printOutValues(calcuType, name, employeeCode);
         //Ask for employee code
         std::cout << "\t\t\tEdit employee code [A] [B] [C] [D]: ";
         employeeCode = _getch();
@@ -109,9 +148,9 @@ int femployeeCode(bool edit = false) {
 int fcCustomEmployeeRate(bool edit = false) {
     if (!edit) {
         //Ask input if yes
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode);
+        printOutValues(calcuType, name, employeeCode);
         std::cout << "\t\t\tEnter custom rate: ";
         std::cin >> customEmployeeRate;
 
@@ -134,9 +173,9 @@ int fcCustomEmployeeRate(bool edit = false) {
     else if (edit) {
         //Ask input if yes
         //  Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate);
         std::cout << "\t\t\tEdit custom rate: ";
         std::cin >> customEmployeeRate;
         //  Check value
@@ -163,9 +202,9 @@ int fpresentDays(bool edit = false, bool adv = false) {
         // If not advanced, check if in edit mode
         if (!edit) {
             //If not edit
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate);
             //Ask for number of present days
             std::cout << "\t\t\tState the number of present days: ";
             std::cin >> presentDays;
@@ -189,9 +228,9 @@ int fpresentDays(bool edit = false, bool adv = false) {
         
         else if (edit) {
             //If not advanced, but in edit mode
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays);
             //Ask for number of present days
             std::cout << "\t\t\tEdit the number of present days: ";
             std::cin >> presentDays;
@@ -224,9 +263,9 @@ int fpresentDays(bool edit = false, bool adv = false) {
             numberOfPresentOnRestDay = 0;
             numberOfPresentOnRestHoliDay = 0;
             //  Ask for number of present days
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate);
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of REGULAR present days: ";
             std::cin >> presentDays;
@@ -257,9 +296,9 @@ int fpresentDays(bool edit = false, bool adv = false) {
         else if (edit) {
             totalPresentDays -= presentDays;
             //Ask for number of present days
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate);
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of REGULAR present days: ";
             std::cin >> presentDays;
@@ -295,9 +334,9 @@ int fpresentDays(bool edit = false, bool adv = false) {
 int fshiftType(bool edit = false) {
     if (!edit) {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays);
         //Ask for shift type
         std::cout << "\t\t\tState the shift type (1 - Regular, 2 - Night): ";
         shiftType = _getch();
@@ -315,9 +354,9 @@ int fshiftType(bool edit = false) {
     }
     else if (edit) {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for shift type
         std::cout << "\t\t\tEdit the shift type (1 - Regular, 2 - Night): ";
         shiftType = _getch();
@@ -339,9 +378,9 @@ int fshiftType(bool edit = false) {
 int fdependencyType(bool edit = false) {
     if (!edit) {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType);
         //Ask for dependency
         std::cout << "\t\t\tState the dependency type (1 - With, 2 - Without): ";
         dependencyStatus = _getch();
@@ -359,9 +398,9 @@ int fdependencyType(bool edit = false) {
     }
     else if (edit) {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask for dependency
         std::cout << "\t\t\tEdit the dependency type (1 - With, 2 - Without): ";
         dependencyStatus = _getch();
@@ -382,9 +421,9 @@ int fdependencyType(bool edit = false) {
 // Question - Result
 void fcalculateBasic() {
     //  Clear before processing then display the data values
-    system("cls");
+    //system("cls");
     printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+    printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
     double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
     //Compute
     if (employeeCode != 'D' && employeeCode != 'd') {
@@ -408,14 +447,14 @@ int showBasicSummary() {
     int a = 0;
     if (employeeCode != 'd' && employeeCode != 'D') {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 2-5: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-5: ";
 
         std::cin >> a;
         //  Check std::cin value
@@ -429,6 +468,10 @@ int showBasicSummary() {
             fcalculateBasic();
             return 0;
             break;
+        case 1:
+            if (femployeeName(true) == 0) {
+                showBasicSummary();
+            }
         case 2:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
@@ -458,14 +501,14 @@ int showBasicSummary() {
     }
     else if (employeeCode == 'd' || employeeCode == 'D') {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tPress enter if it's final. If not, pick a value from 2-6: ";
+            << "\t\tEnter 0 if it's final. If not, pick a value from 1-6: ";
 
         std::cin >> a;
         //  Check std::cin value
@@ -479,6 +522,10 @@ int showBasicSummary() {
             fcalculateBasic();
             return 0;
             break;
+        case 1:
+            if (femployeeName(true) == 0) {
+                showBasicSummary();
+            }
         case 2:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
@@ -525,9 +572,9 @@ int fpresentInHoliday(bool edit = false) {
         }
         else {
             //Ask for present in holidays
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of days present in holidays: ";
             std::cin >> numberOfPresentOnHoliday;
@@ -562,9 +609,9 @@ int fpresentInHoliday(bool edit = false) {
         }
         else {
             //Ask for present in holidays
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of days present in holidays: ";
             std::cin >> numberOfPresentOnHoliday;
@@ -601,9 +648,9 @@ int fpresentInRest(bool edit = false) {
             return 0;
         }
         else {
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
             //Ask for present in rest days
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of days present in rest day: ";
@@ -638,9 +685,9 @@ int fpresentInRest(bool edit = false) {
             return 0;
         }
         else {
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday);
             //Ask for present in rest days
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of days present in rest day: ";
@@ -678,9 +725,9 @@ int fpresentInHoliRest(bool edit = false) {
             return 0;
         }
         else {
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
             //Ask for present in holi-rest days
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tState the number of days present in holiday at the same time rest day: ";
@@ -727,9 +774,9 @@ int fpresentInHoliRest(bool edit = false) {
             return 0;
         }
         else {
-            system("cls");
+            //system("cls");
             printHead();
-            printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
+            printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay);
             //Ask for present in holi-rest days
             std::cout << "\t\t\tTotal number of present days: " << totalPresentDays << std::endl;
             std::cout << "\t\t\tEdit the number of days present in holiday at the same time rest day: ";
@@ -772,9 +819,9 @@ int fpresentInHoliRest(bool edit = false) {
 
 
 int overtimeHours(bool edit = false) {
-    system("cls");
+    //system("cls");
     printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
+    printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay);
     if (!edit) {
         //Ask for Regular OT hours
         std::cout << "\t\t\tState the number of regular day overtime hours: ";
@@ -813,9 +860,9 @@ int overtimeHoursSpecial(bool edit = false) {
         std::cout << "\t\t\tEmployee isn't present in any special day. Skipping special overtime...";
         return 0;
     }
-    system("cls");
+    //system("cls");
     printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
+    printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours);
     if (!edit) {
         //Ask for present in holi-rest days
         std::cout << "\t\t\tState the number of special day overtime hours (this includes: Rest Day and Holidays): ";
@@ -857,14 +904,14 @@ int showSummaryAdvance() {
     int a = 0;
     if (employeeCode != 'd' && employeeCode != 'D') {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tPress enter if it's final. Pick a value from 2-10: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-10: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -877,6 +924,10 @@ int showSummaryAdvance() {
             fcalculateAdvance();
             return 0;
             break;
+        case 1:
+            if (femployeeName(true) == 0) {
+                showSummaryAdvance();
+            }
         case 2:
             if (femployeeCode(true) == 0) {
                 showSummaryAdvance();
@@ -929,14 +980,14 @@ int showSummaryAdvance() {
     }
     else if (employeeCode == 'd' || employeeCode == 'D') {
         //Clear
-        system("cls");
+        //system("cls");
         printHead();
-        printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+        printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tPress enter if it's final. Pick a value from 2-11: ";
+            << "\t\tPress enter if it's final. Pick a value from 1-11: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -949,6 +1000,10 @@ int showSummaryAdvance() {
             fcalculateAdvance();
             return 0;
             break;
+        case 1:
+            if (femployeeName(true) == 0) {
+                showSummaryAdvance();
+            }
         case 2:
             if (femployeeCode(true) == 0) {
                 showSummaryAdvance();
@@ -1008,9 +1063,9 @@ int showSummaryAdvance() {
 
 void fcalculateAdvance() {
     //Compute Gross Pay
-    system("cls");
+    //system("cls");
     printHead();
-    printOutValues(calcuType, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+    printOutValues(calcuType, name, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
     double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
     //Compute
     if (employeeCode != 'D' && employeeCode != 'd') {

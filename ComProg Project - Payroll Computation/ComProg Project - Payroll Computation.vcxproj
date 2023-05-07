@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="checkuserinput.h" />
     <ClInclude Include="errorHandling.h" />
+    <ClInclude Include="fileHandling.h" />
     <ClInclude Include="grosspay.h" />
     <ClInclude Include="netpay.h" />
     <ClInclude Include="password.h" />
