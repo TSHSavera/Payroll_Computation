@@ -49,7 +49,7 @@ int calculationType() {
     
 }
 
-int femployeeName_first(bool edit = false) {
+int femployeeName(bool edit = false) {
     if (!edit) {
         //Clear
         //system("cls");
@@ -63,7 +63,7 @@ int femployeeName_first(bool edit = false) {
         if (name == " ") {
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
-            femployeeName_first();
+            femployeeName();
         }
     }
     else if (edit) {
@@ -79,83 +79,12 @@ int femployeeName_first(bool edit = false) {
         if (name == " ") {
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
-            femployeeName_first();
+            femployeeName();
         }
     }
     return 0;
 }
 
-int femployeeName_mid(bool edit = false) {
-    if (!edit) {
-        //Clear
-        //system("cls");
-        printHead();
-        printOutValues(calcuType);
-        //Ask
-        std::cout << "\t\t\tEnter employee name: ";
-        std::cin.ignore();
-        std::getline(std::cin, name);
-        //Perform Checks
-        if (name == " ") {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            femployeeName_mid();
-        }
-    }
-    else if (edit) {
-        //Clear
-        //system("cls");
-        printHead();
-        printOutValues(calcuType);
-        //Ask
-        std::cout << "\t\t\tEdit employee name: ";
-        std::cin.ignore();
-        std::getline(std::cin, name);
-        //Perform Checks
-        if (name == " ") {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            femployeeName_mid();
-        }
-    }
-    return 0;
-}
-
-int femployeeName_last(bool edit = false) {
-    if (!edit) {
-        //Clear
-        //system("cls");
-        printHead();
-        printOutValues(calcuType);
-        //Ask
-        std::cout << "\t\t\tEnter employee name: ";
-        std::cin.ignore();
-        std::getline(std::cin, name);
-        //Perform Checks
-        if (name == " ") {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            femployeeName_last();
-        }
-    }
-    else if (edit) {
-        //Clear
-        //system("cls");
-        printHead();
-        printOutValues(calcuType);
-        //Ask
-        std::cout << "\t\t\tEdit employee name: ";
-        std::cin.ignore();
-        std::getline(std::cin, name);
-        //Perform Checks
-        if (name == " ") {
-            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-            system("pause");
-            femployeeName_last();
-        }
-    }
-    return 0;
-}
 int femployeeCode(bool edit = false) {
 
     if (!edit) {
@@ -540,33 +469,25 @@ int showBasicSummary() {
             return 0;
             break;
         case 1:
-            if (femployeeName_first(true) == 0) {
+            if (femployeeName(true) == 0) {
                 showBasicSummary();
             }
         case 2:
-            if (femployeeName_mid(true) == 0) {
-                showBasicSummary();
-            }
-        case 3:
-            if (femployeeName_last(true) == 0) {
-                showBasicSummary();
-            }
-        case 4:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 5:
+        case 3:
             if (fpresentDays(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 6:
+        case 4:
             if (fshiftType(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 7:
+        case 5:
             if (fdependencyType(true) == 0) {
                 showBasicSummary();
             }
@@ -602,38 +523,30 @@ int showBasicSummary() {
             return 0;
             break;
         case 1:
-            if (femployeeName_first(true) == 0) {
+            if (femployeeName(true) == 0) {
                 showBasicSummary();
             }
         case 2:
-            if (femployeeName_mid(true) == 0) {
-                showBasicSummary();
-            }
-        case 3:
-            if (femployeeName_last(true) == 0) {
-                showBasicSummary();
-            }
-        case 4:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 5:
+        case 3:
             if (fcCustomEmployeeRate(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 6:
+        case 4:
             if (fpresentDays(true) == 0) {
                 showBasicSummary();
             } 
             break;
-        case 7:
+        case 5:
             if (fshiftType(true) == 0) {
                 showBasicSummary();
             }
             break;
-        case 8:
+        case 6:
             if (fdependencyType(true) == 0) {
                 showBasicSummary();
             }
@@ -1012,57 +925,49 @@ int showSummaryAdvance() {
             return 0;
             break;
         case 1:
-            if (femployeeName_first(true) == 0) {
+            if (femployeeName(true) == 0) {
                 showSummaryAdvance();
             }
         case 2:
-            if (femployeeName_mid(true) == 0) {
-                showBasicSummary();
-            }
-        case 3:
-            if (femployeeName_last(true) == 0) {
-                showBasicSummary();
-            }
-        case 4:
             if (femployeeCode(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 5:
+        case 3:
             if (fpresentDays(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 6:
+        case 4:
             if (fshiftType(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 7:
+        case 5:
             if (fdependencyType(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 8:
+        case 6:
             if (fpresentInHoliday(true)) {
                 showSummaryAdvance();
             }
             break;
-        case 9:
+        case 7:
             if (fpresentInRest(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 10:
+        case 8:
             if (fpresentInHoliRest(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 11:
+        case 9:
             if (overtimeHours(true) == 0) {
                 showSummaryAdvance();
             }
-        case 12:
+        case 10:
             if (overtimeHoursSpecial(true) == 0) {
                 showSummaryAdvance();
             }
@@ -1096,61 +1001,53 @@ int showSummaryAdvance() {
             return 0;
             break;
         case 1:
-            if (femployeeName_first(true) == 0) {
+            if (femployeeName(true) == 0) {
                 showSummaryAdvance();
             }
         case 2:
-            if (femployeeName_mid(true) == 0) {
-                showBasicSummary();
-            }
-        case 3:
-            if (femployeeName_last(true) == 0) {
-                showBasicSummary();
-            }
-        case 4:
             if (femployeeCode(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 5:
+        case 3:
             if (fcCustomEmployeeRate(true) == 0) {
                 showSummaryAdvance();
             }
-        case 6:
+        case 4:
             if (fpresentDays(true, true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 7:
+        case 5:
             if (fshiftType(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 8:
+        case 6:
             if (fdependencyType(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 9:
+        case 7:
             if (fpresentInHoliday(true)) {
                 showSummaryAdvance();
             }
             break;
-        case 10:
+        case 8:
             if (fpresentInRest(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 11:
+        case 9:
             if (fpresentInHoliRest(true) == 0) {
                 showSummaryAdvance();
             }
             break;
-        case 12:
+        case 10:
             if (overtimeHours(true) == 0) {
                 showSummaryAdvance();
             }
-        case 13:
+        case 11:
             if (overtimeHoursSpecial(true) == 0) {
                 showSummaryAdvance();
             }

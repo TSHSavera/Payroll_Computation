@@ -12,11 +12,10 @@ int tryAgain(bool start = false) {
 		std::cout
 			<< "Welcome! What would you like to do?" << std::endl
 			<< "[1] Payroll Computation" << std::endl
-			<< "[2] Edit Name" << std::endl
-			<< "[3] Edit Variables" << std::endl
-			<< "[4] Load Employee Data" << std::endl
-			<< "[5] Load Config File"
-			<< "[6] Save Config and Preferences" << std::endl;
+			<< "[2] Edit Variables" << std::endl
+			<< "[3] Load Employee Data" << std::endl
+			<< "[4] Load Config File"
+			<< "[5] Save Config and Preferences" << std::endl;
 		a = _getch();
 
 		//Check
