@@ -14,10 +14,9 @@
 //Global Variables
 std::string evaluationError = "";
 
+
 //Main Function
 int main() {
-    //std::string calcuTypeText;
-
     //  Enter Password
     //cEnterPassword:
     if (enterPassword() == -1) {
@@ -29,135 +28,63 @@ int main() {
         exit(0);
     }
 
-
-
-    //Function Variables
-    start:
-    char calcuType = calculationType();
     
 
 
-    //Check calcuType
-    if (calcuType == '1') {
-        if (femployeeName() == 0) {
-            //Only Asks for Basics
-            int a = femployeeCode();
+    start:
+    int a = menu();
 
-            //  Chapter - Employee Code Main
-            if (a == 0) {
-                //  Chapter - Present Days
-                //Go code without fcCustomEmployee
-                if (fpresentDays() == 0) {
-                    //  Chapter - Shift Type
-                    if (fshiftType() == 0) {
-                        //  Chapter - Dependency
-                        if (fdependencyType() == 0) {
-                            //  Chapter - Summary before processing
-                            if (showBasicSummary() == 0) {
-                                // TODO: IF TA RETURNS 1 GOTO START AGAIN, ELSE EXIT.
-                                tryAgain();
-                            }
-                        }
-                    }
-                }
-            }
-            if (a == 1) {
-                //  Chapter - Custom Employee Rate
-                if (fcCustomEmployeeRate() == 0) {
-                    //  Chapter - Present Days
-                    if (fpresentDays() == 0) {
-                        //  Chapter - Shift Type
-                        if (fshiftType() == 0) {
-                            //  Chapter - Dependency
-                            if (fdependencyType() == 0) {
-                                //  Chapter - Summary before processing
-                                if (showBasicSummary() == 0) {
-                                    tryAgain();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    if (a == '1') {
+        //Call pc
+        int b = pc(cc);
+        if (b == 0) {
+            goto start;
         }
     }
-    else if (calcuType == '2') {
-        if (femployeeName() == 0) {
-            //Only ask for advanced
-            int a = femployeeCode();
-
-            //  Chapter - Employee Code Main
-            if (a == 0) {
-                //  Chapter - Present Days
-                //Go code without fcCustomEmployee
-                if (fpresentDays(false, true) == 0) {
-                    //  Chapter - Shift Type
-                    if (fshiftType() == 0) {
-                        //  Chapter - Dependency
-                        if (fdependencyType() == 0) {
-                            //  Chapter - Number of days present in holidays
-                            if (fpresentInHoliday() == 0) {
-                                //  Chapter - Number of days present in rest
-                                if (fpresentInRest() == 0) {
-                                    //  Chapter - Number of days present in holirest
-                                    if (fpresentInHoliRest() == 0) {
-                                        //  Chapter - Number of overtime hours
-                                        if (overtimeHours() == 0) {
-                                            //  Chapter - Number of special overtime hours
-                                            if (overtimeHoursSpecial() == 0) {
-                                                //  Chapter - Summary before processing
-                                                if (showSummaryAdvance() == 0) {
-                                                    tryAgain();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (a == 1) {
-                //  Chapter - Custom Employee Rate
-                if (fcCustomEmployeeRate() == 0) {
-                    //  Chapter - Present Days
-                    if (fpresentDays(false, true) == 0) {
-                        //  Chapter - Shift Type
-                        if (fshiftType() == 0) {
-                            //  Chapter - Dependency
-                            if (fdependencyType() == 0) {
-                                //  Chapter - Number of days present in holidays
-                                if (fpresentInHoliday() == 0) {
-                                    //  Chapter - Number of days present in rest
-                                    if (fpresentInRest() == 0) {
-                                        //  Chapter - Number of days present in holirest
-                                        if (fpresentInHoliRest() == 0) {
-                                            //  Chapter - Number of overtime hours
-                                            if (overtimeHours() == 0) {
-                                                //  Chapter - Number of special overtime hours
-                                                if (overtimeHoursSpecial() == 0) {
-                                                    //  Chapter - Summary before processing
-                                                    if (showSummaryAdvance() == 0) {
-                                                        tryAgain();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    else if (a == '2') {
+        //Call ev
+        int c = ev();
+        if (c == 0) {
+            goto start;
         }
+    }
+    else if (a == '3') {
+        //Call led
+        int d = 0;
+        if (d == 0) {
+            goto start;
+        }
+    }
+    else if (a == '4') {
+        //Call lcf
+        int e = 0;
+        if (e == 0) {
+            goto start;
+        }
+    }
+    else if (a == '5') {
+        //Call sc
+        int f = 0;
+        if (f == 0) {
+            goto start;
+        }
+    }
+    else if (a == '6') {
+        //Call se
+        int g = 0;
+        if (g == 0) {
+            goto start;
+        }
+    }
+    else if (a == 'e' || a == 'E') {
+        //Exit
+        goto exit;
     }
     else {
-        std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
-        system("pause");
-        calculationType();
+        goto start;
     }
+
+    
     
     exit:
     std::cout << "\t\t\tThank you for using our program!" << std::endl << "\t\t\t";
