@@ -13,13 +13,13 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
             std::cout << "\t+-----------------------------------------+" << std::endl;
         }
         else if (calcuType == '2') {
-            std::cout << "\t| 0. Calculation Type: Advance\t\t |" << std::endl;
+            std::cout << "\t| 0. Calculation Type: Advance\t\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
         }
     }
 
     if (fname != " ") {
-        std::cout << "\t| 1. First Name: " << fname << "\t\t          |" << std::endl;
+        std::cout << "\t| 1. First Name: " << fname << "\t          |" << std::endl;
         std::cout << "\t+-----------------------------------------+" << std::endl; 
     }
     if (mname != " ") {
@@ -37,7 +37,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
 
             std::cout << "\t| 4. Employee Code: " << employeeCode << "\t\t\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
-            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t\t  |" << std::endl;
+            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t          |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
 
             if (presentDays != -1) {
@@ -51,7 +51,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
                     std::cout << "\t+-----------------------------------------+" << std::endl;
                 }
                 else if (shiftType == '2') {
-                    std::cout << "\t| 7. Shift Type: Night Shift" << " \t\t |" << std::endl;
+                    std::cout << "\t| 7. Shift Type: Night Shift" << " \t\t  |" << std::endl;
                     std::cout << "\t+-----------------------------------------+" << std::endl;
                 }
             }
@@ -79,7 +79,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
             }
 
             if (numberOfPresentOnRestHoliDay != -1) {
-                std::cout << "\t| 11. Number of Present on Rest/Holiday: " << numberOfPresentOnRestHoliDay << " |" << std::endl;
+                std::cout << "\t| 11. Number of Present on Rest/Holiday: " << numberOfPresentOnRestHoliDay << "|" << std::endl;
                 std::cout << "\t+-----------------------------------------+" << std::endl;
             }
 
@@ -136,7 +136,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
             }
 
             if (numberOfPresentOnRestHoliDay != -1) {
-                std::cout << "\t| 10. Number of Present on Rest/Holiday: " << numberOfPresentOnRestHoliDay << " |" << std::endl;
+                std::cout << "\t| 10. Number of Present on Rest/Holiday: " << numberOfPresentOnRestHoliDay << "|" << std::endl;
                 std::cout << "\t+-----------------------------------------+" << std::endl;
             }
 

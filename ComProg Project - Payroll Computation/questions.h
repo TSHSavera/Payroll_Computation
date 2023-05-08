@@ -722,7 +722,7 @@ int showBasicSummary() {
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-5: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-7: ";
 
         std::cin >> a;
         //  Check std::cin value
@@ -785,7 +785,7 @@ int showBasicSummary() {
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. If not, pick a value from 1-6: ";
+            << "\t\tEnter 0 if it's final. If not, pick a value from 1-8: ";
 
         std::cin >> a;
         //  Check std::cin value
@@ -1211,7 +1211,7 @@ int showSummaryAdvance() {
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-10: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-12: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -1296,7 +1296,7 @@ int showSummaryAdvance() {
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-11: ";
+            << "\t\tEnter 0 if it's final. Pick a value from 1-13: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -1401,9 +1401,9 @@ void fcalculateAdvance() {
             << "\t\+-----------------------------------------+" << std::endl
             << "\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t|\tTax: PHP " << computedTaxDependency << "   |" << std::endl
+            << "\t|\tTax: PHP " << computedTaxDependency << " \t\t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t|\tNet Pay: PHP " << computedNetPay << "  |" << std::endl
+            << "\t|\tNet Pay: PHP " << computedNetPay << "\t \t  |" << std::endl
             << "\t\+-----------------------------------------+\n\n" << std::endl;
     }
     else {
@@ -1421,9 +1421,9 @@ void fcalculateAdvance() {
             << "\t\+-----------------------------------------+" << std::endl
             << "\t|\tGross Pay : PHP " << computedGrossPay << "    \t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t|\tTax: PHP " << computedTaxDependency << "\t  |" << std::endl
+            << "\t|\tTax: PHP " << computedTaxDependency << "\t  \t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t|\tNet Pay: PHP " << computedNetPay << "  |" << std::endl
+            << "\t|\tNet Pay: PHP " << computedNetPay << "\t \t  |" << std::endl
             << "\t\+-----------------------------------------+\n\n" << std::endl;
     }
 }
@@ -1458,7 +1458,7 @@ int loadEditEmployeeData(std::string id, char ct, std::string fn, std::string mn
         std::cout
             << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
             << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. If not, pick a value from 1-6: ";
+            << "\t\tEnter 0 if it's final. If not, pick a value from 1-8: ";
         int a = 0;
         std::cin >> a;
         //  Check std::cin value
