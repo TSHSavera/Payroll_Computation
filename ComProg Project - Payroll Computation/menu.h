@@ -29,16 +29,17 @@ char menu(bool pc = false) {
 		//Ask use what they want to do
 		printHead();
         std::cout
-            << "Welcome! What would you like to do?" << std::endl
-            << "[1] Payroll Computation" << std::endl
-            << "[2] Edit Variables" << std::endl
-            << "[3] Load Employee Data" << std::endl
-            << "[4] Load Config File" << std::endl
-            << "[5] Save Config" << std::endl
-            << "[6] Delete Employee Data" << std::endl
-            << "[E] Exit" << std::endl;
+            << "\t| Welcome! What would you like to do?\t  |" << std::endl
+            << "\t|[1] Payroll Computation\t\t  |" << std::endl
+            << "\t|[2] Edit Variables\t\t\t  |" << std::endl
+            << "\t|[3] Load Employee Data\t\t\t  |" << std::endl
+            << "\t|[4] Load Config File\t\t\t  |" << std::endl
+            << "\t|[5] Save Config\t\t\t  |" << std::endl
+            << "\t|[6] Delete Employee Data\t\t  |" << std::endl
+            << "\t|[E] Exit\t\t\t\t  |" << std::endl
+            << " \t+-----------------------------------------+" << std::endl;
 		a = _getch();
-
+        
 		//Send the value to main function
 		return a;
 	}

@@ -37,7 +37,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
 
             std::cout << "\t| 4. Employee Code: " << employeeCode << "\t\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
-            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t\t   |" << std::endl;
+            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate <<\t\t"  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
 
             if (presentDays != -1) {
@@ -162,8 +162,8 @@ void printHead() {
     //  Print Head
     std::cout << std::endl;
     std::cout << "\t\+-----------------------------------------+" << std::endl;
-    std::cout << "\t\|          PAYROLL COMPUTATION            |" << std::endl;
-    std::cout << "\t\|                                         |" << std::endl;
+    std::cout << "\t\|                PAY TECH                 |" << std::endl;
+    std::cout << "\t\|         -- precision payroll --         |" << std::endl;
     std::cout << "\t\+-----------------------------------------+" << std::endl;
 }
 

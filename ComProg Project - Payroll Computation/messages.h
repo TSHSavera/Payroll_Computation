@@ -40,19 +40,19 @@ std::string wrongMessages(int number) {
         break;
 
     case 2:
-        return "\n\n\t It seems you've failed to follow the conditions. Retrying...\n\n";
+        return "\n\n\tIt seems you've failed to follow the conditions. Retrying...\n\n";
         break;
 
     case 3:
-        return "\n\n\t There was a mistake in your input. Going back up...\n\n";
+        return "\n\n\tThere was a mistake in your input. Going back up...\n\n";
         break;
 
     case 4:
-        return "\n\n\t Let's try to avoid that mistake next time. Re-enter that data needed...\n\n";
+        return "\n\n\tLet's try to avoid that mistake next time. Re-enter that data needed...\n\n";
         break;
 
     case 5:
-        return "\n\n\t Let me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
+        return "\n\n\tLet me guess, you have a typographical error. Don't worry, we'll return to the previous question...\n\n";
         break;
 
     default:

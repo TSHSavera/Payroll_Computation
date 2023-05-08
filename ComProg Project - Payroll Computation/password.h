@@ -10,8 +10,11 @@ int enterPassword() {
     for (int i = 0; i < 3; i++) {
         system("cls");
 	    //Start Asking
+        std::cout << std::endl;
         std::cout << "\t\+-----------------------------------------+" << std::endl;
-        std::cout << "\t|          PAYROLL COMPUTATION            |" << std::endl;
+        std::cout << "\t\|            *--- WELCOME! ---*           |" << std::endl;
+        std::cout << "\t\|             *** PAY TECH ***            |" << std::endl;
+        std::cout << "\t\|        *-- precision payroll --*        |" << std::endl;
         std::cout << "\t\+-----------------------------------------+" << std::endl;
         std::cout << "\tYou have " << i+1 << "/ 3 Attempts\n" << std::endl;
         std::cout << "\tENTER PASSCODE: ";
