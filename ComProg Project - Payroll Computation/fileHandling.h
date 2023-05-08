@@ -47,6 +47,12 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 		std::string b = id;
 		std::string a = b + ".empf";
 		std::ofstream employeeFile(a, std::ofstream::trunc);
+		if (!employeeFile) {
+			std::cerr << "Error loading file: File not found" << std::endl;
+			system("pause");
+			return;
+		}
+		
 
 		//Write employeeData
 		employeeFile
@@ -78,6 +84,11 @@ void loadEmployeeFile(std::string id) {
 	std::string a = id + ".empf";
 	std::string content = " ";
 	std::ifstream employeeFile(a);
+	if (!employeeFile) {
+		std::cerr << "Error loading file: File not found" << std::endl;
+		system("pause");
+		return;
+	}
 	std::string P;
 	int n = 0;
 	char ct, st, ds = ' ';
@@ -147,6 +158,11 @@ void loadEmployeeFile(std::string id) {
 void saveConfig(double ccArr[3], int rngArr[2]) {
 	std::string config = "config";
 	std::ofstream configFile(config, std::ofstream::trunc);
+	if (!configFile) {
+		std::cerr << "Error loading file: File not found" << std::endl;
+		system("pause");
+		return;
+	}
 
 	//Write config
 	configFile
@@ -165,6 +181,11 @@ void loadConfig() {
 	std::string a = "config";
 	std::string content = " ";
 	std::ifstream configFile(a);
+	if (!configFile) {
+		std::cerr << "Error loading file: File not found" << std::endl;
+		system("pause");
+		return;
+	}
 	std::string P;
 	int n = 0;
 

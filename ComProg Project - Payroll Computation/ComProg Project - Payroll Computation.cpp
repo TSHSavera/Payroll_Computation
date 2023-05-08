@@ -68,8 +68,7 @@ int main() {
         startMenus();
     }
     
-    
-    std::cout << "\tThank you for using our program!" << std::endl << "\t";
+    std::cout << "\n\tThank you for using our program!" << std::endl << "\t";
     system("pause");
     exit(0);
 }

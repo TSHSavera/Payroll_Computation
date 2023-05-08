@@ -37,6 +37,7 @@ char menu(bool pc = false) {
             << "\t|[4] Delete Employee Data\t\t  |" << std::endl
             << "\t|[E] Exit\t\t\t\t  |" << std::endl
             << " \t+-----------------------------------------+" << std::endl;
+        std::cout << "\tChoose an operation: ";
 		a = _getch();
         
 		//Send the value to main function
@@ -186,7 +187,7 @@ int pc() {
 
 
 int led() {
-    std::cout << "Type employee ID: ";
+    std::cout << std::endl << "Type employee ID: ";
     std::string a = " ";
     std::cin >> a;
     loadEmployeeFile(a);
