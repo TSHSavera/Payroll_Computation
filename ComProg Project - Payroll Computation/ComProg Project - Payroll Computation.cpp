@@ -36,22 +36,8 @@ bool startMenus(bool prc = false) {
         }
     }
     else if (a == '4') {
-        //Call lcf
-        int e = 0;
-        if (e == 0) {
-            startMenus();
-        }
-    }
-    else if (a == '5') {
-        //Call sc
-        int f = 0;
-        if (f == 0) {
-            startMenus();
-        }
-    }
-    else if (a == '6') {
         //Call se
-        int g = se();
+        int g = dempf();
         if (g == 0) {
             startMenus();
         }

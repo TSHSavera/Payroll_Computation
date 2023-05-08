@@ -3,6 +3,7 @@
 #include "print.h"
 #include "fileHandling.h"
 #include <conio.h>
+#include <stdio.h>
 
 int calculationType();
 int femployeeName_first(bool);
@@ -31,11 +32,9 @@ char menu(bool pc = false) {
         std::cout
             << "\t| Welcome! What would you like to do?\t  |" << std::endl
             << "\t|[1] Payroll Computation\t\t  |" << std::endl
-            << "\t|[2] Edit Variables\t\t\t  |" << std::endl
+            << "\t|[2] Settings\t\t\t  |" << std::endl
             << "\t|[3] Load Employee Data\t\t\t  |" << std::endl
-            << "\t|[4] Load Config File\t\t\t  |" << std::endl
-            << "\t|[5] Save Config\t\t\t  |" << std::endl
-            << "\t|[6] Delete Employee Data\t\t  |" << std::endl
+            << "\t|[4] Delete Employee Data\t\t  |" << std::endl
             << "\t|[E] Exit\t\t\t\t  |" << std::endl
             << " \t+-----------------------------------------+" << std::endl;
 		a = _getch();
@@ -193,7 +192,29 @@ int led() {
     loadEmployeeFile(a);
     return 0;
 }
-int se() {
-    createEmployeeFile('1', "tangina", "tangina", "tangina", 250.0, 23, '2', '2', 2, 2, 2, 24, 24, 26000.00, 2000.00, 24000.00);
+int dempf() {
+    //Clear
+    system("cls");
+    //Ask for the ID you want to remove
+    std::string id, ext = ".empf", file;
+    char idHandler[100];
+    std::cout << "Enter the employee ID you want to remove. Enter C to cancel operation: ";
+    std::cin >> id;
+    file = id + ext;
+    strcpy_s(idHandler, 100, file.c_str());
+
+    if (id == "C" || id == "c") {
+        return 0;
+    }
+    
+    if (remove(idHandler) != 0) {
+        perror("Error Deleting");
+        system("pause");
+        dempf();
+    }
+    else {
+        std::cout << "Successfully removed employee with ID: " << id << std::endl;
+        system("pause");
+    }
     return 0;
 }
