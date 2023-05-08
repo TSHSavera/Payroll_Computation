@@ -24,6 +24,23 @@ double grossPay = 0.00, netPay = 0.00, tax = 0.00, customEmployeeRate = -1;
 char calcuType = '0', shiftType = '0', dependencyStatus = '0';
 //Custom codes
 double cc[3] = { 250.0, 320.0,450.0 };
+int rng[2] = {100000, 999999};
+
+int getRngLimits(int limit) {
+    if (limit == 1) {
+        return rng[0];
+    }
+    else if (limit == 2) {
+        return rng[1];
+    }
+}
+
+int randomizer(int ll, int ul) {
+    //RNG
+    srand((unsigned)time(NULL));
+    int rng = ll + (rand()% ul);
+    return rng;
+}
 
 int ev() {
     char a = ' ';
@@ -31,12 +48,17 @@ int ev() {
     system("cls");
     //Ask
     std::cout
-        << "Edit variables " << std::endl
-        << "Current Values:" << std::endl
+        << "Edit config " << std::endl
+        << "Current default values for employee codes:" << std::endl
         << "[A] " << cc[0] << std::endl
         << "[B] " << cc[1] << std::endl
         << "[C] " << cc[2] << std::endl
-        << "[0] Exit Edit Variables" << std::endl
+        << std::endl
+        << "Current default values for ID Generation:" << std::endl
+        << "[D] " << rng[0] << std::endl
+        << "[E] " << rng[1] << std::endl
+        << std::endl
+        << "[0] Exit Edit Config" << std::endl
         << "Choose a letter to edit: ";
     a = _getch();
     
@@ -98,6 +120,47 @@ int ev() {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             goto cc2;
+        }
+        ev();
+    }
+
+    else if (a == 'D' || a == 'd') {
+        rng1:
+        //Edit rng[0]
+        std::cout << std::endl << "Enter a new value: ";
+        std::cin >> rng[0];
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t";
+            clearInvalid();
+            goto rng1;
+        }
+        //Check if negative
+        if (cc[0] <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t";
+            system("pause");
+            goto rng1;
+        }
+        ev();
+    }
+    else if (a == 'E' || a == 'e') {
+        rng2:
+        //Edit rng[1]
+        std::cout << std::endl << "Enter a new value: ";
+        std::cin >> rng[1];
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t";
+            clearInvalid();
+            goto rng2;
+        }
+        //Check if negative
+        if (cc[0] <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t";
+            system("pause");
+            goto rng2;
         }
         ev();
     }

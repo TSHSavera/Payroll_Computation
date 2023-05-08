@@ -32,7 +32,7 @@ char menu(bool pc = false) {
         std::cout
             << "\t| Welcome! What would you like to do?\t  |" << std::endl
             << "\t|[1] Payroll Computation\t\t  |" << std::endl
-            << "\t|[2] Edit Variables\t\t\t  |" << std::endl
+            << "\t|[2] Settings\t\t\t  |" << std::endl
             << "\t|[3] Load Employee Data\t\t\t  |" << std::endl
             << "\t|[4] Delete Employee Data\t\t  |" << std::endl
             << "\t|[E] Exit\t\t\t\t  |" << std::endl
