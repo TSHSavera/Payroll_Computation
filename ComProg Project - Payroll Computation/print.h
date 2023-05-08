@@ -167,16 +167,31 @@ void printHead() {
     std::cout << "\t\+-----------------------------------------+" << std::endl;
 }
 
-void printFinal(double gp = 0.00, double td = 0.00, double np = 0.00) {
-    std::cout
-        << std::fixed << std::setprecision(2)
-        << "\t\+-----------------------------------------+" << std::endl
-        << "\t\|             FINAL RESULTS           \t  |" << std::endl
-        << "\t\+-----------------------------------------+" << std::endl
-        << "\t\|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
-        << "\t\+-----------------------------------------+" << std::endl
-        << "\t\|\tTax: PHP " << td << "  |" << std::endl
-        << "\t\+-----------------------------------------+" << std::endl
-        << "\t\|\tNet Pay: PHP " << np << "  |" << std::endl
-        << "\t\+-----------------------------------------+\n\n" << std::endl;
+void printFinal(int type = 1,double gp = 0.00, double td = 0.00, double np = 0.00) {
+    if (type == 1) {
+        std::cout
+            << std::fixed << std::setprecision(2)
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|             FINAL RESULTS           \t  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tTax: PHP " << td << "  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tNet Pay: PHP " << np << "  |" << std::endl
+            << "\t\+-----------------------------------------+\n\n" << std::endl;
+    }
+    else if (type == 2) {
+        std::cout
+            << std::fixed << std::setprecision(2)
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|          COMPUTED RESULTS           \t  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tTax: PHP " << td << "  |" << std::endl
+            << "\t\+-----------------------------------------+" << std::endl
+            << "\t\|\tNet Pay: PHP " << np << "  |" << std::endl
+            << "\t\+-----------------------------------------+\n\n" << std::endl;
+    }
 }

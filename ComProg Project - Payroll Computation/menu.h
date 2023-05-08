@@ -21,10 +21,11 @@ int overtimeHours(bool);
 int overtimeHoursSpecial(bool);
 int showSummaryAdvance();
 
-char menu(bool pc) {
+char menu(bool pc = false) {
+    system("cls");
 	//Declare
 	char a = '0';
-	if (pc = false) {
+	if (!pc) {
 		//Ask use what they want to do
 		printHead();
         std::cout
@@ -34,24 +35,7 @@ char menu(bool pc) {
             << "[3] Load Employee Data" << std::endl
             << "[4] Load Config File" << std::endl
             << "[5] Save Config" << std::endl
-            << "[E] Exit" << std::endl;
-		a = _getch();
-
-		//Send the value to main function
-		return a;
-	}
-	else if (pc = true) {
-		//Ask use what they want to do
-		printHead();
-		std::cout
-			<< generateRandomMessage(3)
-			<< " What would you like to do?" << std::endl
-			<< "[1] Payroll Computation" << std::endl
-			<< "[2] Edit Variables" << std::endl
-			<< "[3] Load Employee Data" << std::endl
-			<< "[4] Load Config File" << std::endl
-			<< "[5] Save Config" << std::endl
-			<< "[6] Save Employee data into a file" << std::endl
+            << "[6] Delete Employee Data" << std::endl
             << "[E] Exit" << std::endl;
 		a = _getch();
 
@@ -63,8 +47,6 @@ char menu(bool pc) {
 int pc() {
     //Function Variables
     char calcuType = calculationType();
-
-
 
     //Check calcuType
     if (calcuType == '1') {
@@ -86,6 +68,7 @@ int pc() {
                                     //  Chapter - Summary before processing
                                     if (showBasicSummary() == 0) {
                                         // TODO: IF TA RETURNS 1 GOTO START AGAIN, ELSE EXIT.
+                                        system("pause");
                                         return 0;
                                     }
                                 }
@@ -103,6 +86,7 @@ int pc() {
                                     if (fdependencyType(false) == 0) {
                                         //  Chapter - Summary before processing
                                         if (showBasicSummary() == 0) {
+                                            system("pause");
                                             return 0;
                                         }
                                     }
@@ -142,6 +126,7 @@ int pc() {
                                                     if (overtimeHoursSpecial(false) == 0) {
                                                         //  Chapter - Summary before processing
                                                         if (showSummaryAdvance() == 0) {
+                                                            system("pause");
                                                             return 0;
                                                         }
                                                     }
@@ -174,6 +159,7 @@ int pc() {
                                                         if (overtimeHoursSpecial(false) == 0) {
                                                             //  Chapter - Summary before processing
                                                             if (showSummaryAdvance() == 0) {
+                                                                system("pause");
                                                                 return 0;
                                                             }
                                                         }
