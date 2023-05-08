@@ -196,25 +196,39 @@ int dempf() {
     //Clear
     system("cls");
     //Ask for the ID you want to remove
+    char a;
     std::string id, ext = ".empf", file;
     char idHandler[100];
     std::cout << "Enter the employee ID you want to remove. Enter C to cancel operation: ";
     std::cin >> id;
-    file = id + ext;
-    strcpy_s(idHandler, 100, file.c_str());
+    confirm:
+    system("cls");
+    std::cout << "Are you sure you want to delete employee with ID " << id << "? (Y/n): ";
+    a = _getch();
+    if (a == 'Y' || a == 'y') {
+        file = id + ext;
+        strcpy_s(idHandler, 100, file.c_str());
 
-    if (id == "C" || id == "c") {
+        if (id == "C" || id == "c") {
+            return 0;
+        }
+
+        if (remove(idHandler) != 0) {
+            perror("Error Deleting");
+            system("pause");
+            dempf();
+        }
+        else {
+            std::cout << std::endl << "Successfully removed employee with ID: " << id << std::endl;
+            system("pause");
+        }
         return 0;
     }
-    
-    if (remove(idHandler) != 0) {
-        perror("Error Deleting");
-        system("pause");
-        dempf();
+    else if (a == 'N' || a == 'n') {
+        return 0;
     }
     else {
-        std::cout << "Successfully removed employee with ID: " << id << std::endl;
-        system("pause");
+        goto confirm;
     }
-    return 0;
+    
 }
