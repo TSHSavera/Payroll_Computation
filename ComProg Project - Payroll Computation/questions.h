@@ -35,6 +35,13 @@ int getRngLimits(int limit) {
     }
 }
 
+void setCC(int index, double ccData) {
+    cc[index - 1] = ccData;
+}
+void setRng(int index, int rngData) {
+    rng[index - 1] = rngData;
+}
+
 int randomizer(int ll, int ul) {
     //RNG
     srand((unsigned)time(NULL));
@@ -58,7 +65,7 @@ int ev() {
         << "\t+--------------------------------------------+" << std::endl
         << std::endl
         << "\t+--------------------------------------------+" << std::endl
-        << "\t|Current default values for ID Generation:   |" << std::endl
+        << "\t|Current default limits for ID Generation:   |" << std::endl
         << "\t|\t[D] " << rng[0] <<" \t                     |" << std::endl
         << "\t|\t[E] " << rng[1] << " \t                     |"<<std::endl
         << "\t+--------------------------------------------+" << std::endl
@@ -174,6 +181,14 @@ int ev() {
         ev();
     }
     else if (a == '0') {
+        return 0;
+    }
+    else if (a == '1') {
+        saveConfig(cc, rng);
+        return 0;
+    }
+    else if (a == '2') {
+        loadConfig();
         return 0;
     }
     else {

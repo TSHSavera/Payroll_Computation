@@ -69,7 +69,6 @@ int main() {
     }
     
     
-    exit:
     std::cout << "\tThank you for using our program!" << std::endl << "\t";
     system("pause");
     exit(0);

@@ -9,6 +9,8 @@
 int loadEditEmployeeData(std::string, char, std::string, std::string, std::string, double, int, char, char, int, int, int, int, int, double, double, double);
 int randomizer(int, int);
 int getRngLimits(int);
+void setCC(int, double);
+void setRng(int, int);
 
 void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::string mname = " ", std::string lname = " ", double customEmployeeRate = -1, int presentDays = -1, char shiftType = ' ', char dependencyStatus = ' ', int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1, double computedGrosspay = 0.0, double computedTax = 0.0, double computedNetPay = 0.0, bool ow = false, std::string id = " ") {
 	if (!ow) {
@@ -66,8 +68,8 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 			<< "$" << computedNetPay
 			;
 
-		std::cout << "Changes were saved on: " << a << std::endl;
 		employeeFile.close();
+		std::cout << "Changes were saved on: " << a << std::endl;
 		system("pause");
 	}
 }
@@ -140,4 +142,59 @@ void loadEmployeeFile(std::string id) {
 	}
 
 	employeeFile.close();
+}
+
+void saveConfig(double ccArr[3], int rngArr[2]) {
+	std::string config = "config";
+	std::ofstream configFile(config, std::ofstream::trunc);
+
+	//Write config
+	configFile
+		<< "%" << ccArr[0]
+		<< "%" << ccArr[1]
+		<< "%" << ccArr[2]
+		<< "%" << rngArr[0]
+		<< "%" << rngArr[1];
+
+	configFile.close();
+	std::cout << std:: endl << "Config file saved!" << std::endl;
+	system("pause");
+}
+
+void loadConfig() {
+	std::string a = "config";
+	std::string content = " ";
+	std::ifstream configFile(a);
+	std::string P;
+	int n = 0;
+
+	while (std::getline(configFile, content)) {
+		std::stringstream T(content);
+		while (std::getline(T, P, '%')) {
+			if (n == 1) {
+				std::cout << P;
+				setCC(1, std::stod(P));
+			}
+			else if (n == 2) {
+				std::cout << P;
+				setCC(2, std::stod(P));
+			}
+			else if (n == 3) {
+				std::cout << P;
+				setCC(3, std::stod(P));
+			}
+			else if (n == 4) {
+				std::cout << P;
+				setRng(1, std::stoi(P));
+			}
+			else if (n == 5) {
+				std::cout << P;
+				setRng(2, std::stoi(P));
+			}
+			n++;
+ 		}
+		configFile.close();
+		std::cout << "Successfully loaded the config file!" << std::endl;
+		system("pause");
+	}
 }
