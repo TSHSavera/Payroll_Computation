@@ -51,7 +51,7 @@ bool startMenus(bool prc = false) {
     }
     else if (a == '6') {
         //Call se
-        int g = se();
+        int g = dempf();
         if (g == 0) {
             startMenus();
         }
