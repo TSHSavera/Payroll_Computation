@@ -1,8 +1,5 @@
 #include <iostream>
-#include <iomanip>
-#include <climits>
-#include <cctype>
-#include <string>
+
 //User Defined
 #include "password.h"
 #include "errorHandling.h"
@@ -14,10 +11,48 @@
 //Global Variables
 std::string evaluationError = "";
 
+bool startMenus(bool prc = false) {
+    int a = menu(prc);
+
+    if (a == '1') {
+        //Call pc
+        int b = pc();
+        if (b == 0) {
+            startMenus(true);
+        }
+    }
+    else if (a == '2') {
+        //Call ev
+        int c = ev();
+        if (c == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '3') {
+        //Call led
+        int d = led();
+        if (d == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '4') {
+        //Call se
+        int g = dempf();
+        if (g == 0) {
+            startMenus();
+        }
+    }
+    else if (a == 'e' || a == 'E') {
+        //Exit
+        return true;
+    }
+    else {
+        startMenus();
+    }
+}
+
 //Main Function
 int main() {
-    //std::string calcuTypeText;
-
     //  Enter Password
     //cEnterPassword:
     if (enterPassword() == -1) {
@@ -28,138 +63,11 @@ int main() {
         system("pause");
         exit(0);
     }
-
-
-
-    //Function Variables
-    start:
-    char calcuType = calculationType();
     
-
-
-    //Check calcuType
-    if (calcuType == '1') {
-        if (femployeeName() == 0) {
-            //Only Asks for Basics
-            int a = femployeeCode();
-
-            //  Chapter - Employee Code Main
-            if (a == 0) {
-                //  Chapter - Present Days
-                //Go code without fcCustomEmployee
-                if (fpresentDays() == 0) {
-                    //  Chapter - Shift Type
-                    if (fshiftType() == 0) {
-                        //  Chapter - Dependency
-                        if (fdependencyType() == 0) {
-                            //  Chapter - Summary before processing
-                            if (showBasicSummary() == 0) {
-                                // TODO: IF TA RETURNS 1 GOTO START AGAIN, ELSE EXIT.
-                                tryAgain();
-                            }
-                        }
-                    }
-                }
-            }
-            if (a == 1) {
-                //  Chapter - Custom Employee Rate
-                if (fcCustomEmployeeRate() == 0) {
-                    //  Chapter - Present Days
-                    if (fpresentDays() == 0) {
-                        //  Chapter - Shift Type
-                        if (fshiftType() == 0) {
-                            //  Chapter - Dependency
-                            if (fdependencyType() == 0) {
-                                //  Chapter - Summary before processing
-                                if (showBasicSummary() == 0) {
-                                    tryAgain();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else if (calcuType == '2') {
-        if (femployeeName() == 0) {
-            //Only ask for advanced
-            int a = femployeeCode();
-
-            //  Chapter - Employee Code Main
-            if (a == 0) {
-                //  Chapter - Present Days
-                //Go code without fcCustomEmployee
-                if (fpresentDays(false, true) == 0) {
-                    //  Chapter - Shift Type
-                    if (fshiftType() == 0) {
-                        //  Chapter - Dependency
-                        if (fdependencyType() == 0) {
-                            //  Chapter - Number of days present in holidays
-                            if (fpresentInHoliday() == 0) {
-                                //  Chapter - Number of days present in rest
-                                if (fpresentInRest() == 0) {
-                                    //  Chapter - Number of days present in holirest
-                                    if (fpresentInHoliRest() == 0) {
-                                        //  Chapter - Number of overtime hours
-                                        if (overtimeHours() == 0) {
-                                            //  Chapter - Number of special overtime hours
-                                            if (overtimeHoursSpecial() == 0) {
-                                                //  Chapter - Summary before processing
-                                                if (showSummaryAdvance() == 0) {
-                                                    tryAgain();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (a == 1) {
-                //  Chapter - Custom Employee Rate
-                if (fcCustomEmployeeRate() == 0) {
-                    //  Chapter - Present Days
-                    if (fpresentDays(false, true) == 0) {
-                        //  Chapter - Shift Type
-                        if (fshiftType() == 0) {
-                            //  Chapter - Dependency
-                            if (fdependencyType() == 0) {
-                                //  Chapter - Number of days present in holidays
-                                if (fpresentInHoliday() == 0) {
-                                    //  Chapter - Number of days present in rest
-                                    if (fpresentInRest() == 0) {
-                                        //  Chapter - Number of days present in holirest
-                                        if (fpresentInHoliRest() == 0) {
-                                            //  Chapter - Number of overtime hours
-                                            if (overtimeHours() == 0) {
-                                                //  Chapter - Number of special overtime hours
-                                                if (overtimeHoursSpecial() == 0) {
-                                                    //  Chapter - Summary before processing
-                                                    if (showSummaryAdvance() == 0) {
-                                                        tryAgain();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else {
-        std::cout << generateRandomMessage(1) << std::endl << "\t";
-        system("pause");
-        calculationType();
+    if (!startMenus()) {
+        startMenus();
     }
     
-    exit:
     std::cout << "\tThank you for using our program!" << std::endl << "\t";
     system("pause");
     exit(0);

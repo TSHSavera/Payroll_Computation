@@ -21,15 +21,15 @@ struct staticVal {
 };
 
 //  Gross Pay
-double computeGrossPay(char calculationType, char employeeCode, int numberOfPresentDays, char shiftType, double customDailyRate = 0.0, int presentOnHoliday = 0, int presentOnRestDay = 0, int presentOnRestHoliDay = 0, int overtimeHours = 0, int overtimeHoursOnRestDay = 0) {
+double computeGrossPay(double cc[3], char calculationType, char employeeCode, int numberOfPresentDays, char shiftType, double customDailyRate = 0.0, int presentOnHoliday = 0, int presentOnRestDay = 0, int presentOnRestHoliDay = 0, int overtimeHours = 0, int overtimeHoursOnRestDay = 0) {
     //Placeholders
     double grossPay = 0.00;
     staticVal staticA;
     //Assignment
     //Employee Codes
-    staticA.code1 = 250.0;
-    staticA.code2 = 320.0;
-    staticA.code3 = 450.0;
+    staticA.code1 = cc[0];
+    staticA.code2 = cc[1];
+    staticA.code3 = cc[2];
 
     //Special Days - Regular
     staticA.holidayMultiplier = 2.00;

@@ -11,7 +11,7 @@ std::string successMessages(int number) {
         break;
 
     case 2:
-        return "\tI've got that very clearly! ";
+        return "\tI've got that very clear! ";
         break;
 
     case 3:
