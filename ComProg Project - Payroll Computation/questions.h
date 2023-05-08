@@ -48,18 +48,27 @@ int ev() {
     system("cls");
     //Ask
     std::cout
-        << "Edit config " << std::endl
-        << "Current default values for employee codes:" << std::endl
-        << "[A] " << cc[0] << std::endl
-        << "[B] " << cc[1] << std::endl
-        << "[C] " << cc[2] << std::endl
+        << "\t+--------------------------------------------+" << std::endl
+        << "\t|               EDIT CONFIG                  | " << std::endl
+        << "\t+--------------------------------------------+" << std::endl
+        << "\t|Current default values for employee codes:  |" << std::endl
+        << "\t|\t[A]" << cc[0] <<" \t\t                     | "<< std::endl
+        << "\t|\t[B]" << cc[1] << "\t\t                     | "<<std::endl
+        << "\t|\t[C]" << cc[2] << "\t\t                     | "<<std::endl
+        << "\t+--------------------------------------------+" << std::endl
         << std::endl
-        << "Current default values for ID Generation:" << std::endl
-        << "[D] " << rng[0] << std::endl
-        << "[E] " << rng[1] << std::endl
+        << "\t+--------------------------------------------+" << std::endl
+        << "\t|Current default values for ID Generation:   |" << std::endl
+        << "\t|\t[D] " << rng[0] <<" \t                     |" << std::endl
+        << "\t|\t[E] " << rng[1] << " \t                     |"<<std::endl
+        << "\t+--------------------------------------------+" << std::endl
         << std::endl
-        << "[0] Exit Edit Config" << std::endl
-        << "Choose a letter to edit: ";
+        << "\t+--------------------------------------------+" << std::endl
+        << "\t|\t[0] Exit Edit Config \t             |" << std::endl
+        << "\t|\t[1] Save Config File\t             |" << std::endl
+        << "\t|\t[2] Load Config File\t             |" << std::endl
+        << "\t+--------------------------------------------+" << std::endl
+        << "\n\tChoose a letter to edit: ";
     a = _getch();
     
     //Check
