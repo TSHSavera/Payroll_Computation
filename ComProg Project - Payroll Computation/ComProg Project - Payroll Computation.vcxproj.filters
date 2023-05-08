@@ -19,4 +19,39 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grosspay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="print.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="checkuserinput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="netpay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="taxdep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="errorHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="password.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="questions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fileHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
