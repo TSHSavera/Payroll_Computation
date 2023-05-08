@@ -6,7 +6,7 @@
 int enterPassword() {
     //Initialize Variables
     char cpass;
-    std::string pass = " ";
+    std::string pass = "";
 
     for (int i = 0; i < 3; i++) {
         system("cls");
@@ -35,15 +35,14 @@ int enterPassword() {
             std::cout << '*';
             cpass = _getch();
         }
-        
 
         if (pass == "1234") {
             return 0;
         }
-        else {
-            pass.clear();
-        }
+        
+        std::cout << pass;
+        system("pause");
+        pass.clear();
     }
-    pass.clear();
     return -1;
 }

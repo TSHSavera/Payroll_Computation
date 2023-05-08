@@ -187,9 +187,12 @@ int pc() {
 
 
 int led() {
-    std::cout << std::endl << "Type employee ID: ";
-    std::string a = " ";
+    std::cout << std::endl << "\tType employee ID. Enter 0 to cancel: ";
+    std::string a = "";
     std::cin >> a;
+    if (a == "0") {
+        return 0;
+    }
     loadEmployeeFile(a);
     return 0;
 }

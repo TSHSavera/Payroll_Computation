@@ -39,7 +39,7 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 			<< "$" << computedNetPay
 			;
 
-		std::cout << "File successfully created with a name of: " << a << std::endl;
+		std::cout << "\tFile successfully created with a name of: " << a << std::endl << "\t";
 		employeeFile.close();
 	}
 	else if (ow) {
@@ -48,7 +48,7 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 		std::string a = b + ".empf";
 		std::ofstream employeeFile(a, std::ofstream::trunc);
 		if (!employeeFile) {
-			std::cerr << "Error loading file: File not found" << std::endl;
+			std::cerr << "\tError loading file: File not found" << std::endl;
 			system("pause");
 			return;
 		}
@@ -75,7 +75,7 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 			;
 
 		employeeFile.close();
-		std::cout << "Changes were saved on: " << a << std::endl;
+		std::cout << "\tChanges were saved on: " << a << std::endl;
 		system("pause");
 	}
 }
@@ -85,7 +85,7 @@ void loadEmployeeFile(std::string id) {
 	std::string content = " ";
 	std::ifstream employeeFile(a);
 	if (!employeeFile) {
-		std::cerr << "Error loading file: File not found" << std::endl;
+		std::cerr << "\tError loading file: File not found" << std::endl;
 		system("pause");
 		return;
 	}
@@ -159,7 +159,7 @@ void saveConfig(double ccArr[3], int rngArr[2]) {
 	std::string config = "config";
 	std::ofstream configFile(config, std::ofstream::trunc);
 	if (!configFile) {
-		std::cerr << "Error loading file: File not found" << std::endl;
+		std::cerr << "\tError loading file: File not found" << std::endl;
 		system("pause");
 		return;
 	}
@@ -173,7 +173,7 @@ void saveConfig(double ccArr[3], int rngArr[2]) {
 		<< "%" << rngArr[1];
 
 	configFile.close();
-	std::cout << std:: endl << "Config file saved!" << std::endl;
+	std::cout << std:: endl << "\tConfig file saved!" << std::endl;
 	system("pause");
 }
 
@@ -182,7 +182,7 @@ void loadConfig() {
 	std::string content = " ";
 	std::ifstream configFile(a);
 	if (!configFile) {
-		std::cerr << "Error loading file: File not found" << std::endl;
+		std::cerr << "\tError loading file: File not found" << std::endl;
 		system("pause");
 		return;
 	}
@@ -215,7 +215,7 @@ void loadConfig() {
 			n++;
  		}
 		configFile.close();
-		std::cout << "Successfully loaded the config file!" << std::endl;
+		std::cout << "\tSuccessfully loaded the config file!" << std::endl;
 		system("pause");
 	}
 }

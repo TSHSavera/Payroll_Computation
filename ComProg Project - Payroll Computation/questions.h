@@ -17,6 +17,8 @@
 std::string fname = " "; 
 std::string mname = " "; 
 std::string lname = " "; 
+//Func
+int rep = 0;
 
 char employeeCode;
 int presentDays = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
@@ -204,13 +206,22 @@ int totalPresentDays = 0;
 int showBasicSummary();
 void fcalculateAdvance();
 int showSummaryAdvance();
+void cleanUp();
+
+void cleanUp() {
+    //clear
+    std::cin.clear();
+    std::cin.ignore(INT_MAX, '\n');
+    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+}
 
 
 int calculationType() {
-    //clear
-    fname = " ";
-    mname = " ";
-    lname = " ";
+    rep++;
+    fname = "";
+    mname = "";
+    lname = "";
 
     employeeCode = '0';
     presentDays = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
@@ -244,13 +255,15 @@ int femployeeName_first(bool edit = false) {
         //Clear
         system("cls");
         printHead();
-        printOutValues(calcuType, fname);
+        printOutValues(calcuType);
         //Ask
         std::cout << "\tEnter Employee's First Name: ";
-        std::cin.ignore(10000, '\n');
+        if (rep >= 2) {
+            cleanUp();
+        }
         std::getline(std::cin, fname);
         //Perform Checks
-        if (fname == " ") {
+        if (fname == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             femployeeName_first();
@@ -263,7 +276,7 @@ int femployeeName_first(bool edit = false) {
         printOutValues(calcuType, fname);
         //Ask
         std::cout << "\tEdit Employee's First Name: ";
-        std::cin.ignore(10000, '\n');
+        std::cin.ignore(256, '\n');
         std::getline(std::cin, fname);
         //Perform Checks
         if (fname == " ") {
@@ -283,10 +296,10 @@ int femployeeName_mid(bool edit = false) {
         printOutValues(calcuType, fname);
         //Ask
         std::cout << "\tEnter Employee's Middle Name: ";
-        //std::cin.ignore(1000, '\n');
+        //std::cin.ignore(256, '\n');
         std::getline(std::cin, mname);
         //Perform Checks
-        if (mname == " ") {
+        if (mname == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             femployeeName_mid();
@@ -299,10 +312,10 @@ int femployeeName_mid(bool edit = false) {
         printOutValues(calcuType, fname, mname);
         //Ask
         std::cout << "\tEdit Employee's Middle name: ";
-        std::cin.ignore(10000, '\n');
+        std::cin.ignore(256, '\n');
         std::getline(std::cin, mname);
         //Perform Checks
-        if (mname == " ") {
+        if (mname == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             femployeeName_mid();
@@ -322,7 +335,7 @@ int femployeeName_last(bool edit = false) {
         //std::cin.ignore(10000, '\n');
         std::getline(std::cin, lname);
         //Perform Checks
-        if (lname == " ") {
+        if (lname == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             femployeeName_last();
@@ -335,10 +348,10 @@ int femployeeName_last(bool edit = false) {
         printOutValues(calcuType,fname, mname, lname);
         //Ask
         std::cout << "\tEdit Employee's Last Name: ";
-        std::cin.ignore(10000, '\n');
+        std::cin.ignore(256, '\n');
         std::getline(std::cin, lname);
         //Perform Checks
-        if (lname == " ") {
+        if (lname == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t";
             system("pause");
             femployeeName_last();
@@ -735,9 +748,9 @@ int showBasicSummary() {
         printOutValues(calcuType, fname, mname, lname, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         std::cout
-            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
-            << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-7: ";
+            << "\tHere are your inputs. If you want to change "<< std::endl
+            << "\tvalues, please state the number you wish to go back to." << std::endl << std::endl
+            << "\tEnter 0 if it's final. Pick a value from 1-7: ";
 
         std::cin >> a;
         //  Check std::cin value
@@ -798,8 +811,8 @@ int showBasicSummary() {
         printOutValues(calcuType, fname, mname, lname, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus);
         //Ask if this is final
         std::cout
-            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
-            << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
+            << "\tHere are your inputs. If you want to change " << std::endl
+            << "\tvalues, please state the number you wish to go back to." << std::endl << std::endl
             << "\t\tEnter 0 if it's final. If not, pick a value from 1-8: ";
 
         std::cin >> a;
@@ -1471,8 +1484,8 @@ int loadEditEmployeeData(std::string id, char ct, std::string fn, std::string mn
         printFinal(2 ,gp, td, np);
         //Ask if this is final
         std::cout
-            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
-            << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl << std::endl
+            << "\tHere are your inputs. If you want to change " << std::endl
+            << "\tvalues, please state the number you wish to go back to." << std::endl << std::endl
             << "\t\tEnter 0 if it's final. If not, pick a value from 1-8: ";
         int a = 0;
         std::cin >> a;
