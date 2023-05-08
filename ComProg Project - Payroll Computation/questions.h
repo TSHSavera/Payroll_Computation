@@ -7,6 +7,9 @@
 #include "netpay.h"
 #include "menu.h"
 #include <conio.h>
+#include <iomanip>
+#include <climits>
+#include <cctype>
 #include <string>
 
 
@@ -16,6 +19,94 @@ char employeeCode;
 int presentDays = 0, numberOfPresentOnRestDay = 0, numberOfPresentOnHoliday = 0, numberOfPresentOnRestHoliDay = 0, numberOfOverHours = 0, numberOfSpecialOverHours = 0, numberOfAbsent = 0;
 double grossPay = 0.00, netPay = 0.00, tax = 0.00, customEmployeeRate = -1;
 char calcuType = '0', shiftType = '0', dependencyStatus = '0';
+//Custom codes
+double cc[3] = { 250.0, 320.0,450.0 };
+
+int ev() {
+    char a = ' ';
+    //Clear
+    //system("cls");
+    //Ask
+    std::cout
+        << "Edit variables " << std::endl
+        << "Current Values:" << std::endl
+        << "[A] " << cc[0] << std::endl
+        << "[B] " << cc[1] << std::endl
+        << "[C] " << cc[2] << std::endl
+        << "[0] Exit Edit Variables" << std::endl
+        << "Choose a letter to edit: ";
+    a = _getch();
+    
+    //Check
+    if (a == 'A' || a == 'a') {
+        cc0:
+        //Edit cc[0]
+        std::cout << std::endl << "Enter a new value: ";
+        std::cin >> cc[0];
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            clearInvalid();
+            goto cc0;
+        }
+        //Check if negative
+        if (cc[0] <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            goto cc0;
+        }
+        ev();
+    }
+    else if (a == 'B' || a == 'b') {
+        cc1:
+        //Edit cc[1]
+        std::cout << std::endl << "Enter a new value: ";
+        std::cin >> cc[1];
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            clearInvalid();
+            goto cc1;
+        }
+        //Check if negative
+        if (cc[0] <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            goto cc1;
+        }
+        ev();
+    }
+    else if (a == 'C' || a == 'c') {
+        cc2:
+        //Edit cc[2]
+        std::cout << std::endl << "Enter a new value: ";
+        std::cin >> cc[2];
+        //  Check value
+        //  Reset in invalid input
+        while (std::cin.fail()) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            clearInvalid();
+            goto cc2;
+        }
+        //Check if negative
+        if (cc[0] <= 0) {
+            std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+            system("pause");
+            goto cc2;
+        }
+        ev();
+    }
+    else if (a == '0') {
+        return 0;
+    }
+    else {
+        std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+        system("pause");
+        ev();
+    }
+}
 
 //  Advance Counters
 int totalPresentDays = 0;
@@ -60,7 +151,7 @@ int femployeeName_first(bool edit = false) {
         std::cin.ignore();
         std::getline(std::cin, name);
         //Perform Checks
-        if (name == " ") {
+        if (name == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             femployeeName_first();
@@ -76,7 +167,7 @@ int femployeeName_first(bool edit = false) {
         std::cin.ignore();
         std::getline(std::cin, name);
         //Perform Checks
-        if (name == " ") {
+        if (name == "") {
             std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
             system("pause");
             femployeeName_first();
@@ -500,13 +591,13 @@ void fcalculateBasic() {
     //Compute
     if (employeeCode != 'D' && employeeCode != 'd') {
         
-        computedGrossPay = computeGrossPay('1', employeeCode, presentDays, shiftType);
+        computedGrossPay = computeGrossPay(cc,'1', employeeCode, presentDays, shiftType);
         computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
         computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
         printFinal(computedGrossPay, computedTaxDependency, computedNetPay);
     }
     else {
-        computedGrossPay = computeGrossPay('1', employeeCode, presentDays, shiftType, customEmployeeRate);
+        computedGrossPay = computeGrossPay(cc,'1', employeeCode, presentDays, shiftType, customEmployeeRate);
         computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
         computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
         printFinal(computedGrossPay, computedTaxDependency, computedNetPay);
@@ -1173,7 +1264,7 @@ void fcalculateAdvance() {
     double computedGrossPay = 0.0, computedTaxDependency = 0.0, computedNetPay = 0.0;
     //Compute
     if (employeeCode != 'D' && employeeCode != 'd') {
-        computedGrossPay = computeGrossPay('1', employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+        computedGrossPay = computeGrossPay(cc,'2', employeeCode, presentDays, shiftType, 0, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
         computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
         std::cout
@@ -1190,7 +1281,7 @@ void fcalculateAdvance() {
             << "\t\t\t\+-----------------------------------------+\n\n" << std::endl;
     }
     else {
-        computedGrossPay = computeGrossPay('1', employeeCode, presentDays, shiftType, customEmployeeRate, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
+        computedGrossPay = computeGrossPay(cc,'2', employeeCode, presentDays, shiftType, customEmployeeRate, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         computedTaxDependency = computeTaxDependency(dependencyStatus, computedGrossPay);
         computedNetPay = computeNetPay(computedGrossPay, computedTaxDependency);
         std::cout

@@ -53,8 +53,5 @@
     <ClInclude Include="fileHandling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

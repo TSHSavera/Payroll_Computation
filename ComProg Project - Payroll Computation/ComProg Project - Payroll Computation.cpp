@@ -1,8 +1,5 @@
 #include <iostream>
-#include <iomanip>
-#include <climits>
-#include <cctype>
-#include <string>
+
 //User Defined
 #include "password.h"
 #include "errorHandling.h"
@@ -14,6 +11,59 @@
 //Global Variables
 std::string evaluationError = "";
 
+bool startMenus(bool prc = false) {
+    int a = menu(prc);
+
+    if (a == '1') {
+        //Call pc
+        int b = pc();
+        if (b == 0) {
+            startMenus(true);
+        }
+    }
+    else if (a == '2') {
+        //Call ev
+        int c = ev();
+        if (c == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '3') {
+        //Call led
+        int d = led();
+        if (d == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '4') {
+        //Call lcf
+        int e = 0;
+        if (e == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '5') {
+        //Call sc
+        int f = 0;
+        if (f == 0) {
+            startMenus();
+        }
+    }
+    else if (a == '6') {
+        //Call se
+        int g = se();
+        if (g == 0) {
+            startMenus();
+        }
+    }
+    else if (a == 'e' || a == 'E') {
+        //Exit
+        return true;
+    }
+    else {
+        startMenus();
+    }
+}
 
 //Main Function
 int main() {
@@ -27,63 +77,10 @@ int main() {
         system("pause");
         exit(0);
     }
-
     
-
-
-    start:
-    int a = menu();
-
-    if (a == '1') {
-        //Call pc
-        int b = pc(cc);
-        if (b == 0) {
-            goto start;
-        }
+    if (!startMenus()) {
+        startMenus();
     }
-    else if (a == '2') {
-        //Call ev
-        int c = ev();
-        if (c == 0) {
-            goto start;
-        }
-    }
-    else if (a == '3') {
-        //Call led
-        int d = 0;
-        if (d == 0) {
-            goto start;
-        }
-    }
-    else if (a == '4') {
-        //Call lcf
-        int e = 0;
-        if (e == 0) {
-            goto start;
-        }
-    }
-    else if (a == '5') {
-        //Call sc
-        int f = 0;
-        if (f == 0) {
-            goto start;
-        }
-    }
-    else if (a == '6') {
-        //Call se
-        int g = 0;
-        if (g == 0) {
-            goto start;
-        }
-    }
-    else if (a == 'e' || a == 'E') {
-        //Exit
-        goto exit;
-    }
-    else {
-        goto start;
-    }
-
     
     
     exit:

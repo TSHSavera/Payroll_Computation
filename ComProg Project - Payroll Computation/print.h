@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
+#include <climits>
+#include <cctype>
 
 void printOutValues(char calcuType = ' ', std::string name = " ", char employeeCode = ' ', double customEmployeeRate = -1, int presentDays = -1, char shiftType = ' ', char dependencyStatus = ' ', int numberOfPresentOnHoliday = -1, int numberOfPresentOnRestDay = -1, int numberOfPresentOnRestHoliDay = -1, int numberOfOvertimeHours = -1, int numberOfSpecialOvertimeHours = -1) {
 
