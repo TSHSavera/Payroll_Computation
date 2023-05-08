@@ -73,7 +73,7 @@ int main() {
         system("cls");
         // TODO: Improve the design of this!!!
         // Show a message once the user have reached the maximum number of attempts
-        std::cout << "\t\t\t\t\tYou have been blocked from using the system!" << std::endl << std::endl << "\t\t\t";
+        std::cout << "\tYou have been blocked from using the system!" << std::endl << std::endl << "\t";
         system("pause");
         exit(0);
     }
@@ -84,7 +84,7 @@ int main() {
     
     
     exit:
-    std::cout << "\t\t\tThank you for using our program!" << std::endl << "\t\t\t";
+    std::cout << "\tThank you for using our program!" << std::endl << "\t";
     system("pause");
     exit(0);
 }

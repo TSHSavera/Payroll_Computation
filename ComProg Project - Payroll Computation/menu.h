@@ -191,7 +191,7 @@ int pc() {
         }
     }
     else {
-        std::cout << generateRandomMessage(1) << std::endl << "\t\t\t";
+        std::cout << generateRandomMessage(1) << std::endl << "\t";
         system("pause");
         calculationType();
     }
