@@ -56,7 +56,7 @@ int main() {
     //  Enter Password
     //cEnterPassword:
     if (enterPassword() == -1) {
-        //system("cls");
+        system("cls");
         // TODO: Improve the design of this!!!
         // Show a message once the user have reached the maximum number of attempts
         std::cout << "\tYou have been blocked from using the system!" << std::endl << std::endl << "\t";
