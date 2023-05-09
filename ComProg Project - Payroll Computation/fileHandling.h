@@ -18,6 +18,11 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 		std::string b = std::to_string(randomizer(getRngLimits(1), getRngLimits(2)));
 		std::string a = b + ".empf";
 		std::ofstream employeeFile(a);
+		if (!employeeFile) {
+			std::cerr << "\tCannot create file. Check permissions." << std::endl;
+			system("pause");
+			return;
+		}
 
 		//Write employeeData
 		employeeFile
