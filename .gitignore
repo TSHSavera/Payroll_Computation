@@ -365,3 +365,4 @@ FodyWeavers.xsd
 ComProg Project - Payroll Computation/ComProg Project - Payroll Computation.vcxproj
 *.filters
 ComProg Project - Payroll Computation/ComProg Project - Payroll Computation.vcxproj.filters
+*.empf
