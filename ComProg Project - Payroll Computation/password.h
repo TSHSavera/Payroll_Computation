@@ -9,7 +9,7 @@ int enterPassword() {
     std::string pass = "";
 
     for (int i = 0; i < 3; i++) {
-        system("cls");
+        //system("cls");
 	    //Start Asking
         std::cout << std::endl;
         std::cout << "\t\+-----------------------------------------+" << std::endl;

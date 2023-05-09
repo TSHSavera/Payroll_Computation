@@ -23,7 +23,7 @@ int overtimeHoursSpecial(bool);
 int showSummaryAdvance();
 
 char menu(bool pc = false) {
-    system("cls");
+    //system("cls");
 	//Declare
 	char a = '0';
 	if (!pc) {
@@ -198,7 +198,7 @@ int led() {
 }
 int dempf() {
     //Clear
-    system("cls");
+    //system("cls");
     //Ask for the ID you want to remove
     char a;
     std::string id, ext = ".empf", file;
@@ -206,7 +206,7 @@ int dempf() {
     std::cout << "Enter the employee ID you want to remove. Enter C to cancel operation: ";
     std::cin >> id;
     confirm:
-    system("cls");
+    //system("cls");
     std::cout << "Are you sure you want to delete employee with ID " << id << "? (Y/n): ";
     a = _getch();
     if (a == 'Y' || a == 'y') {
