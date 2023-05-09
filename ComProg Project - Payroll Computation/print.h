@@ -34,10 +34,10 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
 
     if (employeeCode != ' ') {
         if (customEmployeeRate != -1) {
-
+         
             std::cout << "\t| 4. Employee Code: " << employeeCode << "\t\t\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
-            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t          |" << std::endl;
+            std::cout << std::fixed << std::setprecision(2) << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
 
             if (presentDays != -1) {
