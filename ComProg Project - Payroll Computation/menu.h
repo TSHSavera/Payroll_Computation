@@ -203,8 +203,9 @@ int dempf() {
     char a;
     std::string id, ext = ".empf", file;
     char idHandler[100];
-    std::cout << "Enter the employee ID you want to remove. Enter C to cancel operation: ";
+    std::cout << "\tEnter the employee ID you want to remove... \n\n \tEnter C if you want to cancel operation: ";
     std::cin >> id;
+ 
     confirm:
     system("cls");
     std::cout << "Are you sure you want to delete employee with ID " << id << "? (Y/n): ";

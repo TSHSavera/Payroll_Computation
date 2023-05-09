@@ -189,9 +189,9 @@ void printFinal(int type = 1,double gp = 0.00, double td = 0.00, double np = 0.0
             << "\t\+-----------------------------------------+" << std::endl
             << "\t\|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t\|\tTax: PHP " << td << "  |" << std::endl
+            << "\t\|\tTax: PHP " << td << "  \t\t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t\|\tNet Pay: PHP " << np << "  |" << std::endl
+            << "\t\|\tNet Pay: PHP " << np << " \t\t  |" << std::endl
             << "\t\+-----------------------------------------+\n\n" << std::endl;
     }
 }
