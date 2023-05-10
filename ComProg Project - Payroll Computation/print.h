@@ -34,10 +34,10 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
 
     if (employeeCode != ' ') {
         if (customEmployeeRate != -1) {
-
+         
             std::cout << "\t| 4. Employee Code: " << employeeCode << "\t\t\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
-            std::cout << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t          |" << std::endl;
+            std::cout << std::fixed << std::setprecision(2) << "\t| 5. Custom Employee Rate: " << customEmployeeRate << "\t  |" << std::endl;
             std::cout << "\t+-----------------------------------------+" << std::endl;
 
             if (presentDays != -1) {
@@ -189,9 +189,9 @@ void printFinal(int type = 1,double gp = 0.00, double td = 0.00, double np = 0.0
             << "\t\+-----------------------------------------+" << std::endl
             << "\t\|\tGross Pay : PHP " << gp << "    \t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t\|\tTax: PHP " << td << "  |" << std::endl
+            << "\t\|\tTax: PHP " << td << "  \t\t  |" << std::endl
             << "\t\+-----------------------------------------+" << std::endl
-            << "\t\|\tNet Pay: PHP " << np << "  |" << std::endl
+            << "\t\|\tNet Pay: PHP " << np << " \t\t  |" << std::endl
             << "\t\+-----------------------------------------+\n\n" << std::endl;
     }
 }

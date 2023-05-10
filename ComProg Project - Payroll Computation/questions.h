@@ -268,6 +268,7 @@ int femployeeName_first(bool edit = false) {
             system("pause");
             femployeeName_first();
         }
+        return 0;
     }
     else if (edit) {
         //Clear
@@ -284,8 +285,8 @@ int femployeeName_first(bool edit = false) {
             system("pause");
             femployeeName_first();
         }
+        return 0;
     }
-    return 0;
 }
 
 int femployeeName_mid(bool edit = false) {
@@ -304,6 +305,7 @@ int femployeeName_mid(bool edit = false) {
             system("pause");
             femployeeName_mid();
         }
+        return 0;
     }
     else if (edit) {
         //Clear
@@ -320,8 +322,8 @@ int femployeeName_mid(bool edit = false) {
             system("pause");
             femployeeName_mid();
         }
+        return 0;
     }
-    return 0;
 }
 
 int femployeeName_last(bool edit = false) {
@@ -340,6 +342,7 @@ int femployeeName_last(bool edit = false) {
             system("pause");
             femployeeName_last();
         }
+        return 0;
     }
     else if (edit) {
         //Clear
@@ -356,8 +359,8 @@ int femployeeName_last(bool edit = false) {
             system("pause");
             femployeeName_last();
         }
+        return 0;
     }
-    return 0;
 }
 
 int femployeeCode(bool edit = false) {
@@ -769,14 +772,17 @@ int showBasicSummary() {
             if (femployeeName_first(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 2:
             if (femployeeName_mid(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 3:
             if (femployeeName_last(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 4:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
@@ -832,14 +838,17 @@ int showBasicSummary() {
             if (femployeeName_first(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 2:
             if (femployeeName_mid(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 3:
             if (femployeeName_last(true) == 0) {
                 showBasicSummary();
             }
+            break;
         case 4:
             if (femployeeCode(true) == 0) {
                 showBasicSummary();
@@ -1251,6 +1260,7 @@ int showSummaryAdvance() {
         case 0:
             fcalculateAdvance();
             createEmployeeFile(calcuType, fname, mname, lname, cer, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours, grossPay, tax, netPay, false);
+            system("pause");
             return 0;
             break;
         case 1:
@@ -1505,14 +1515,17 @@ int loadEditEmployeeData(std::string id, char ct, std::string fn, std::string mn
             if (femployeeName_first(true) == 0) {
                 goto leedS;
             }
+            break;
         case 2:
             if (femployeeName_mid(true) == 0) {
                 goto leedS;
             }
+            break;
         case 3:
             if (femployeeName_last(true) == 0) {
                 goto leedS;
             }
+            break;
         case 4:
             if (femployeeCode(true) == 0) {
                 goto leedS;
@@ -1574,14 +1587,17 @@ int loadEditEmployeeData(std::string id, char ct, std::string fn, std::string mn
             if (femployeeName_first(true) == 0) {
                 goto leedS;
             }
+            break;
         case 2:
             if (femployeeName_mid(true) == 0) {
                 goto leedS;
             }
+            break;
         case 3:
             if (femployeeName_last(true) == 0) {
                 goto leedS;
             }
+            break;
         case 4:
             if (femployeeCode(true) == 0) {
                 goto leedS;
