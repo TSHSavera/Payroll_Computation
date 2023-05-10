@@ -40,7 +40,7 @@ int enterPassword() {
             return 0;
         }
         
-        std::cout << pass;
+        std::cout << std::endl << "\tWrong password. Try again." << std::endl << "\t";
         system("pause");
         pass.clear();
     }
