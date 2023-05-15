@@ -887,6 +887,7 @@ int showBasicSummary() {
 
 int fpresentInHoliday(bool edit = false) {
     if (!edit) {
+        fpih:
         //  Check if the total present days is 30
         if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
             std::cout << "\tTotal of Present Days is 30.\n\tProceeding without adding more days...\n\tSkipping other day-related inputs..." << std::endl << "\t";
@@ -904,19 +905,22 @@ int fpresentInHoliday(bool edit = false) {
             //  Check std::cin value
             while (std::cin.fail()) {
                 clearInvalid();
-                fpresentInHoliday();
+                //fpresentInHoliday();
+                goto fpih;
             }
             //  Check if negative
             if (checkUserInput('2', ' ', numberOfPresentOnHoliday) == true) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInHoliday();
+                //fpresentInHoliday();
+                goto fpih;
             }
             //  Check if the total present days will not go over 30
             if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnHoliday, 31, 'c')) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInHoliday();
+                //fpresentInHoliday();
+                goto fpih;
             }
             //  Add to Total Days if total days is not 30
             totalPresentDays += numberOfPresentOnHoliday;
@@ -965,6 +969,7 @@ int fpresentInHoliday(bool edit = false) {
 int fpresentInRest(bool edit = false) {
     //  Check if the total present days is 30
     if (!edit) {
+        fpir:
         if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
             std::cout << "\tTotal of Present Days is 30.\n\tProceeding without adding more days...\n\tSkipping other day-related inputs..." << std::endl << "\t";
             system("pause");
@@ -981,19 +986,22 @@ int fpresentInRest(bool edit = false) {
             //  Check std::cin value
             while (std::cin.fail()) {
                 clearInvalid();
-                fpresentInRest();
+                //fpresentInRest();
+                goto fpir;
             }
             //  Check if negative
             if (checkUserInput('2', ' ', numberOfPresentOnRestDay) == true) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInRest();
+                //fpresentInRest();
+                goto fpir;
             }
             //  Check if the total present days will not go over 30
             if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestDay, 31, 'c')) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInRest();
+                //fpresentInRest();
+                goto fpir;
             }
             //  Add to Total Days if total days is not 30
             totalPresentDays += numberOfPresentOnRestDay;
@@ -1041,6 +1049,7 @@ int fpresentInRest(bool edit = false) {
 
 int fpresentInHoliRest(bool edit = false) {
     if (!edit) {
+    fpirh:
         //  Check if the total present days is 30
         if (checkUserInput('3', ' ', totalPresentDays, 30, 'c')) {
             std::cout << "\tTotal of Present Days is 30.\n\tProceeding without adding more days...\n\tSkipping other day-related inputs..." << std::endl << "\t";
@@ -1064,14 +1073,16 @@ int fpresentInHoliRest(bool edit = false) {
             if (checkUserInput('2', ' ', numberOfPresentOnRestHoliDay) == true) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInHoliRest();
+                //fpresentInHoliRest();
+                goto fpirh;
             }
             //int b = totalPresentDays + numberOfPresentOnRestHoliDay;
             //  Check if the total present days will not go over 30
             if (checkUserInput('3', ' ', totalPresentDays + numberOfPresentOnRestHoliDay, 31, 'c')) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 system("pause");
-                fpresentInHoliRest();
+                //fpresentInHoliRest();
+                goto fpirh;
             }
             // Check if will go over 30 once added to totalPresentDays
             //int a = ;
@@ -1079,7 +1090,8 @@ int fpresentInHoliRest(bool edit = false) {
                 std::cout << generateRandomMessage(1) << std::endl << "\t";
                 std::cout << totalPresentDays + numberOfPresentOnRestHoliDay << std::endl;
                 system("pause");
-                fpresentInHoliRest();
+                //fpresentInHoliRest();
+                goto fpirh;
 
             }
             //  Add to Total Days if all tests are passed
@@ -1246,9 +1258,9 @@ int showSummaryAdvance() {
         printOutValues(calcuType, fname, mname, lname, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         std::cout
-            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
-            << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-12: ";
+            << "\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
+            << "\tTake note that you need to re-enter the other values that you've passed through." << std::endl
+            << "\tEnter 0 if it's final. Pick a value from 1-12: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -1332,9 +1344,9 @@ int showSummaryAdvance() {
         printOutValues(calcuType, fname, mname, lname, employeeCode, customEmployeeRate, presentDays, shiftType, dependencyStatus, numberOfPresentOnHoliday, numberOfPresentOnRestDay, numberOfPresentOnRestHoliDay, numberOfOverHours, numberOfSpecialOverHours);
         //Ask if this is final
         std::cout
-            << "\t\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
-            << "\t\tTake note that you need to re-enter the other values that you've passed through." << std::endl
-            << "\t\tEnter 0 if it's final. Pick a value from 1-13: ";
+            << "\tHere are your inputs. If you want to change values, please state the number you wish to go back to." << std::endl
+            << "\tTake note that you need to re-enter the other values that you've passed through." << std::endl
+            << "\tEnter 0 if it's final. Pick a value from 1-13: ";
         std::cin >> a;
         //  Check std::cin value
         while (std::cin.fail()) {
@@ -1496,7 +1508,7 @@ int loadEditEmployeeData(std::string id, char ct, std::string fn, std::string mn
         std::cout
             << "\tHere are your inputs. If you want to change " << std::endl
             << "\tvalues, please state the number you wish to go back to." << std::endl << std::endl
-            << "\t\tEnter 0 if it's final. If not, pick a value from 1-8: ";
+            << "\tEnter 0 if it's final. If not, pick a value from 1-8: ";
         int a = 0;
         std::cin >> a;
         //  Check std::cin value

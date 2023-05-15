@@ -198,7 +198,8 @@ int led() {
 }
 int dempf() {
     //Clear
-    system("cls");
+    //system("cls");
+    std::cout << std::endl;
     //Ask for the ID you want to remove
     char a;
     std::string id, ext = ".empf", file;
@@ -207,8 +208,8 @@ int dempf() {
     std::cin >> id;
  
     confirm:
-    system("cls");
-    std::cout << "Are you sure you want to delete employee with ID " << id << "? (Y/n): ";
+    //system("cls");
+    std::cout << std::endl << "\tAre you sure you want to delete employee with ID " << id << "? (Y/n): ";
     a = _getch();
     if (a == 'Y' || a == 'y') {
         file = id + ext;
@@ -224,7 +225,7 @@ int dempf() {
             dempf();
         }
         else {
-            std::cout << std::endl << "Successfully removed employee with ID: " << id << std::endl;
+            std::cout << std::endl << "\tSuccessfully removed employee with ID: " << id << std::endl <<"\t";
             system("pause");
         }
         return 0;

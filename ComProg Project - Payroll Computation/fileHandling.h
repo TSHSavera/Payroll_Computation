@@ -80,7 +80,7 @@ void createEmployeeFile(char calcuType = ' ', std::string fname = " ", std::stri
 			;
 
 		employeeFile.close();
-		std::cout << "\tChanges were saved on: " << a << std::endl;
+		std::cout << "\tChanges were saved on: " << a << std::endl << "\t";
 		system("pause");
 	}
 }

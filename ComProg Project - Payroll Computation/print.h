@@ -146,7 +146,7 @@ void printOutValues(char calcuType = ' ', std::string fname = " ", std::string m
             }
 
             if (numberOfSpecialOvertimeHours != -1) {
-                std::cout << "\t| 12. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << "   \t  |" << std::endl;
+                std::cout << "\t| 12. Number of SP Overtime Hours: " << numberOfSpecialOvertimeHours << "  \t  |" << std::endl;
                 std::cout << "\t+-----------------------------------------+" << std::endl;
             }
         }
